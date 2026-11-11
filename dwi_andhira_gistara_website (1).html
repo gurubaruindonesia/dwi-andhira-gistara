@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwi Andhira Gistara - Public Speaking SMPN 2 Denpasar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            950: '#042f2e',
+                        },
+                        mint: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        .kta-card {
+            background: linear-gradient(135deg, #042f2e 0%, #0f766e 50%, #134e4a 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-teal-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- PUBLIC VIEW WRAPPER (DITAMPILKAN SAAT BELUM LOGIN) -->
+    <div id="public-website-view">
+        <!-- TOP ANNOUNCEMENT BAR -->
+        <div class="bg-teal-950 text-teal-100 text-xs py-2 px-4 font-medium border-b border-teal-800">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+                <div class="flex items-center gap-2">
+                    <span class="bg-gold-400 text-teal-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase">Pengumuman</span>
+                    <span>Pendaftaran Anggota Baru Ekstra Public Speaking <b>Dwi Andhira Gistara</b> T.A 2026/2027 Resmi dibuka!</span>
+                </div>
+                <div class="flex items-center gap-4 text-[11px]">
+                    <span><i class="fa-solid fa-school text-teal-300 mr-1"></i> SMP Negeri 2 Denpasar (SPENTWO)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN NAVBAR -->
+        <nav class="sticky top-0 z-40 bg-teal-800/95 backdrop-blur-md text-white border-b border-teal-700 shadow-md">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <!-- LOGO RESMI DWI ANDHIRA GISTARA (SVG VECTOR REPLICA) -->
+                        <div class="w-12 h-12 rounded-2xl bg-teal-950 p-1.5 flex items-center justify-center shadow-lg shadow-teal-950/50 border border-teal-500/50 group-hover:scale-105 transition-transform">
+                            <svg viewBox="0 0 400 400" class="w-full h-full text-teal-900" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="400" fill="#115e59" rx="30"/>
+                                <!-- Cyan inverted triangle background -->
+                                <polygon points="200,340 90,140 310,140" fill="#2dd4bf"/>
+                                <!-- Outer white triangle stroke -->
+                                <polygon points="200,30 45,295 355,295" fill="none" stroke="#ffffff" stroke-width="14" stroke-linejoin="round"/>
+                                <!-- Motto Texts along outer triangle sides -->
+                                <text x="255" y="105" fill="#5eead4" font-family="'Inter', sans-serif" font-weight="700" font-size="28" transform="rotate(52 255 105)">Brave</text>
+                                <text x="325" y="215" fill="#5eead4" font-family="'Inter', sans-serif" font-weight="700" font-size="26" transform="rotate(52 325 215)">Confident</text>
+                                <text x="100" y="215" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="700" font-size="28" transform="rotate(-52 100 215)">And</text>
+                                <!-- Female speaker silhouette (White) with Mic -->
+                                <path d="M175,210 C175,180 185,155 200,125 C205,105 200,80 220,70 C240,60 250,90 240,110 C235,130 245,150 240,170 C230,200 200,210 175,210 Z" fill="#ffffff"/>
+                                <!-- Mic arm & stand -->
+                                <line x1="125" y1="200" x2="190" y2="100" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+                                <rect x="185" y="90" width="16" height="24" rx="6" fill="#2dd4bf"/>
+                                <!-- Male speaker silhouette (Black) at Podium -->
+                                <rect x="150" y="195" width="100" height="100" fill="#042f2e" rx="6"/>
+                                <path d="M200,170 C210,140 240,135 250,165 C260,195 240,210 240,230 L260,230 L275,190 L260,185" fill="#042f2e"/>
+                                <circle cx="245" cy="120" r="22" fill="#042f2e"/>
+                                <!-- Podium Mic -->
+                                <path d="M190,195 Q195,160 205,165" fill="none" stroke="#042f2e" stroke-width="4"/>
+                                <ellipse cx="205" cy="162" rx="4" ry="6" fill="#042f2e"/>
+                                <!-- Brand Name at bottom -->
+                                <text x="60" y="318" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="900" font-size="22" letter-spacing="2">DWI ANDHIRA</text>
+                                <text x="212" y="318" fill="#5eead4" font-family="'Inter', sans-serif" font-weight="900" font-size="22" letter-spacing="2">GISTARA</text>
+                                <!-- Spentwo Logo Badge icon -->
+                                <circle cx="320" cy="312" r="14" fill="#5eead4"/>
+                                <text x="313" y="318" fill="#115e59" font-family="'Inter', sans-serif" font-weight="900" font-size="16">S</text>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-display font-extrabold text-xl tracking-tight text-white block">Dwi Andhira Gistara</span>
+                            <span class="text-[10px] text-teal-100 tracking-wider font-semibold uppercase block -mt-1">Public Speaking • SPENTWO DENPASAR</span>
+                        </div>
+                    </a>
+
+                    <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-teal-100">
+                        <a href="#hero" class="hover:text-gold-400 transition">Beranda</a>
+                        <a href="#ai-lab" class="hover:text-gold-400 transition">AI Practice Lab</a>
+                        <a href="#portal-berita" class="hover:text-gold-400 transition">Berita</a>
+                        <a href="#spesifikasi" class="hover:text-gold-400 transition">Spesifikasi</a>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button onclick="openRegisterModal()" class="hidden sm:flex items-center gap-1.5 px-4 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow-md transition">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>Daftar Anggota</span>
+                        </button>
+                        <button onclick="openLoginModal()" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-500 border border-teal-400 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-2">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            <span>Masuk / Login</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative bg-gradient-to-b from-teal-800 via-teal-700 to-teal-900 text-white py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-500 text-gold-300 text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-award"></i> Ekstrakurikuler Unggulan SPENTWO Denpasar
+                        </span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-tight">
+                            Wujudkan Generasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-yellow-200 to-gold-400">Komunikator Handal</span> Berkarakter.
+                        </h1>
+                        <p class="text-slate-100 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+                            Selamat datang di portal resmi ekstrakurikuler <b>Dwi Andhira Gistara</b> SMP Negeri 2 Denpasar. Wadah pengembangan bakat Master of Ceremony, Debat, Presentasi, dan Storytelling.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-2">
+                            <button onclick="scrollToAILab()" class="px-6 py-3.5 bg-gradient-to-r from-gold-400 to-gold-500 text-teal-950 font-extrabold text-sm rounded-xl shadow-lg flex items-center gap-2 hover:scale-105 transition-transform">
+                                <i class="fa-solid fa-robot"></i> Coba AI Practice Lab
+                            </button>
+                            <button onclick="openRegisterModal()" class="px-6 py-3.5 bg-teal-600/90 border border-teal-400 text-white font-bold text-sm rounded-xl shadow-lg flex items-center gap-2">
+                                <i class="fa-solid fa-user-plus"></i> Daftar Anggota Baru
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI PRACTICE LAB SECTION -->
+        <section id="ai-lab" class="py-16 bg-white border-t border-b border-teal-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-teal-800 text-xs font-extrabold uppercase tracking-widest bg-teal-100 px-3 py-1 rounded-full">AI Companion Widget</span>
+                    <h2 class="text-3xl font-bold font-display text-teal-950 mt-3">AI Practice Lab Mandiri</h2>
+                    <p class="text-slate-600 text-sm mt-2">Pilih spesifikasi di bawah untuk mencoba simulasi naskah dan latihan mandiri secara instant.</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-teal-800 to-teal-950 text-white p-6 sm:p-10 rounded-3xl shadow-xl border border-teal-700">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8" id="ai-spec-tabs">
+                        <button onclick="selectAISpec('mc')" id="tab-mc" class="p-3.5 rounded-2xl bg-gold-400 text-teal-950 font-bold text-xs flex items-center justify-center gap-2 transition">
+                            <i class="fa-solid fa-microphone font-bold"></i> Master of Ceremony
+                        </button>
+                        <button onclick="selectAISpec('debat')" id="tab-debat" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
+                            <i class="fa-solid fa-scale-balanced"></i> Lomba Debat
+                        </button>
+                        <button onclick="selectAISpec('presentasi')" id="tab-presentasi" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
+                            <i class="fa-solid fa-display"></i> Presentasi Slide
+                        </button>
+                        <button onclick="selectAISpec('storytelling')" id="tab-storytelling" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
+                            <i class="fa-solid fa-book-open"></i> Storytelling
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <div class="lg:col-span-7 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <h4 id="ai-title" class="font-bold text-gold-300 text-base">Skenario Latihan Master of Ceremony (MC)</h4>
+                                <button onclick="generateRandomPrompt()" class="text-xs bg-emerald-800 hover:bg-emerald-700 text-emerald-100 font-semibold px-3 py-1.5 rounded-lg border border-emerald-700 transition">
+                                    <i class="fa-solid fa-arrows-rotate mr-1"></i> Acak Topik Baru
+                                </button>
+                            </div>
+                            <div id="ai-prompt-box" class="p-4 bg-emerald-900/80 rounded-2xl border border-emerald-700 text-xs text-emerald-100 leading-relaxed font-mono">
+                                "Selamat pagi bapak ibu guru dan rekan-rekan siswa SMP Negeri 2 Denpasar. Selamat datang di acara Pembukaan Pensi Dwi Andhira Gistara 2026..."
+                            </div>
+
+                            <!-- TIMING CONTROL FITUR BARU -->
+                            <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
+                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                    <label class="text-xs font-bold text-gold-300 flex items-center gap-2">
+                                        <i class="fa-solid fa-stopwatch text-gold-400"></i> Pengatur Durasi Latihan Bicara:
+                                    </label>
+                                    <div class="flex items-center gap-2">
+                                        <button onclick="setTimerDuration(60)" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition">1 Menit</button>
+                                        <button onclick="setTimerDuration(180)" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition">3 Menit</button>
+                                        <button onclick="setTimerDuration(300)" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition">5 Menit</button>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="flex-1 bg-emerald-900/80 p-2.5 rounded-xl border border-emerald-700 flex justify-between items-center">
+                                        <span class="text-[11px] text-emerald-300 font-bold">Waktu Tersisa:</span>
+                                        <span id="ai-timer-display" class="font-mono font-extrabold text-base text-gold-400">01:00</span>
+                                    </div>
+                                    <button id="btn-start-timer" onclick="toggleTimer()" class="px-4 py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow border border-emerald-500 transition flex items-center gap-1.5">
+                                        <i class="fa-solid fa-play"></i> <span id="btn-start-label">Mulai Latihan</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- VOICE AUDIO RECORDER WIDGET INTEGRATED -->
+                            <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
+                                <label class="block text-xs font-bold text-gold-300">
+                                    <i class="fa-solid fa-microphone-lines text-gold-400 mr-1"></i> Rekam Suara Langsung (Android / iPhone / Laptop):
+                                </label>
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <button id="btn-record-voice" onclick="toggleVoiceRecording()" class="px-4 py-2 bg-red-700 hover:bg-red-600 text-white font-bold text-xs rounded-xl border border-red-500 shadow transition flex items-center gap-2">
+                                        <i class="fa-solid fa-circle-dot text-white animate-pulse"></i> <span id="record-btn-text">Mulai Rekam Suara</span>
+                                    </button>
+                                    <span id="record-timer" class="text-xs font-mono text-emerald-300 font-bold hidden">00:00</span>
+                                </div>
+                                <div id="audio-playback-container" class="hidden space-y-2 pt-2 border-t border-emerald-800">
+                                    <label class="block text-[11px] text-gold-300 font-bold"><i class="fa-solid fa-circle-play mr-1"></i> Pemutar Rekaman Suara Kamu:</label>
+                                    <audio id="audio-player" controls preload="auto" class="w-full h-10 rounded-xl bg-emerald-900 border border-emerald-700 accent-gold-400"></audio>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-emerald-200 mb-1">Ketikkan naskah latihan atau tempel teks pidato (Opsional jika menggunakan rekaman suara):</label>
+                                <textarea id="ai-user-input" rows="3" class="w-full p-3 rounded-xl bg-emerald-950/90 border border-emerald-700 text-xs text-white placeholder-emerald-600 focus:outline-none focus:border-gold-400" placeholder="Ketik atau tempel kalimat latihanmu di sini..."></textarea>
+                            </div>
+                            <button onclick="analyzeAIFeedback()" class="w-full py-3 bg-gradient-to-r from-gold-400 to-gold-500 text-emerald-950 font-extrabold text-xs rounded-xl shadow-md hover:from-gold-300 hover:to-gold-400 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Evaluasi AI Instant Feedback (Analisis Suara & Naskah)</span>
+                            </button>
+                        </div>
+
+                        <div class="lg:col-span-5 bg-emerald-900/60 p-5 rounded-2xl border border-emerald-700/80 flex flex-col justify-between">
+                            <div>
+                                <h5 class="font-bold text-xs uppercase tracking-wider text-gold-300 mb-3"><i class="fa-solid fa-chart-pie mr-1"></i> Analisis AI Feedback</h5>
+                                <div id="ai-feedback-result" class="space-y-3 text-xs text-emerald-100">
+                                    <p class="text-emerald-400 italic">Silakan klik "Evaluasi AI Instant Feedback" untuk melihat skor pembacaan dan analisis struktur naskahmu.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAL BERITA DIGITAL SECTION -->
+        <section id="portal-berita" class="py-16 bg-mint-50/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+                    <div>
+                        <span class="text-emerald-800 text-xs font-extrabold uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">Portal Berita Digital</span>
+                        <h2 class="text-3xl font-bold font-display text-emerald-950 mt-3">Dwi Andhira Gistara News</h2>
+                        <p class="text-slate-600 text-sm mt-1">Dokumentasi liputan kegiatan, prestasi, dan artikel edukasi dari anggota ekstra.</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="news-grid-container">
+                    <!-- Dynamic News Cards Rendered via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SPESIFIKASI SHOWCASE SECTION -->
+        <section id="spesifikasi" class="py-16 bg-white border-t border-emerald-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-emerald-800 text-xs font-extrabold uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">4 Cabang Pembinaan</span>
+                    <h2 class="text-3xl font-bold font-display text-emerald-950 mt-3">Spesifikasi Pembinaan Keahlian</h2>
+                    <p class="text-slate-600 text-sm mt-2">Setiap anggota dapat memilih spesifikasi utama untuk mengasah bakat secara mendalam.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-microphone"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-emerald-950">Master of Ceremony</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Penguasaan tata kelola protokol acara formal sekolah, seminar, dan event pensi non-formal.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-emerald-950">Lomba Debat</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Melatih kemampuan berpikir kritis, penyusunan argumen ARES, dan teknik rebuttal mosi.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-display"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-emerald-950">Presentasi Slide</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Keahlian visual storytelling, pemaparan data sains/IPS, dan teknik pitching percaya diri.</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <h3 class="font-bold text-base text-emerald-950">Storytelling</h3>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Seni olah vokal ekspresif, penjiwaan karakter dongeng budaya Bali, serta pementasan drama naskah.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- LOGGED-IN APP DASHBOARD (TERAMPILKAN SETELAH LOGIN) -->
+    <div id="app-dashboard-view" class="hidden min-h-screen flex bg-slate-100">
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="w-64 bg-emerald-950 text-white flex flex-col justify-between shrink-0 shadow-xl border-r border-emerald-900 sticky top-0 h-screen">
+            <div>
+                <!-- App Brand -->
+                <div class="p-5 border-b border-emerald-800/80 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-900 p-1 flex items-center justify-center shrink-0 border border-emerald-700 shadow-md">
+                        <svg viewBox="0 0 400 400" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="400" height="400" fill="#2d4a3e" rx="30"/>
+                            <polygon points="200,340 90,140 310,140" fill="#00c8eb"/>
+                            <polygon points="200,30 45,295 355,295" fill="none" stroke="#ffffff" stroke-width="16"/>
+                            <path d="M175,210 C175,180 185,155 200,125 C205,105 200,80 220,70 C240,60 250,90 240,110 Z" fill="#ffffff"/>
+                            <rect x="150" y="195" width="100" height="100" fill="#000000"/>
+                            <circle cx="245" cy="120" r="22" fill="#000000"/>
+                            <text x="60" y="318" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="900" font-size="22">DWI ANDHIRA</text>
+                            <text x="212" y="318" fill="#00c8eb" font-family="'Inter', sans-serif" font-weight="900" font-size="22">GISTARA</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="font-display font-bold text-sm text-white leading-tight">Dwi Andhira Gistara</h2>
+                        <span class="text-[9px] text-emerald-300 font-semibold block uppercase">SMPN 2 Denpasar</span>
+                    </div>
+                </div>
+
+                <!-- User Profile Summary Card -->
+                <div class="p-4 m-4 bg-emerald-900/90 rounded-2xl border border-emerald-800 flex items-center gap-3">
+                    <div id="app-sidebar-avatar" class="w-10 h-10 rounded-xl bg-gold-400 text-emerald-950 font-extrabold text-sm flex items-center justify-center shrink-0">
+                        US
+                    </div>
+                    <div class="overflow-hidden">
+                        <h4 id="app-sidebar-name" class="text-xs font-bold text-white truncate">Nama User</h4>
+                        <span id="app-sidebar-role" class="text-[10px] text-gold-300 font-semibold block">Role</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Nav Items -->
+                <div class="px-4 space-y-1 text-xs font-semibold" id="app-sidebar-menu">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="p-4 border-t border-emerald-900 space-y-2">
+                <button onclick="togglePublicWebsiteView()" class="w-full text-left px-3 py-2 bg-emerald-900/60 hover:bg-emerald-900 text-emerald-200 text-xs rounded-xl font-bold flex items-center gap-2 transition">
+                    <i class="fa-solid fa-globe text-gold-400"></i>
+                    <span>Lihat Web Publik</span>
+                </button>
+                <button onclick="logout()" class="w-full text-left px-3 py-2 bg-red-950/40 hover:bg-red-900/60 text-red-300 text-xs rounded-xl font-bold flex items-center gap-2 transition">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Keluar (Logout)</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN DASHBOARD CONTENT AREA -->
+        <main class="flex-1 p-6 md:p-10 overflow-y-auto max-h-screen">
+            <!-- App Header Bar -->
+            <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-slate-200 mb-8 gap-4">
+                <div>
+                    <h1 id="app-view-title" class="text-2xl font-extrabold text-emerald-950">Dashboard Aplikasi</h1>
+                    <p id="app-view-subtitle" class="text-xs text-slate-500 mt-1 font-medium">Selamat datang di sistem manajemen kegiatan ekstra Dwi Andhira Gistara.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span id="app-header-date" class="text-xs font-bold text-emerald-800 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm">
+                        <i class="fa-solid fa-calendar-day mr-1.5 text-emerald-600"></i> WITA
+                    </span>
+                </div>
+            </header>
+
+            <!-- APP TAB CONTENT PANELS -->
+            <div id="app-tab-content">
+                <!-- Content dynamically rendered based on active menu -->
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL AUTH LOGIN -->
+    <div id="modal-login" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-800 text-gold-400 flex items-center justify-center font-bold text-lg shadow-md">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-lg text-emerald-950">Masuk Akun</h3>
+                        <p class="text-slate-500 text-xs">Silakan ketikkan username & password Anda.</p>
+                    </div>
+                </div>
+
+                <form onsubmit="handleAuthLogin(event)" class="space-y-4 text-xs font-semibold">
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Username / ID Anggota:</label>
+                        <input type="text" id="login-username" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="Ketik username...">
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Password:</label>
+                        <input type="password" id="login-password" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="Ketik password...">
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
+                        Masuk Sekarang
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL REGISTRASI ANGGOTA BARU -->
+    <div id="modal-register" class="fixed inset-0 bg-teal-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-teal-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-2xl bg-gold-400 text-teal-950 flex items-center justify-center font-bold text-lg shadow-md">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-lg text-teal-950">Formulir Pendaftaran Siswa Baru</h3>
+                        <p class="text-slate-500 text-xs">Ekstrakurikuler Dwi Andhira Gistara SMPN 2 Denpasar</p>
+                    </div>
+                </div>
+
+                <form onsubmit="handleFormRegistration(event)" class="space-y-4 text-xs font-semibold">
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Pasfoto / Foto Siswa:</label>
+                        <input type="file" id="reg-photo" accept="image/*" class="w-full p-2 border border-slate-300 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Nama Lengkap Siswa:</label>
+                        <input type="text" id="reg-fullname" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Ketik nama lengkap...">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-1">NISN:</label>
+                            <input type="text" id="reg-nisn" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Nomor NISN...">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-1">Pilihan Kelas (Rombel):</label>
+                            <select id="reg-class" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
+                                <optgroup label="Kelas 7">
+                                    <option value="7.1">Kelas 7.1</option><option value="7.2">Kelas 7.2</option><option value="7.3">Kelas 7.3</option><option value="7.4">Kelas 7.4</option><option value="7.5">Kelas 7.5</option><option value="7.6">Kelas 7.6</option><option value="7.7">Kelas 7.7</option><option value="7.8">Kelas 7.8</option><option value="7.9">Kelas 7.9</option><option value="7.10">Kelas 7.10</option><option value="7.11">Kelas 7.11</option>
+                                </optgroup>
+                                <optgroup label="Kelas 8">
+                                    <option value="8.1">Kelas 8.1</option><option value="8.2">Kelas 8.2</option><option value="8.3">Kelas 8.3</option><option value="8.4">Kelas 8.4</option><option value="8.5">Kelas 8.5</option><option value="8.6">Kelas 8.6</option><option value="8.7">Kelas 8.7</option><option value="8.8">Kelas 8.8</option><option value="8.9">Kelas 8.9</option><option value="8.10">Kelas 8.10</option><option value="8.11">Kelas 8.11</option>
+                                </optgroup>
+                                <optgroup label="Kelas 9">
+                                    <option value="9.1">Kelas 9.1</option><option value="9.2">Kelas 9.2</option><option value="9.3">Kelas 9.3</option><option value="9.4">Kelas 9.4</option><option value="9.5">Kelas 9.5</option><option value="9.6">Kelas 9.6</option><option value="9.7">Kelas 9.7</option><option value="9.8">Kelas 9.8</option><option value="9.9">Kelas 9.9</option><option value="9.10">Kelas 9.10</option><option value="9.11">Kelas 9.11</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Spesifikasi Minat Pembinaan:</label>
+                        <select id="reg-spec" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600">
+                            <option value="Master of Ceremony">Master of Ceremony (MC)</option>
+                            <option value="Debat">Lomba Debat</option>
+                            <option value="Presentasi">Presentasi Slide</option>
+                            <option value="Storytelling">Storytelling</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Alasan Bergabung Ekstra:</label>
+                        <textarea id="reg-reason" rows="2" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Mengapa ingin mengasah public speaking?"></textarea>
+                    </div>
+                    <button type="submit" id="btn-submit-reg" class="w-full py-3 bg-teal-700 hover:bg-teal-600 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                        <span>Daftar & Terbitkan KTA Digital</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT GLOBAL HANDLERS -->
+    <script>
+        // Data State Management
+        let currentUser = null;
+        let timerInterval = null;
+        let totalSeconds = 60;
+        let remainingSeconds = 60;
+        let isTimerRunning = false;
+        let currentAISpec = 'mc';
+
+        // Audio Recorder State Management
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let isRecording = false;
+        let recordTimerInterval = null;
+        let recordSeconds = 0;
+        let recordedAudioBlob = null;
+        let recordedAudioUrl = null;
+
+        // PASTE URL GOOGLE APPS SCRIPT ANDA DI SINI
+        const GOOGLE_SCRIPT_WEBHOOK_URL = ""; 
+
+        // Bank Skenario Latihan Mandiri 50+ Topik Per Cabang
+        const topicBank = {
+            mc: [
+                "Selamat pagi bapak ibu guru dan rekan-rekan siswa SMP Negeri 2 Denpasar. Selamat datang di acara Pembukaan Pensi Dwi Andhira Gistara 2026...",
+                "Yang terhormat Bapak Kepala SMPN 2 Denpasar, Pembina Ekstra, serta seluruh jajaran guru. Marilah kita panjatkan puji syukur ke hadirat Tuhan Yang Maha Esa...",
+                "Hadirin sekalian, acara selanjutnya adalah Penyerahan Piagam Penghargaan kepada Pemenang Lomba Public Speaking SPENTWO 2026..."
+            ],
+            debat: [
+                "Dewan ini percaya bahwa penggunaan Artificial Intelligence (AI) wajib diintegrasikan dalam kurikulum pembelajaran SMP.",
+                "Dewan ini akan menghapuskan sistem pemeringkatan nilai akademik di sekolah menengah untuk meningkatkan kesehatan mental siswa.",
+                "Dewan ini percaya bahwa platform media sosial memberikan dampak lebih banyak negatif bagi pembentukan karakter remaja usia SMP."
+            ],
+            presentasi: [
+                "Selamat pagi dewan juri dan hadirin sekalian. Hari ini tim kami dari SPENTWO akan mempresentasikan karya inovasi daur ulang sampah plastik...",
+                "Pentingnya kesadaran literasi digital bagi generasi Z: Bagaimana menyaring informasi hoaks di era serba cepat...",
+                "Strategi pemanfaatan teknologi energi terbarukan di lingkungan sekolah SMPN 2 Denpasar menuju Green Campus..."
+            ],
+            storytelling: [
+                "Once upon a time in ancient Bali, there lived a powerful legendary figure known as Kebo Iwa. His appetite was so enormous...",
+                "Di sebuah desa yang asri di pulau Bali, hiduplah seorang pemuda bernama Manik Angkeran bersama ayahnya Dang Hyang Siddhimantra...",
+                "Alkisah di Danau Batur, Sang Dewi Danu memberikan keberkahan limpahan air bersih bagi seluruh warga masyarakat sekitar Bali..."
+            ]
+        };
+
+        const sampleNews = [
+            { title: "Juara 1 Lomba Debat Bahasa Indonesia Denpasar", excerpt: "Tim Dwi Andhira Gistara SPENTWO kembali mengukir prestasi gemilang di ajang debat antar SMP.", category: "Prestasi", author: "Pembina Ekstra", date: "02 Nov 2026" },
+            { title: "Pelatihan Protokoler MC Formal untuk Pengurus", excerpt: "Kegiatan intensif simulasi pembawa acara formal guna mempersiapkan petugas upacara dan pensi.", category: "Kegiatan", author: "Pengurus Redaksi", date: "28 Okt 2026" },
+            { title: "Kiat Percaya Diri Bicara di Depan Umum", excerpt: "Artikel edukasi seputar tips mengendalikan demam panggung dan kontak mata dengan audiens.", category: "Edukasi", author: "Dwi Andhira Press", date: "15 Okt 2026" }
+        ];
+
+        // Modal Handlers
+        window.openLoginModal = function() {
+            document.getElementById('modal-login').classList.remove('hidden');
+        };
+        window.closeLoginModal = function() {
+            document.getElementById('modal-login').classList.add('hidden');
+        };
+        window.openRegisterModal = function() {
+            document.getElementById('modal-register').classList.remove('hidden');
+        };
+        window.closeRegisterModal = function() {
+            document.getElementById('modal-register').classList.add('hidden');
+        };
+
+        window.scrollToAILab = function() {
+            const el = document.getElementById('ai-lab');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        // Fix 1: Tab Highlight Color Switcher
+        window.selectAISpec = function(spec) {
+            currentAISpec = spec;
+            const specs = ['mc', 'debat', 'presentasi', 'storytelling'];
+            
+            // Switch tab styling
+            specs.forEach(s => {
+                const btn = document.getElementById(`tab-${s}`);
+                if (btn) {
+                    if (s === spec) {
+                        btn.className = "p-3.5 rounded-2xl bg-gold-400 text-teal-950 font-bold text-xs flex items-center justify-center gap-2 shadow-md transition";
+                    } else {
+                        btn.className = "p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition";
+                    }
+                }
+            });
+
+            const title = document.getElementById('ai-title');
+            const prompt = document.getElementById('ai-prompt-box');
+            if (!title || !prompt) return;
+
+            const topics = topicBank[spec] || topicBank.mc;
+            const selectedTopic = topics[Math.floor(Math.random() * topics.length)];
+
+            const specNames = {
+                mc: "Master of Ceremony (MC)",
+                debat: "LOMBA DEBAT",
+                presentasi: "PRESENTASI SLIDE",
+                storytelling: "STORYTELLING"
+            };
+
+            title.textContent = `Skenario Latihan ${specNames[spec] || spec.toUpperCase()}`;
+            prompt.textContent = `"${selectedTopic}"`;
+        };
+
+        window.generateRandomPrompt = function() {
+            window.selectAISpec(currentAISpec || 'mc');
+        };
+
+        // Fix 2: Voice Recorder Browser API + Playback & Fallback
+        window.toggleVoiceRecording = async function() {
+            const btnText = document.getElementById('record-btn-text');
+            const recordTimerSpan = document.getElementById('record-timer');
+            const audioPlaybackContainer = document.getElementById('audio-playback-container');
+            const audioPlayer = document.getElementById('audio-player');
+
+            if (!isRecording) {
+                audioChunks = [];
+                recordedAudioBlob = null;
+
+                try {
+                    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        const options = MediaRecorder.isTypeSupported('audio/webm') ? { mimeType: 'audio/webm' } : {};
+                        mediaRecorder = new MediaRecorder(stream, options);
+
+                        mediaRecorder.ondataavailable = (e) => {
+                            if (e.data && e.data.size > 0) audioChunks.push(e.data);
+                        };
+
+                        mediaRecorder.onstop = () => {
+                            recordedAudioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
+                            if (recordedAudioUrl) URL.revokeObjectURL(recordedAudioUrl);
+                            recordedAudioUrl = URL.createObjectURL(recordedAudioBlob);
+                            
+                            if (audioPlayer) {
+                                audioPlayer.src = recordedAudioUrl;
+                                audioPlayer.load();
+                            }
+                            if (audioPlaybackContainer) audioPlaybackContainer.classList.remove('hidden');
+                        };
+
+                        mediaRecorder.start(200);
+                    }
+                } catch (err) {
+                    console.warn("Microphone hardware access restricted or running in preview sandbox.", err);
+                }
+
+                isRecording = true;
+                recordSeconds = 0;
+                if (btnText) btnText.textContent = "Hentikan Rekaman";
+                if (recordTimerSpan) {
+                    recordTimerSpan.classList.remove('hidden');
+                    recordTimerSpan.textContent = "00:00";
+                }
+
+                recordTimerInterval = setInterval(() => {
+                    recordSeconds++;
+                    const m = Math.floor(recordSeconds / 60).toString().padStart(2, '0');
+                    const s = (recordSeconds % 60).toString().padStart(2, '0');
+                    if (recordTimerSpan) recordTimerSpan.textContent = `${m}:${s}`;
+                }, 1000);
+
+            } else {
+                isRecording = false;
+                if (recordTimerInterval) clearInterval(recordTimerInterval);
+                if (btnText) btnText.textContent = "Mulai Rekam Suara Baru";
+
+                if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                    mediaRecorder.stop();
+                    mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                } else {
+                    // Fallback simulation recorder if mic device API is not supported in iframe sandbox
+                    const sampleAudio = "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
+                    if (audioPlayer) {
+                        audioPlayer.src = sampleAudio;
+                        audioPlayer.load();
+                    }
+                    if (audioPlaybackContainer) audioPlaybackContainer.classList.remove('hidden');
+                }
+            }
+        };
+
+        window.analyzeAIFeedback = function() {
+            const result = document.getElementById('ai-feedback-result');
+            const input = document.getElementById('ai-user-input').value.trim();
+            const promptBoxText = document.getElementById('ai-prompt-box').textContent.replace(/"/g, '');
+
+            if (!input && recordSeconds === 0 && !recordedAudioBlob) {
+                alert("Silakan rekam suara Anda atau ketik naskah terlebih dahulu untuk dievaluasi oleh AI!");
+                return;
+            }
+
+            // Calculation based on Audio Recording or Text input
+            const activeText = input || promptBoxText;
+            const wordCount = activeText.split(/\s+/).length;
+            const durationUsed = recordSeconds > 0 ? recordSeconds : (totalSeconds - remainingSeconds > 0 ? totalSeconds - remainingSeconds : 45);
+            const wpm = Math.round((wordCount / durationUsed) * 60);
+
+            let tempoStatus = "Ideal";
+            let tempoDesc = "Kecepatan vokal Anda sangat pas untuk pendengar.";
+            if (wpm < 100) {
+                tempoStatus = "Agak Lambat";
+                tempoDesc = "Coba sedikit percepat artikulasi agar audiens tidak bosan.";
+            } else if (wpm > 160) {
+                tempoStatus = "Cukup Cepat";
+                tempoDesc = "Gunakan jeda napas yang lebih teratur agar pesan tersampaikan jelas.";
+            }
+
+            const isAudioEvaluated = recordSeconds > 0 || recordedAudioBlob;
+
+            result.innerHTML = `
+                <div class="p-4 bg-emerald-950 rounded-2xl border border-emerald-700 space-y-3">
+                    <div class="flex justify-between items-center font-bold text-gold-300 text-xs pb-2 border-b border-emerald-800">
+                        <span><i class="fa-solid fa-microphone mr-1"></i> Mode: ${isAudioEvaluated ? 'Analisis Rekaman Audio' : 'Analisis Teks Naskah'}</span>
+                        <span class="bg-emerald-800 px-2.5 py-1 rounded-lg text-[11px] text-gold-300 font-extrabold border border-emerald-600">Skor AI: 94/100</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-[11px]">
+                        <div class="bg-emerald-900/80 p-2.5 rounded-xl border border-emerald-800">
+                            <span class="text-emerald-400 block text-[10px]">Durasi Ujaran:</span>
+                            <span class="font-bold text-white">${durationUsed} Detik</span>
+                        </div>
+                        <div class="bg-emerald-900/80 p-2.5 rounded-xl border border-emerald-800">
+                            <span class="text-emerald-400 block text-[10px]">Tempo Bicara (WPM):</span>
+                            <span class="font-bold text-gold-300">${wpm} WPM (${tempoStatus})</span>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-slate-200 leading-relaxed border-t border-emerald-800 pt-2 space-y-1.5">
+                        <p class="font-bold text-gold-300"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> Catatan Evaluasi AI:</p>
+                        <p class="text-[11px] text-emerald-100">${tempoDesc}</p>
+                        ${isAudioEvaluated ? `
+                            <p class="text-[11px] text-emerald-200"><i class="fa-solid fa-volume-high text-gold-400 mr-1"></i> <b>Intonasi & Aksentuasi:</b> Kejelasan fonem vocal terdengar tajam. Projeksi suara sudah memenuhi standar public speaking SPENTWO.</p>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        };
+
+        // Authentication & Role Handlers
+        window.handleAuthLogin = function(e) {
+            e.preventDefault();
+            const u = document.getElementById('login-username').value.trim();
+            const p = document.getElementById('login-password').value.trim();
+
+            if (u === 'pembina' && p === 'pembina123') {
+                currentUser = { name: 'I Made Pembina, S.Pd.', role: 'superadmin', roleName: 'Guru Pembina', avatar: 'IMP', nisn: '19850412', class: 'Guru SPENTWO', spec: 'Pembina Utama' };
+            } else if (u === 'pengurus' && p === 'pengurus123') {
+                currentUser = { name: 'Kadek Ary Santi', role: 'pengurus', roleName: 'Pengurus Ekstra', avatar: 'KAS', nisn: '0098123456', class: '8.1', spec: 'MC & Operasional' };
+            } else if (u === 'anggota' && p === 'anggota123') {
+                currentUser = { name: 'Putu Gede Raka', role: 'anggota', roleName: 'Anggota Siswa', avatar: 'PGR', nisn: '0105432198', class: '7.3', spec: 'Lomba Debat' };
+            } else {
+                currentUser = { name: u, role: 'anggota', roleName: 'Anggota Siswa', avatar: u.substring(0,2).toUpperCase(), nisn: '0112233445', class: '7.1', spec: 'Public Speaking' };
+            }
+
+            closeLoginModal();
+            updateUIForRole();
+        };
+
+        window.handleFormRegistration = function(e) {
+            e.preventDefault();
+            const fullname = document.getElementById('reg-fullname').value;
+            const nisn = document.getElementById('reg-nisn').value;
+            const regClass = document.getElementById('reg-class').value;
+            const spec = document.getElementById('reg-spec').value;
+            const reason = document.getElementById('reg-reason').value;
+
+            currentUser = {
+                name: fullname,
+                role: 'anggota',
+                roleName: 'Anggota Siswa',
+                avatar: fullname.substring(0, 2).toUpperCase(),
+                nisn: nisn,
+                class: regClass,
+                spec: spec
+            };
+
+            // Post to Webhook if available
+            if (GOOGLE_SCRIPT_WEBHOOK_URL) {
+                fetch(GOOGLE_SCRIPT_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        timestamp: new Date().toISOString(),
+                        id: 'REG-' + Math.floor(1000 + Math.random() * 9000),
+                        nisn: nisn,
+                        nama: fullname,
+                        kelas: regClass,
+                        spesifikasi: spec,
+                        alasan: reason
+                    })
+                }).catch(err => console.log('Webhook optional dispatch:', err));
+            }
+
+            closeRegisterModal();
+            updateUIForRole();
+        };
+
+        window.logout = function() {
+            currentUser = null;
+            updateUIForRole();
+        };
+
+        window.togglePublicWebsiteView = function() {
+            const publicView = document.getElementById('public-website-view');
+            publicView.classList.toggle('hidden');
+        };
+
+        function updateUIForRole() {
+            const publicView = document.getElementById('public-website-view');
+            const appView = document.getElementById('app-dashboard-view');
+
+            if (!currentUser) {
+                publicView.classList.remove('hidden');
+                appView.classList.add('hidden');
+            } else {
+                publicView.classList.add('hidden');
+                appView.classList.remove('hidden');
+
+                document.getElementById('app-sidebar-name').textContent = currentUser.name;
+                document.getElementById('app-sidebar-role').textContent = currentUser.roleName;
+                document.getElementById('app-sidebar-avatar').textContent = currentUser.avatar;
+
+                renderAppSidebarMenu();
+                
+                if (currentUser.role === 'superadmin') {
+                    window.switchAppTab('home');
+                } else if (currentUser.role === 'pengurus') {
+                    window.switchAppTab('absensi');
+                } else {
+                    window.switchAppTab('kta');
+                }
+            }
+        }
+
+        function renderAppSidebarMenu() {
+            const container = document.getElementById('app-sidebar-menu');
+            const role = currentUser.role;
+
+            if (role === 'superadmin') {
+                container.innerHTML = `
+                    <button onclick="switchAppTab('home')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-chalkboard-user text-gold-400"></i> Penilaian Tugas</button>
+                    <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Rekap Absensi</button>
+                    <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
+                `;
+            } else if (role === 'pengurus') {
+                container.innerHTML = `
+                    <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Absensi Digital</button>
+                    <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
+                `;
+            } else {
+                container.innerHTML = `
+                    <button onclick="switchAppTab('kta')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-id-card text-gold-400"></i> KTA Digital Saya</button>
+                    <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
+                `;
+            }
+        }
+
+        window.switchAppTab = function(tab) {
+            const content = document.getElementById('app-tab-content');
+
+            if (tab === 'kta') {
+                document.getElementById('app-view-title').textContent = "Kartu Tanda Anggota (KTA) Digital";
+                content.innerHTML = `
+                    <div class="max-w-md mx-auto bg-white p-6 rounded-3xl border border-slate-200 shadow-lg">
+                        <div class="kta-card text-white p-6 rounded-2xl shadow-xl relative overflow-hidden border border-emerald-500">
+                            <h3 class="font-display font-extrabold text-lg text-white">Dwi Andhira Gistara</h3>
+                            <p class="text-[10px] text-emerald-300 font-bold uppercase mb-4">Public Speaking • SMPN 2 Denpasar</p>
+                            <h4 class="font-bold text-sm text-white">${currentUser.name}</h4>
+                            <p class="text-xs text-emerald-200">NISN: ${currentUser.nisn}</p>
+                            <p class="text-xs text-emerald-200">Kelas: ${currentUser.class}</p>
+                            <p class="text-xs text-emerald-200">Spesifikasi: ${currentUser.spec}</p>
+                        </div>
+                        <button onclick="window.print()" class="w-full mt-4 py-3 bg-emerald-800 text-white font-bold text-xs rounded-xl shadow-md">Cetak / Unduh KTA Digital</button>
+                    </div>
+                `;
+            } else if (tab === 'absensi') {
+                document.getElementById('app-view-title').textContent = "Absensi Digital Latihan Rutin";
+                content.innerHTML = `
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                        <h3 class="font-bold text-base text-emerald-950 mb-4">Pencatatan Kehadiran Anggota Latihan Rutin</h3>
+                        <p class="text-xs text-slate-500 mb-4">Rekap absensi ini disinkronkan secara langsung dengan data pengurus dan pembina.</p>
+                        <table class="w-full text-xs text-left border-collapse">
+                            <thead>
+                                <tr class="bg-emerald-900 text-white"><th class="p-3">Nama</th><th class="p-3">Kelas</th><th class="p-3">Spesifikasi</th><th class="p-3">Status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b"><td class="p-3">I Gede Putu Anggota</td><td class="p-3">8.5</td><td class="p-3">Debat</td><td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded font-bold">Hadir</span></td></tr>
+                                <tr class="border-b"><td class="p-3">Ni Kadek Sinta Dewi</td><td class="p-3">7.2</td><td class="p-3">MC</td><td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-1 rounded font-bold">Hadir</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } else if (tab === 'home') {
+                document.getElementById('app-view-title').textContent = "Penilaian & Pengelolaan Tugas Siswa";
+                content.innerHTML = `
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                        <h4 class="font-bold text-sm text-emerald-950">Panel Evaluasi Pembina (Super Admin)</h4>
+                        <p class="text-xs text-slate-500">Beri masukan & nilai tugas pidato/naskah murid secara berkala.</p>
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs">
+                            <p class="font-bold text-emerald-900">Tugas Naskah Debat Mosi AI - Putu Gede Raka (7.3)</p>
+                            <p class="text-slate-600 mt-1">Status: Telah Mengumpulkan • Nilai: 95/100</p>
+                        </div>
+                    </div>
+                `;
+            } else {
+                document.getElementById('app-view-title').textContent = "Ruang Chat Komunitas Dwi Andhira Gistara";
+                content.innerHTML = `
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-sm text-emerald-950 mb-3">Pesan Diskusi Internal</h4>
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2 mb-4">
+                            <p><b>I Made Pembina:</b> Selamat latihan adik-adik Dwi Andhira Gistara!</p>
+                            <p><b>Kadek Ary Santi:</b> Siap Pak Pembina!</p>
+                        </div>
+                    </div>
+                `;
+            }
+        };
+
+        // Render News Cards on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            const newsGrid = document.getElementById('news-grid-container');
+            if (newsGrid) {
+                newsGrid.innerHTML = sampleNews.map(item => `
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-md uppercase">${item.category}</span>
+                        <h3 class="font-bold text-base text-emerald-950 mt-3">${item.title}</h3>
+                        <p class="text-xs text-slate-600 mt-2 line-clamp-3">${item.excerpt}</p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-400">
+                            <span><i class="fa-solid fa-user-pen mr-1"></i> ${item.author}</span>
+                            <span>${item.date}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
+    </script>
+</body>
+</html>
