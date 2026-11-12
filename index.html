@@ -314,13 +314,26 @@
         </section>
     </div>
 
-    <!-- LOGGED-IN APP DASHBOARD (TERAMPILKAN SETELAH LOGIN) -->
-    <div id="app-dashboard-view" class="hidden min-h-screen flex bg-slate-100">
-        <!-- SIDEBAR NAVIGATION -->
-        <aside class="w-64 bg-emerald-950 text-white flex flex-col justify-between shrink-0 shadow-xl border-r border-emerald-900 sticky top-0 h-screen">
+    <!-- LOGGED-IN APP DASHBOARD (RESPONSIVE FULL FIX MOBILE & DESKTOP) -->
+    <div id="app-dashboard-view" class="hidden min-h-screen flex flex-col md:flex-row bg-slate-100 relative">
+        <!-- MOBILE TOP BAR (TAMPIL DI HP INFINIX ZERO 30) -->
+        <div class="md:hidden bg-emerald-950 text-white p-4 flex justify-between items-center sticky top-0 z-50 border-b border-emerald-800">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-emerald-900 p-1 flex items-center justify-center border border-emerald-700">
+                    <span class="text-gold-400 font-extrabold text-xs">DAG</span>
+                </div>
+                <span class="font-bold text-xs">Dwi Andhira Gistara</span>
+            </div>
+            <button onclick="toggleMobileSidebar()" class="px-3 py-1.5 bg-emerald-900 hover:bg-emerald-800 text-gold-400 font-bold rounded-lg text-xs flex items-center gap-1">
+                <i class="fa-solid fa-bars"></i> Menu
+            </button>
+        </div>
+
+        <!-- SIDEBAR NAVIGATION (DRAWER DI MOBILE, FIXED SIDEBAR DI LAPTOP) -->
+        <aside id="app-sidebar" class="hidden md:flex w-full md:w-64 bg-emerald-950 text-white flex-col justify-between shrink-0 shadow-xl border-r border-emerald-900 sticky top-0 h-auto md:h-screen z-40">
             <div>
                 <!-- App Brand -->
-                <div class="p-5 border-b border-emerald-800/80 flex items-center gap-3">
+                <div class="p-5 border-b border-emerald-800/80 hidden md:flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-emerald-900 p-1 flex items-center justify-center shrink-0 border border-emerald-700 shadow-md">
                         <svg viewBox="0 0 400 400" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                             <rect width="400" height="400" fill="#2d4a3e" rx="30"/>
@@ -370,11 +383,11 @@
         </aside>
 
         <!-- MAIN DASHBOARD CONTENT AREA -->
-        <main class="flex-1 p-6 md:p-10 overflow-y-auto max-h-screen">
+        <main class="flex-1 p-4 md:p-10 overflow-y-auto w-full">
             <!-- App Header Bar -->
-            <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-slate-200 mb-8 gap-4">
+            <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-6 border-b border-slate-200 mb-6 md:mb-8 gap-4">
                 <div>
-                    <h1 id="app-view-title" class="text-2xl font-extrabold text-emerald-950">Dashboard Aplikasi</h1>
+                    <h1 id="app-view-title" class="text-xl md:text-2xl font-extrabold text-emerald-950">Dashboard Aplikasi</h1>
                     <p id="app-view-subtitle" class="text-xs text-slate-500 mt-1 font-medium">Selamat datang di sistem manajemen kegiatan ekstra Dwi Andhira Gistara.</p>
                 </div>
                 <div class="flex items-center gap-3">
@@ -552,6 +565,12 @@
             { title: "Pelatihan Protokoler MC Formal untuk Pengurus", excerpt: "Kegiatan intensif simulasi pembawa acara formal guna mempersiapkan petugas upacara dan pensi.", category: "Kegiatan", author: "Pengurus Redaksi", date: "28 Okt 2026" },
             { title: "Kiat Percaya Diri Bicara di Depan Umum", excerpt: "Artikel edukasi seputar tips mengendalikan demam panggung dan kontak mata dengan audiens.", category: "Edukasi", author: "Dwi Andhira Press", date: "15 Okt 2026" }
         ];
+
+        // Mobile Sidebar Toggle
+        window.toggleMobileSidebar = function() {
+            const sidebar = document.getElementById('app-sidebar');
+            if (sidebar) sidebar.classList.toggle('hidden');
+        };
 
         // Modal Handlers
         window.openLoginModal = function() {
@@ -941,12 +960,18 @@
         };
 
         window.switchAppTab = function(tab) {
+            // Sembunyikan mobile sidebar saat berpindah tab
+            const sidebar = document.getElementById('app-sidebar');
+            if (sidebar && window.innerWidth < 768) {
+                sidebar.classList.add('hidden');
+            }
+
             const content = document.getElementById('app-tab-content');
 
             if (tab === 'kta') {
                 document.getElementById('app-view-title').textContent = "Kartu Tanda Anggota (KTA) Digital";
                 content.innerHTML = `
-                    <div class="max-w-md mx-auto bg-white p-6 rounded-3xl border border-slate-200 shadow-lg">
+                    <div class="max-w-md mx-auto bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-lg">
                         <div class="kta-card text-white p-6 rounded-2xl shadow-xl relative overflow-hidden border border-emerald-500">
                             <h3 class="font-display font-extrabold text-lg text-white">Dwi Andhira Gistara</h3>
                             <p class="text-[10px] text-emerald-300 font-bold uppercase mb-4">Public Speaking • SMPN 2 Denpasar</p>
@@ -963,7 +988,7 @@
                 const isSuperAdmin = currentUser && currentUser.role === 'superadmin';
 
                 content.innerHTML = `
-                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                    <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
                             <div>
                                 <h3 class="font-bold text-base text-emerald-950">Pencatatan Kehadiran Anggota Latihan Rutin</h3>
@@ -1010,7 +1035,7 @@
             } else if (tab === 'home') {
                 document.getElementById('app-view-title').textContent = "Penilaian & Pengelolaan Tugas Siswa";
                 content.innerHTML = `
-                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
                         <h4 class="font-bold text-sm text-emerald-950">Panel Evaluasi Pembina (Super Admin)</h4>
                         <p class="text-xs text-slate-500">Beri masukan & nilai tugas pidato/naskah murid secara berkala.</p>
                         <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs">
@@ -1022,7 +1047,7 @@
             } else {
                 document.getElementById('app-view-title').textContent = "Ruang Chat Komunitas Dwi Andhira Gistara";
                 content.innerHTML = `
-                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                    <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm">
                         <h4 class="font-bold text-sm text-emerald-950 mb-3">Pesan Diskusi Internal</h4>
                         <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-xs space-y-2 mb-4">
                             <p><b>I Made Pembina:</b> Selamat latihan adik-adik Dwi Andhira Gistara!</p>
