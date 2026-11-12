@@ -74,15 +74,15 @@
 
     <!-- PUBLIC VIEW WRAPPER -->
     <div id="public-website-view">
-        <!-- TOP ANNOUNCEMENT BAR -->
+        <!-- TOP ANNOUNCEMENT BAR (DAPAT DIEDIT SUPER ADMIN) -->
         <div class="bg-teal-950 text-teal-100 text-xs py-2 px-4 font-medium border-b border-teal-800">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
                 <div class="flex items-center gap-2">
-                    <span class="bg-gold-400 text-teal-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase">Pengumuman</span>
-                    <span>Pendaftaran Anggota Baru Ekstra Public Speaking <b>Dwi Andhira Gistara</b> T.A 2026/2027 Resmi dibuka!</span>
+                    <span id="site-announcement-badge" class="bg-gold-400 text-teal-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase">Pengumuman</span>
+                    <span id="site-announcement-text">Pendaftaran Anggota Baru Ekstra Public Speaking <b>Dwi Andhira Gistara</b> T.A 2026/2027 Resmi dibuka!</span>
                 </div>
                 <div class="flex items-center gap-4 text-[11px]">
-                    <span><i class="fa-solid fa-school text-teal-300 mr-1"></i> SMP Negeri 2 Denpasar (SPENTWO)</span>
+                    <span><i class="fa-solid fa-school text-teal-300 mr-1"></i> <span id="site-school-label">SMP Negeri 2 Denpasar (SPENTWO)</span></span>
                 </div>
             </div>
         </div>
@@ -115,8 +115,8 @@
                             </svg>
                         </div>
                         <div>
-                            <span class="font-display font-extrabold text-xl tracking-tight text-white block">Dwi Andhira Gistara</span>
-                            <span class="text-[10px] text-teal-100 tracking-wider font-semibold uppercase block -mt-1">Public Speaking • SPENTWO DENPASAR</span>
+                            <span id="site-brand-title" class="font-display font-extrabold text-xl tracking-tight text-white block">Dwi Andhira Gistara</span>
+                            <span id="site-brand-subtitle" class="text-[10px] text-teal-100 tracking-wider font-semibold uppercase block -mt-1">Public Speaking • SPENTWO DENPASAR</span>
                         </div>
                     </a>
 
@@ -141,18 +141,18 @@
             </div>
         </nav>
 
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION (DAPAT DIEDIT SUPER ADMIN) -->
         <section id="hero" class="relative bg-gradient-to-b from-teal-800 via-teal-700 to-teal-900 text-white py-20 overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     <div class="lg:col-span-7 space-y-6">
                         <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-500 text-gold-300 text-xs font-bold uppercase tracking-wider">
-                            <i class="fa-solid fa-award"></i> Ekstrakurikuler Unggulan SPENTWO Denpasar
+                            <i class="fa-solid fa-award"></i> <span id="site-hero-badge">Ekstrakurikuler Unggulan SPENTWO Denpasar</span>
                         </span>
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-tight">
+                        <h1 id="site-hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-tight">
                             Wujudkan Generasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-yellow-200 to-gold-400">Komunikator Handal</span> Berkarakter.
                         </h1>
-                        <p class="text-slate-100 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+                        <p id="site-hero-description" class="text-slate-100 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
                             Selamat datang di portal resmi ekstrakurikuler <b>Dwi Andhira Gistara</b> SMP Negeri 2 Denpasar. Wadah pengembangan bakat Master of Ceremony, Debat, Presentasi, dan Storytelling.
                         </p>
                         <div class="flex flex-wrap gap-4 pt-2">
@@ -431,10 +431,8 @@
                 </div>
 
                 <article id="read-news-body" class="text-sm text-slate-700 leading-relaxed space-y-4 font-normal">
-                    <!-- Isi artikel lengkap -->
                 </article>
 
-                <!-- Kolom Komentar Pembaca -->
                 <div class="pt-6 border-t border-slate-200 space-y-4">
                     <h4 class="font-bold text-sm text-emerald-950"><i class="fa-regular fa-comments text-emerald-700 mr-1.5"></i> Komentar Pembaca</h4>
                     <form onsubmit="handleAddNewsComment(event)" class="flex gap-2">
@@ -443,14 +441,13 @@
                         <button type="submit" class="px-4 py-2.5 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition">Kirim</button>
                     </form>
                     <div id="read-news-comments-list" class="space-y-2 text-xs">
-                        <!-- Daftar komentar -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL EDIT BIODATA & PASSWORD MURID (KHUSUS PEMBINA) -->
+    <!-- MODAL EDIT BIODATA, STATUS ACC & PASSWORD MURID (PEMBINA / SUPER ADMIN) -->
     <div id="modal-edit-student" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeEditStudentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -463,8 +460,8 @@
                         <i class="fa-solid fa-user-pen"></i>
                     </div>
                     <div>
-                        <h3 class="font-display font-bold text-base text-emerald-950">Edit Biodata & Password Murid</h3>
-                        <p class="text-slate-500 text-xs">Akses Kontrol Pembina Dwi Andhira Gistara</p>
+                        <h3 class="font-display font-bold text-base text-emerald-950">Edit Biodata, ACC & Password Murid</h3>
+                        <p class="text-slate-500 text-xs">Akses Kontrol Pembina & Super Admin</p>
                     </div>
                 </div>
 
@@ -502,6 +499,13 @@
                             </select>
                         </div>
                     </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Status Persetujuan Akun (ACC Pembina):</label>
+                        <select id="edit-student-status" class="w-full p-2.5 rounded-xl border border-slate-300 bg-emerald-50 font-bold text-emerald-950 focus:outline-none">
+                            <option value="approved">✅ Disetujui (ACC - Aktif Bisa Login)</option>
+                            <option value="pending">⏳ Menunggu Persetujuan (Pending)</option>
+                        </select>
+                    </div>
                     <div class="p-3 bg-amber-50 rounded-2xl border border-amber-200 space-y-2">
                         <label class="block text-amber-900 font-bold"><i class="fa-solid fa-key mr-1"></i> Pengaturan Akun & Password Murid:</label>
                         <div class="grid grid-cols-2 gap-2">
@@ -524,7 +528,7 @@
         </div>
     </div>
 
-    <!-- MODAL BUAT / EDIT SESI ABSENSI & SETTING RADIUS GPS (PEMBINA / PENGURUS) -->
+    <!-- MODAL BUAT / EDIT SESI ABSENSI & SETTING RADIUS GPS -->
     <div id="modal-buat-sesi" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeAddSessionModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -562,7 +566,6 @@
                         </div>
                     </div>
 
-                    <!-- PENGATURAN RADIUS GPS -->
                     <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-3">
                         <div class="flex justify-between items-center">
                             <label class="text-emerald-950 font-bold flex items-center gap-1.5">
@@ -594,7 +597,6 @@
                                 <option value="1000">1.000 Meter / 1 KM (Acara Luar Sekolah)</option>
                                 <option value="0">Bebas Jarak / Online (Tanpa Batasan Radius GPS)</option>
                             </select>
-                            <p class="text-[10px] text-slate-500 mt-1">Jika posisi GPS siswa melebihi radius ini dari titik koordinat di atas, siswa tidak bisa mengirim absen.</p>
                         </div>
                     </div>
 
@@ -723,7 +725,7 @@
         </div>
     </div>
 
-    <!-- MODAL REGISTRASI DENGAN UPLOAD PASFOTO UNTUK KTA -->
+    <!-- MODAL REGISTRASI (SISWA BUTUH ACC PEMBINA • GURU TANPA BOCORAN KODE VERIFIKASI) -->
     <div id="modal-register" class="fixed inset-0 bg-teal-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-teal-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -742,6 +744,10 @@
 
                 <!-- FORM SISWA -->
                 <form id="form-reg-student" onsubmit="handleFormRegistrationStudent(event)" class="space-y-4 text-xs font-semibold">
+                    <div class="p-3 bg-amber-50 border border-amber-200 rounded-2xl text-[11px] text-amber-900">
+                        <i class="fa-solid fa-circle-info mr-1 text-amber-600"></i> Pendaftaran anggota baru memerlukan <b>persetujuan (ACC) Pembina</b> sebelum akun dapat digunakan untuk masuk (login).
+                    </div>
+
                     <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
                         <div class="w-16 h-20 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center overflow-hidden shrink-0">
                             <img id="student-photo-preview" src="" class="hidden w-full h-full object-cover">
@@ -797,11 +803,11 @@
                         </select>
                     </div>
                     <button type="submit" class="w-full py-3 bg-teal-700 hover:bg-teal-600 text-white font-bold rounded-xl shadow-md transition">
-                        Daftar & Terbitkan KTA Digital Siswa
+                        Kirim Pendaftaran (Menunggu ACC Pembina)
                     </button>
                 </form>
 
-                <!-- FORM PEMBINA / GURU -->
+                <!-- FORM PEMBINA / GURU (TANPA KETERANGAN KODE VERIFIKASI) -->
                 <form id="form-reg-teacher" onsubmit="handleFormRegistrationTeacher(event)" class="hidden space-y-4 text-xs font-semibold">
                     <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
                         <div class="w-16 h-20 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center overflow-hidden shrink-0">
@@ -829,8 +835,8 @@
                         </div>
                     </div>
                     <div>
-                        <label class="block text-slate-700 font-bold mb-1">Kode Verifikasi Guru (Gunakan: <span class="text-emerald-700 font-extrabold">SPENTWO2026</span>):</label>
-                        <input type="text" id="reg-teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan SPENTWO2026">
+                        <label class="block text-slate-700 font-bold mb-1">Kode Verifikasi Guru:</label>
+                        <input type="password" id="reg-teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan kode rahasia pembina...">
                     </div>
                     <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
                         Daftar & Terbitkan KTA Digital Pembina
@@ -854,14 +860,14 @@
                     </div>
                     <div>
                         <h3 class="font-display font-bold text-lg text-emerald-950">Masuk Akun</h3>
-                        <p class="text-slate-500 text-xs">Demo: <b>pembina</b> (pass: pembina123) atau <b>pengurus</b> (pass: pengurus123)</p>
+                        <p class="text-slate-500 text-xs">Login Anggota, Pengurus, Pembina, atau Super Admin</p>
                     </div>
                 </div>
 
                 <form onsubmit="handleAuthLogin(event)" class="space-y-4 text-xs font-semibold">
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Username / ID Anggota:</label>
-                        <input type="text" id="login-username" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="pembina / pengurus / username murid">
+                        <input type="text" id="login-username" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="Masukkan username Anda...">
                     </div>
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Password:</label>
@@ -906,7 +912,38 @@
         const todayISO = "2026-11-12";
         let selectedFilterDate = todayISO;
 
-        // PENGATURAN SESI ABSENSI + RADIUS GPS (DEFAULT SMPN 2 DENPASAR)
+        // KONFIGURASI WEBSITE & CMS (DIKONTROL OLEH SUPER ADMIN)
+        const defaultSiteConfig = {
+            announcementBadge: "Pengumuman",
+            announcementText: "Pendaftaran Anggota Baru Ekstra Public Speaking Dwi Andhira Gistara T.A 2026/2027 Resmi dibuka!",
+            schoolLabel: "SMP Negeri 2 Denpasar (SPENTWO)",
+            brandTitle: "Dwi Andhira Gistara",
+            brandSubtitle: "Public Speaking • SPENTWO DENPASAR",
+            heroBadge: "Ekstrakurikuler Unggulan SPENTWO Denpasar",
+            heroTitle: "Wujudkan Generasi Komunikator Handal Berkarakter.",
+            heroDescription: "Selamat datang di portal resmi ekstrakurikuler Dwi Andhira Gistara SMP Negeri 2 Denpasar. Wadah pengembangan bakat Master of Ceremony, Debat, Presentasi, dan Storytelling.",
+            teacherSecretCode: "SPENTWO2026"
+        };
+
+        let siteConfig = JSON.parse(localStorage.getItem('dag_site_config')) || defaultSiteConfig;
+        function saveSiteConfig() {
+            localStorage.setItem('dag_site_config', JSON.stringify(siteConfig));
+            applySiteConfigToDOM();
+        }
+
+        function applySiteConfigToDOM() {
+            const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+            setEl('site-announcement-badge', siteConfig.announcementBadge);
+            setEl('site-announcement-text', siteConfig.announcementText);
+            setEl('site-school-label', siteConfig.schoolLabel);
+            setEl('site-brand-title', siteConfig.brandTitle);
+            setEl('site-brand-subtitle', siteConfig.brandSubtitle);
+            setEl('site-hero-badge', siteConfig.heroBadge);
+            setEl('site-hero-title', siteConfig.heroTitle);
+            setEl('site-hero-description', siteConfig.heroDescription);
+        }
+
+        // PENGATURAN SESI ABSENSI + RADIUS GPS
         const defaultAttendanceSession = {
             date: todayISO,
             title: "Latihan Debat & MC Rutin SPENTWO",
@@ -923,9 +960,8 @@
             localStorage.setItem('dag_attendance_session', JSON.stringify(activeAttendanceSession));
         }
 
-        // RUMUS HAVERSINE MENGHITUNG JARAK METER ANTARA 2 KOORDINAT GPS
         function calculateDistanceInMeters(lat1, lon1, lat2, lon2) {
-            const R = 6371e3; // Radius bumi dalam meter
+            const R = 6371e3;
             const phi1 = lat1 * Math.PI / 180;
             const phi2 = lat2 * Math.PI / 180;
             const deltaPhi = (lat2 - lat1) * Math.PI / 180;
@@ -938,12 +974,13 @@
             return Math.round(R * c);
         }
 
-        // DATABASE AKUN MURID & PENGURUS (DAPAT DIEDIT BIODATA & PASSWORDNYA OLEH PEMBINA)
+        // DATABASE AKUN MURID & PENGURUS (DENGAN STATUS APPROVAL: approved / pending)
         const defaultStudentAccounts = [
-            { name: "Ni Putu Ayu Saraswati", nisn: "0091122334", class: "8.1", spec: "Master of Ceremony", role: "anggota", username: "ayusaraswati", password: "siswa123", photo: null },
-            { name: "I Gede Putu Anggota", nisn: "0094455667", class: "8.5", spec: "Lomba Debat", role: "anggota", username: "gedeanggota", password: "siswa123", photo: null },
-            { name: "Kadek Ary Santi", nisn: "0098123456", class: "8.1", spec: "Master of Ceremony", role: "pengurus", username: "pengurus", password: "pengurus123", photo: null },
-            { name: "Putu Gede Raka Pratama", nisn: "0102233445", class: "7.3", spec: "Storytelling", role: "anggota", username: "rakapratama", password: "siswa123", photo: null }
+            { name: "Ni Putu Ayu Saraswati", nisn: "0091122334", class: "8.1", spec: "Master of Ceremony", role: "anggota", status: "approved", username: "ayusaraswati", password: "siswa123", photo: null },
+            { name: "I Gede Putu Anggota", nisn: "0094455667", class: "8.5", spec: "Lomba Debat", role: "anggota", status: "approved", username: "gedeanggota", password: "siswa123", photo: null },
+            { name: "Kadek Ary Santi", nisn: "0098123456", class: "8.1", spec: "Master of Ceremony", role: "pengurus", status: "approved", username: "pengurus", password: "pengurus123", photo: null },
+            { name: "Putu Gede Raka Pratama", nisn: "0102233445", class: "7.3", spec: "Storytelling", role: "anggota", status: "approved", username: "rakapratama", password: "siswa123", photo: null },
+            { name: "Komang Cintya Dewi (Pendaftar Baru)", nisn: "0119988776", class: "7.2", spec: "Master of Ceremony", role: "anggota", status: "pending", username: "cintyadewi", password: "siswa123", photo: null }
         ];
 
         let studentAccounts = JSON.parse(localStorage.getItem('dag_student_accounts')) || defaultStudentAccounts;
@@ -1000,7 +1037,6 @@
             ]
         };
 
-        // DATABASE BERITA LENGKAP (DENGAN ISI ARTIKEL & KOMENTAR)
         const defaultNews = [
             {
                 title: "Juara 1 Lomba Debat Bahasa Indonesia Denpasar",
@@ -1041,7 +1077,7 @@
             localStorage.setItem('dag_news_list', JSON.stringify(sampleNews));
         }
 
-        // BUKA & BACA ARTIKEL BERITA PENUH (ALA KOMPAS.COM)
+        // BUKA & BACA ARTIKEL BERITA PENUH
         window.openBacaBeritaModal = function(index) {
             activeReadingNewsIndex = index;
             const news = sampleNews[index];
@@ -1160,7 +1196,6 @@
         };
         window.closeTambahBeritaModal = function() { document.getElementById('modal-tambah-berita').classList.add('hidden'); };
 
-        // BUKA MODAL EDIT SESI ABSENSI & SETTING RADIUS GPS
         window.openAddSessionModal = function() {
             document.getElementById('session-input-date').value = activeAttendanceSession.date;
             document.getElementById('session-input-title').value = activeAttendanceSession.title;
@@ -1375,6 +1410,8 @@
             isWithinAllowedRadius = true;
             currentMeasuredDistanceMeters = 0;
 
+            const isPrivileged = currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'teacher');
+
             if (maxRad === 0) {
                 badge.textContent = "🌐 Mode Online / Bebas Jarak";
                 badge.className = "px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[10px]";
@@ -1395,7 +1432,7 @@
 
                             text.textContent = `Posisi Anda: ${userLat.toFixed(4)}, ${userLng.toFixed(4)} • Jarak: ${distance} meter`;
 
-                            if (distance <= maxRad || (currentUser && currentUser.role === 'superadmin')) {
+                            if (distance <= maxRad || isPrivileged) {
                                 isWithinAllowedRadius = true;
                                 badge.textContent = `✅ Dalam Radius (${distance}m)`;
                                 badge.className = "px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[10px]";
@@ -1454,7 +1491,8 @@
         };
 
         window.submitGPSAttendance = function() {
-            if (!isWithinAllowedRadius && (!currentUser || currentUser.role !== 'superadmin')) {
+            const isPrivileged = currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'teacher');
+            if (!isWithinAllowedRadius && !isPrivileged) {
                 alert(`Maaf, posisi Anda berada di luar radius maksimal (${activeAttendanceSession.maxRadiusMeters} meter) dari lokasi latihan.`);
                 return;
             }
@@ -1563,7 +1601,7 @@
             URL.revokeObjectURL(url);
         };
 
-        // HANDLER TAMBAH BERITA & RENDER BERITA BISA DIKLIK SEPERTI MEDIA BERITA
+        // HANDLER TAMBAH BERITA & RENDER BERITA
         window.handleCreateNewsSubmit = function(e) {
             e.preventDefault();
             const title = document.getElementById('news-input-title').value;
@@ -1586,7 +1624,7 @@
             saveNewsList();
             renderNewsGrid();
             closeTambahBeritaModal();
-            if (currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'pengurus')) {
+            if (currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'teacher' || currentUser.role === 'pengurus')) {
                 window.switchAppTab('berita');
             }
             alert("📢 Berita lengkap berhasil diterbitkan & sudah bisa dibaca pengunjung di Halaman Publik!");
@@ -1625,7 +1663,25 @@
             }
         }
 
-        // HANDLER EDIT BIODATA & PASSWORD MURID OLEH PEMBINA
+        // HANDLER PERSETUJUAN (ACC) & EDIT BIODATA MURID OLEH PEMBINA / SUPER ADMIN
+        window.approvePendingStudent = function(index) {
+            if (!studentAccounts[index]) return;
+            studentAccounts[index].status = 'approved';
+            saveStudentAccounts();
+            window.switchAppTab('students');
+            alert(`✅ Akun murid atas nama ${studentAccounts[index].name} telah DISETUJUI (ACC) dan kini aktif bisa login!`);
+        };
+
+        window.rejectPendingStudent = function(index) {
+            if (!studentAccounts[index]) return;
+            const studentName = studentAccounts[index].name;
+            if (confirm(`Tolak dan hapus pendaftaran atas nama ${studentName}?`)) {
+                studentAccounts.splice(index, 1);
+                saveStudentAccounts();
+                window.switchAppTab('students');
+            }
+        };
+
         window.openEditStudentModal = function(index) {
             const student = studentAccounts[index];
             if (!student) return;
@@ -1635,6 +1691,7 @@
             document.getElementById('edit-student-class').value = student.class;
             document.getElementById('edit-student-spec').value = student.spec;
             document.getElementById('edit-student-role').value = student.role;
+            document.getElementById('edit-student-status').value = student.status || 'approved';
             document.getElementById('edit-student-username').value = student.username;
             document.getElementById('edit-student-password').value = student.password;
             document.getElementById('modal-edit-student').classList.remove('hidden');
@@ -1656,13 +1713,40 @@
                 class: document.getElementById('edit-student-class').value.trim(),
                 spec: document.getElementById('edit-student-spec').value,
                 role: document.getElementById('edit-student-role').value,
+                status: document.getElementById('edit-student-status').value,
                 username: document.getElementById('edit-student-username').value.trim().toLowerCase(),
                 password: document.getElementById('edit-student-password').value.trim()
             };
             saveStudentAccounts();
             closeEditStudentModal();
             window.switchAppTab('students');
-            alert(`✅ Biodata, username, dan password untuk ${studentAccounts[idx].name} berhasil diperbarui!`);
+            alert(`✅ Biodata, status ACC, dan password untuk ${studentAccounts[idx].name} berhasil diperbarui!`);
+        };
+
+        // HANDLER SIMPAN PENGATURAN WEBSITE (CMS SUPER ADMIN)
+        window.handleSaveSiteCMS = function(e) {
+            e.preventDefault();
+            siteConfig = {
+                announcementBadge: document.getElementById('cms-announcement-badge').value.trim(),
+                announcementText: document.getElementById('cms-announcement-text').value.trim(),
+                schoolLabel: document.getElementById('cms-school-label').value.trim(),
+                brandTitle: document.getElementById('cms-brand-title').value.trim(),
+                brandSubtitle: document.getElementById('cms-brand-subtitle').value.trim(),
+                heroBadge: document.getElementById('cms-hero-badge').value.trim(),
+                heroTitle: document.getElementById('cms-hero-title').value.trim(),
+                heroDescription: document.getElementById('cms-hero-description').value.trim(),
+                teacherSecretCode: document.getElementById('cms-teacher-code').value.trim() || "SPENTWO2026"
+            };
+            saveSiteConfig();
+            alert("🚀 Pengaturan Website & Pengumuman berhasil diperbarui dan langsung tampil di Halaman Utama!");
+        };
+
+        window.handleResetSiteCMS = function() {
+            if (confirm("Kembalikan teks pengumuman dan tampilan website ke pengaturan awal?")) {
+                siteConfig = { ...defaultSiteConfig };
+                saveSiteConfig();
+                window.switchAppTab('cms');
+            }
         };
 
         // HANDLER KIRIM PESAN DISKUSI KOMUNITAS
@@ -1712,11 +1796,17 @@
             const u = document.getElementById('login-username').value.trim().toLowerCase();
             const p = document.getElementById('login-password').value.trim();
 
-            if (u === 'pembina' && p === 'pembina123') {
-                currentUser = { name: 'I Made Pembina, S.Pd.', role: 'superadmin', roleName: 'Guru Pembina', avatar: 'IMP', photo: null, nisn: '19850412', class: 'Guru SPENTWO', spec: 'Pembina Utama' };
+            if (u === 'superadmin' && p === 'superadmin123') {
+                currentUser = { name: 'Super Admin Website', role: 'superadmin', roleName: 'Super Admin • Pengendali Penuh', avatar: 'SA', photo: null, nisn: 'ADMIN-01', class: 'Administrator Utama', spec: 'Full Website Control' };
+            } else if (u === 'pembina' && p === 'pembina123') {
+                currentUser = { name: 'I Made Pembina, S.Pd.', role: 'teacher', roleName: 'Guru Pembina', avatar: 'IMP', photo: null, nisn: '19850412', class: 'Guru SPENTWO', spec: 'Pembina Utama' };
             } else {
                 const found = studentAccounts.find(acc => acc.username.toLowerCase() === u && acc.password === p);
                 if (found) {
+                    if (found.status === 'pending') {
+                        alert(`⏳ Halo ${found.name}, pendaftaran akun Anda sedang MENUNGGU PERSETUJUAN (ACC) dari Guru Pembina. Silakan hubungi Pembina untuk aktivasi akun.`);
+                        return;
+                    }
                     currentUser = {
                         name: found.name,
                         role: found.role,
@@ -1746,12 +1836,18 @@
             const username = document.getElementById('reg-username').value.trim().toLowerCase();
             const password = document.getElementById('reg-password').value.trim();
 
+            if (studentAccounts.some(acc => acc.username.toLowerCase() === username) || username === 'pembina' || username === 'superadmin') {
+                alert("Username sudah digunakan. Silakan pilih username lain.");
+                return;
+            }
+
             const newStudent = {
                 name: fullname,
                 nisn: nisn,
                 class: studentClass,
                 spec: spec,
                 role: 'anggota',
+                status: 'pending', // WAJIB ACC PEMBINA DULU
                 username: username,
                 password: password,
                 photo: uploadedStudentPasfotoDataUrl
@@ -1759,31 +1855,22 @@
             studentAccounts.unshift(newStudent);
             saveStudentAccounts();
 
-            currentUser = {
-                name: fullname,
-                role: 'anggota',
-                roleName: 'Anggota Siswa',
-                avatar: fullname.substring(0, 2).toUpperCase(),
-                photo: uploadedStudentPasfotoDataUrl,
-                nisn: nisn,
-                class: studentClass,
-                spec: spec
-            };
             closeRegisterModal();
-            updateUIForRole();
+            document.getElementById('form-reg-student').reset();
+            alert(`✅ Pendaftaran atas nama ${fullname} berhasil dikirim!\n\nStatus akun saat ini: MENUNGGU PERSETUJUAN (ACC) PEMBINA. Setelah disetujui oleh Pembina, Anda dapat langsung masuk menggunakan username "${username}".`);
         };
 
         window.handleFormRegistrationTeacher = function(e) {
             e.preventDefault();
             const code = document.getElementById('reg-teacher-code').value.trim();
-            if (code !== 'SPENTWO2026') {
-                alert('Kode Verifikasi Guru salah! Silakan masukkan SPENTWO2026');
+            if (code !== siteConfig.teacherSecretCode) {
+                alert('Kode Verifikasi Guru tidak valid! Silakan hubungi Pembina Utama / Super Admin.');
                 return;
             }
             const teacherName = document.getElementById('reg-teacher-name').value;
             currentUser = {
                 name: teacherName,
-                role: 'superadmin',
+                role: 'teacher',
                 roleName: 'Guru Pembina',
                 avatar: teacherName.substring(0, 2).toUpperCase(),
                 photo: uploadedTeacherPasfotoDataUrl,
@@ -1820,18 +1907,34 @@
                 }
 
                 renderAppSidebarMenu();
-                window.switchAppTab(currentUser.role === 'superadmin' || currentUser.role === 'pengurus' ? 'absensi' : 'kta');
+                if (currentUser.role === 'superadmin') {
+                    window.switchAppTab('cms');
+                } else if (currentUser.role === 'teacher' || currentUser.role === 'pengurus') {
+                    window.switchAppTab('absensi');
+                } else {
+                    window.switchAppTab('kta');
+                }
             }
         }
 
         function renderAppSidebarMenu() {
             const container = document.getElementById('app-sidebar-menu');
             const role = currentUser.role;
+            const pendingCount = studentAccounts.filter(s => s.status === 'pending').length;
+            const pendingBadge = pendingCount > 0 ? `<span class="ml-auto bg-gold-400 text-teal-950 font-extrabold text-[10px] px-1.5 py-0.5 rounded-full">${pendingCount}</span>` : '';
 
             if (role === 'superadmin') {
                 container.innerHTML = `
+                    <button onclick="switchAppTab('cms')" class="w-full text-left px-3 py-2.5 rounded-xl bg-emerald-900/70 hover:bg-emerald-900 text-gold-300 font-extrabold flex items-center gap-2.5 border border-emerald-700/70"><i class="fa-solid fa-sliders text-gold-400"></i> Kontrol Website (CMS)</button>
                     <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Rekap & Sesi Absensi</button>
-                    <button onclick="switchAppTab('students')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-users-gear text-gold-400"></i> Data & Biodata Murid</button>
+                    <button onclick="switchAppTab('students')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-users-gear text-gold-400"></i> <span>ACC & Biodata Murid</span> ${pendingBadge}</button>
+                    <button onclick="switchAppTab('berita')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> Kelola & Tambah Berita</button>
+                    <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
+                `;
+            } else if (role === 'teacher') {
+                container.innerHTML = `
+                    <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Rekap & Sesi Absensi</button>
+                    <button onclick="switchAppTab('students')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-users-gear text-gold-400"></i> <span>ACC & Biodata Murid</span> ${pendingBadge}</button>
                     <button onclick="switchAppTab('berita')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> Kelola & Tambah Berita</button>
                     <button onclick="switchAppTab('kta')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-id-card text-gold-400"></i> KTA Digital Pembina</button>
                     <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
@@ -1858,8 +1961,79 @@
 
             const content = document.getElementById('app-tab-content');
 
-            if (tab === 'kta') {
-                const isTeacher = currentUser.role === 'superadmin';
+            if (tab === 'cms') {
+                document.getElementById('app-view-title').textContent = "Pusat Kontrol Website & Pengumuman (Super Admin)";
+                content.innerHTML = `
+                    <div class="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+                            <div>
+                                <h3 class="font-bold text-base text-emerald-950">Pengaturan Konten Halaman Utama & Keamanan</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">Ubah kalimat pengumuman, sambutan halaman depan, identitas ekstra, dan kode rahasia registrasi guru.</p>
+                            </div>
+                            <button type="button" onclick="handleResetSiteCMS()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition">
+                                <i class="fa-solid fa-rotate-left mr-1"></i> Reset Default
+                            </button>
+                        </div>
+
+                        <form onsubmit="handleSaveSiteCMS(event)" class="space-y-5 text-xs font-semibold">
+                            <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200 space-y-3">
+                                <h4 class="font-bold text-amber-950 text-sm"><i class="fa-solid fa-bullhorn text-amber-600 mr-1.5"></i> Edit Pita Pengumuman Atas Website</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <div>
+                                        <label class="block text-slate-700 font-bold mb-1">Label Badge:</label>
+                                        <input type="text" id="cms-announcement-badge" value="${siteConfig.announcementBadge}" required class="w-full p-2.5 rounded-xl border border-amber-300 bg-white">
+                                    </div>
+                                    <div class="sm:col-span-2">
+                                        <label class="block text-slate-700 font-bold mb-1">Teks Pengumuman Berjalan / Utama:</label>
+                                        <input type="text" id="cms-announcement-text" value="${siteConfig.announcementText}" required class="w-full p-2.5 rounded-xl border border-amber-300 bg-white">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-emerald-50/70 rounded-2xl border border-emerald-200 space-y-3">
+                                <h4 class="font-bold text-emerald-950 text-sm"><i class="fa-solid fa-desktop text-emerald-700 mr-1.5"></i> Edit Tampilan Dashboard / Hero Beranda</h4>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <div>
+                                        <label class="block text-slate-700 font-bold mb-1">Nama Ekstrakurikuler:</label>
+                                        <input type="text" id="cms-brand-title" value="${siteConfig.brandTitle}" required class="w-full p-2.5 rounded-xl border border-slate-300 bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-700 font-bold mb-1">Sub-Judul Navbar:</label>
+                                        <input type="text" id="cms-brand-subtitle" value="${siteConfig.brandSubtitle}" required class="w-full p-2.5 rounded-xl border border-slate-300 bg-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-slate-700 font-bold mb-1">Nama Sekolah (Kanan Atas):</label>
+                                        <input type="text" id="cms-school-label" value="${siteConfig.schoolLabel}" required class="w-full p-2.5 rounded-xl border border-slate-300 bg-white">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-slate-700 font-bold mb-1">Teks Badge Utama (Di Atas Judul):</label>
+                                    <input type="text" id="cms-hero-badge" value="${siteConfig.heroBadge}" required class="w-full p-2.5 rounded-xl border border-slate-300 bg-white">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-700 font-bold mb-1">Judul Besar Halaman Utama:</label>
+                                    <input type="text" id="cms-hero-title" value="${siteConfig.heroTitle}" required class="w-full p-2.5 rounded-xl border border-slate-300 bg-white">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-700 font-bold mb-1">Paragraf Sambutan / Deskripsi Hero:</label>
+                                    <textarea id="cms-hero-description" rows="3" required class="w-full p-2.5 rounded-xl border border-slate-300 bg-white">${siteConfig.heroDescription}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                                <h4 class="font-bold text-slate-900 text-sm"><i class="fa-solid fa-shield-halved text-emerald-700 mr-1.5"></i> Kode Rahasia Pendaftaran Guru / Pembina</h4>
+                                <p class="text-[11px] text-slate-500">Kode ini disembunyikan dari publik di form pendaftaran guru. Hanya guru yang Anda beri kode ini yang bisa mendaftar.</p>
+                                <input type="text" id="cms-teacher-code" value="${siteConfig.teacherSecretCode}" required class="w-full sm:w-1/2 p-2.5 rounded-xl border border-slate-300 bg-white font-mono font-bold text-emerald-900">
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-md transition">
+                                💾 Simpan & Terapkan Seluruh Perubahan Website
+                            </button>
+                        </form>
+                    </div>
+                `;
+            } else if (tab === 'kta') {
+                const isTeacher = currentUser.role === 'teacher' || currentUser.role === 'superadmin';
                 document.getElementById('app-view-title').textContent = isTeacher ? "Kartu Tanda Anggota (KTA) Digital Pembina" : "Kartu Tanda Anggota (KTA) Digital Siswa";
                 const photoHtml = currentUser.photo 
                     ? `<img src="${currentUser.photo}" class="w-full h-full object-cover">`
@@ -1893,59 +2067,107 @@
                     </div>
                 `;
             } else if (tab === 'students') {
-                document.getElementById('app-view-title').textContent = "Manajemen Biodata, Username & Password Murid";
+                document.getElementById('app-view-title').textContent = "Persetujuan Akun (ACC) & Biodata Murid";
+                const pendingList = studentAccounts.map((st, idx) => ({ ...st, originalIndex: idx })).filter(st => st.status === 'pending');
+
                 content.innerHTML = `
-                    <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
-                            <div>
-                                <h3 class="font-bold text-base text-emerald-950">Daftar Anggota & Pengurus Siswa</h3>
-                                <p class="text-xs text-slate-500 mt-0.5">Pembina dapat mengubah biodata, kelas, spesifikasi minat, username, serta mereset password akun murid.</p>
+                    <div class="space-y-6">
+                        <!-- KOTAK PENDAFTAR BARU MENUNGGU ACC PEMBINA -->
+                        <div class="bg-amber-50 p-4 sm:p-6 rounded-3xl border border-amber-200 shadow-sm space-y-4">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="font-bold text-base text-amber-950"><i class="fa-solid fa-user-clock text-amber-600 mr-1.5"></i> Pendaftar Baru Menunggu Persetujuan (ACC)</h3>
+                                    <p class="text-xs text-amber-800 mt-0.5">Murid baru tidak bisa masuk sebelum Pembina menyetujui pendaftarannya di bawah ini.</p>
+                                </div>
+                                <span class="px-3 py-1 bg-amber-200 text-amber-950 font-extrabold text-xs rounded-full">${pendingList.length} Menunggu ACC</span>
                             </div>
-                            <span class="px-3 py-1.5 bg-emerald-100 text-emerald-900 font-bold text-xs rounded-xl">Total Terdaftar: ${studentAccounts.length} Siswa</span>
+
+                            ${pendingList.length === 0 ? `
+                                <p class="text-xs text-amber-800/80 italic bg-white/70 p-4 rounded-2xl border border-amber-200/70">Tidak ada pendaftar baru yang menunggu persetujuan saat ini.</p>
+                            ` : `
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    ${pendingList.map(st => `
+                                        <div class="bg-white p-4 rounded-2xl border border-amber-300 shadow-sm flex flex-col justify-between gap-3">
+                                            <div>
+                                                <div class="flex justify-between items-start">
+                                                    <h4 class="font-bold text-sm text-slate-900">${st.name}</h4>
+                                                    <span class="px-2 py-0.5 bg-amber-100 text-amber-800 font-bold text-[10px] rounded uppercase">Pending ACC</span>
+                                                </div>
+                                                <p class="text-xs text-slate-600 mt-1">Kelas: <b>${st.class}</b> • NISN: <b>${st.nisn}</b></p>
+                                                <p class="text-xs text-emerald-800">Minat: <b>${st.spec}</b> • User: <span class="font-mono">${st.username}</span></p>
+                                            </div>
+                                            <div class="flex gap-2 pt-2 border-t border-slate-100">
+                                                <button onclick="approvePendingStudent(${st.originalIndex})" class="flex-1 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl transition">
+                                                    ✅ Setujui (ACC)
+                                                </button>
+                                                <button onclick="rejectPendingStudent(${st.originalIndex})" class="px-3 py-2 bg-red-50 hover:bg-red-100 text-red-700 font-bold text-xs rounded-xl border border-red-200 transition">
+                                                    ❌ Tolak
+                                                </button>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            `}
                         </div>
 
-                        <div class="overflow-x-auto rounded-2xl border border-slate-200">
-                            <table class="w-full text-xs text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-emerald-900 text-white font-bold uppercase">
-                                        <th class="p-3">Nama Lengkap</th>
-                                        <th class="p-3">NISN & Kelas</th>
-                                        <th class="p-3">Spesifikasi</th>
-                                        <th class="p-3">Username & Password</th>
-                                        <th class="p-3 text-center">Aksi Pembina</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${studentAccounts.map((st, idx) => `
-                                        <tr class="border-b hover:bg-emerald-50/50 transition">
-                                            <td class="p-3 font-bold text-slate-900">
-                                                ${st.name}
-                                                <span class="block text-[10px] font-semibold text-emerald-700 uppercase">${st.role === 'pengurus' ? 'Pengurus Ekstra' : 'Anggota'}</span>
-                                            </td>
-                                            <td class="p-3">
-                                                <span class="block font-mono text-slate-700">${st.nisn}</span>
-                                                <span class="text-[11px] font-bold text-slate-500">Kelas ${st.class}</span>
-                                            </td>
-                                            <td class="p-3">${st.spec}</td>
-                                            <td class="p-3 font-mono">
-                                                <span class="block text-slate-800">User: <b>${st.username}</b></span>
-                                                <span class="block text-amber-700">Pass: <b>${st.password}</b></span>
-                                            </td>
-                                            <td class="p-3 text-center">
-                                                <button onclick="openEditStudentModal(${idx})" class="px-3 py-1.5 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold rounded-lg shadow-sm transition">
-                                                    <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Biodata & Pass
-                                                </button>
-                                            </td>
+                        <!-- TABEL SELURUH DATA & BIODATA MURID -->
+                        <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+                                <div>
+                                    <h3 class="font-bold text-base text-emerald-950">Daftar Anggota & Pengurus Siswa</h3>
+                                    <p class="text-xs text-slate-500 mt-0.5">Pembina & Super Admin dapat mengedit biodata, kelas, status ACC, username, serta mereset password akun murid.</p>
+                                </div>
+                                <span class="px-3 py-1.5 bg-emerald-100 text-emerald-900 font-bold text-xs rounded-xl">Total Terdaftar: ${studentAccounts.length} Siswa</span>
+                            </div>
+
+                            <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                                <table class="w-full text-xs text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-emerald-900 text-white font-bold uppercase">
+                                            <th class="p-3">Nama Lengkap & Status</th>
+                                            <th class="p-3">NISN & Kelas</th>
+                                            <th class="p-3">Spesifikasi</th>
+                                            <th class="p-3">Username & Password</th>
+                                            <th class="p-3 text-center">Aksi Pembina</th>
                                         </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        ${studentAccounts.map((st, idx) => `
+                                            <tr class="border-b hover:bg-emerald-50/50 transition">
+                                                <td class="p-3 font-bold text-slate-900">
+                                                    ${st.name}
+                                                    <div class="flex items-center gap-1.5 mt-1">
+                                                        <span class="text-[10px] font-semibold text-emerald-700 uppercase">${st.role === 'pengurus' ? 'Pengurus' : 'Anggota'}</span>
+                                                        ${st.status === 'pending' 
+                                                            ? '<span class="px-1.5 py-0.5 bg-amber-100 text-amber-800 rounded text-[9px] font-bold">⏳ Pending</span>' 
+                                                            : '<span class="px-1.5 py-0.5 bg-emerald-100 text-emerald-800 rounded text-[9px] font-bold">✅ ACC</span>'}
+                                                    </div>
+                                                </td>
+                                                <td class="p-3">
+                                                    <span class="block font-mono text-slate-700">${st.nisn}</span>
+                                                    <span class="text-[11px] font-bold text-slate-500">Kelas ${st.class}</span>
+                                                </td>
+                                                <td class="p-3">${st.spec}</td>
+                                                <td class="p-3 font-mono">
+                                                    <span class="block text-slate-800">User: <b>${st.username}</b></span>
+                                                    <span class="block text-amber-700">Pass: <b>${st.password}</b></span>
+                                                </td>
+                                                <td class="p-3 text-center">
+                                                    <button onclick="openEditStudentModal(${idx})" class="px-3 py-1.5 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold rounded-lg shadow-sm transition">
+                                                        <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Biodata & Pass
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        `).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 `;
             } else if (tab === 'absensi') {
                 document.getElementById('app-view-title').textContent = "Absensi Digital & Rekap Per Tanggal";
-                const isSuperAdmin = currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'pengurus');
+                const isSuperAdmin = currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'teacher' || currentUser.role === 'pengurus');
                 const radiusText = activeAttendanceSession.maxRadiusMeters === 0
                     ? "Bebas Jarak (Online)"
                     : `Maks. ${activeAttendanceSession.maxRadiusMeters} Meter dari Titik Lokasi`;
@@ -2091,7 +2313,6 @@
                         </div>
 
                         <div id="chat-messages-feed" class="flex-1 overflow-y-auto p-4 my-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
-                            <!-- Pesan diskusi dirender di sini -->
                         </div>
 
                         <form onsubmit="handleSendChatMessage(event)" class="flex gap-2 shrink-0">
@@ -2106,7 +2327,10 @@
             }
         };
 
-        window.addEventListener('DOMContentLoaded', () => { renderNewsGrid(); });
+        window.addEventListener('DOMContentLoaded', () => {
+            applySiteConfigToDOM();
+            renderNewsGrid();
+        });
     </script>
 </body>
 </html>
