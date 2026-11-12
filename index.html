@@ -55,6 +55,19 @@
         .kta-card {
             background: linear-gradient(135deg, #042f2e 0%, #0f766e 50%, #134e4a 100%);
         }
+        @media print {
+            body * { visibility: hidden; }
+            #printable-attendance-area, #printable-attendance-area * { visibility: visible; }
+            #printable-attendance-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                padding: 20px;
+            }
+            .no-print { display: none !important; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-teal-500 selection:text-white min-h-screen flex flex-col justify-between">
@@ -252,7 +265,7 @@
             </div>
         </section>
 
-        <!-- PORTAL BERITA DIGITAL SECTION (DENGAN FOTO SAMPUL MEDIA BERITA) -->
+        <!-- PORTAL BERITA DIGITAL SECTION -->
         <section id="portal-berita" class="py-16 bg-mint-50/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
@@ -306,7 +319,7 @@
     <!-- LOGGED-IN APP DASHBOARD -->
     <div id="app-dashboard-view" class="hidden min-h-screen flex flex-col md:flex-row bg-slate-100 relative">
         <!-- MOBILE TOP BAR -->
-        <div class="md:hidden bg-emerald-950 text-white p-4 flex justify-between items-center sticky top-0 z-50 border-b border-emerald-800">
+        <div class="md:hidden bg-emerald-950 text-white p-4 flex justify-between items-center sticky top-0 z-50 border-b border-emerald-800 no-print">
             <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-lg bg-emerald-900 p-1 flex items-center justify-center border border-emerald-700">
                     <span class="text-gold-400 font-extrabold text-xs">DAG</span>
@@ -319,7 +332,7 @@
         </div>
 
         <!-- SIDEBAR NAVIGATION -->
-        <aside id="app-sidebar" class="hidden md:flex w-full md:w-64 bg-emerald-950 text-white flex-col justify-between shrink-0 shadow-xl border-r border-emerald-900 sticky top-0 h-auto md:h-screen z-40">
+        <aside id="app-sidebar" class="hidden md:flex w-full md:w-64 bg-emerald-950 text-white flex-col justify-between shrink-0 shadow-xl border-r border-emerald-900 sticky top-0 h-auto md:h-screen z-40 no-print">
             <div>
                 <div class="p-5 border-b border-emerald-800/80 hidden md:flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-emerald-900 p-1 flex items-center justify-center shrink-0 border border-emerald-700 shadow-md">
@@ -370,14 +383,14 @@
 
         <!-- MAIN DASHBOARD CONTENT AREA -->
         <main class="flex-1 p-4 md:p-10 overflow-y-auto w-full">
-            <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-6 border-b border-slate-200 mb-6 md:mb-8 gap-4">
+            <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-6 border-b border-slate-200 mb-6 md:mb-8 gap-4 no-print">
                 <div>
                     <h1 id="app-view-title" class="text-xl md:text-2xl font-extrabold text-emerald-950">Dashboard Aplikasi</h1>
                     <p id="app-view-subtitle" class="text-xs text-slate-500 mt-1 font-medium">Selamat datang di sistem manajemen kegiatan ekstra Dwi Andhira Gistara.</p>
                 </div>
                 <div class="flex items-center gap-3">
                     <span id="app-header-date" class="text-xs font-bold text-emerald-800 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm">
-                        <i class="fa-solid fa-calendar-day mr-1.5 text-emerald-600"></i> WITA
+                        <i class="fa-solid fa-calendar-day mr-1.5 text-emerald-600"></i> 12 Nov 2026 (WITA)
                     </span>
                 </div>
             </header>
@@ -386,6 +399,51 @@
                 <!-- Content dynamically rendered -->
             </div>
         </main>
+    </div>
+
+    <!-- MODAL BUAT SESI ABSENSI BARU PER TANGGAL (PEMBINA / PENGURUS) -->
+    <div id="modal-buat-sesi" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative">
+            <button onclick="closeAddSessionModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="p-6">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-800 text-gold-400 flex items-center justify-center font-bold text-lg shadow-md">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-base text-emerald-950">Buat Sesi Absensi Baru</h3>
+                        <p class="text-slate-500 text-xs">Jadwalkan Sesi Latihan & Presensi GPS Maps</p>
+                    </div>
+                </div>
+
+                <form onsubmit="handleCreateSessionSubmit(event)" class="space-y-4 text-xs font-semibold">
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Tanggal Pertemuan Latihan:</label>
+                        <input type="date" id="session-input-date" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600">
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Judul / Materi Sesi Latihan:</label>
+                        <input type="text" id="session-input-title" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600" placeholder="Contoh: Latihan Debat & MC Rutin SPENTWO">
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-1">Jam Buka (WITA):</label>
+                            <input type="time" id="session-input-start" value="14:00" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-1">Jam Tutup (WITA):</label>
+                            <input type="time" id="session-input-end" value="17:00" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
+                        ✅ Terbitkan Sesi Absensi
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- MODAL GPS & SELFIE PRESENSI MANDIRI -->
@@ -402,7 +460,7 @@
                     </div>
                     <div>
                         <h3 class="font-display font-bold text-base text-emerald-950">Presensi GPS & Foto Selfie</h3>
-                        <p class="text-slate-500 text-xs">Tag Lokasi Maps & Ambil Foto Kehadiran</p>
+                        <p class="text-slate-500 text-xs">Tercatat Otomatis Pada Tanggal: <b id="modal-gps-date-label">2026-11-12</b></p>
                     </div>
                 </div>
 
@@ -504,7 +562,7 @@
         </div>
     </div>
 
-    <!-- MODAL REGISTRASI DENGAN UPLOAD PASFOTO UNTUK KTA (SISWA VS PEMBINA/GURU) -->
+    <!-- MODAL REGISTRASI DENGAN UPLOAD PASFOTO UNTUK KTA -->
     <div id="modal-register" class="fixed inset-0 bg-teal-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-teal-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -521,7 +579,7 @@
                     </button>
                 </div>
 
-                <!-- FORM SISWA DENGAN UPLOAD PASFOTO -->
+                <!-- FORM SISWA -->
                 <form id="form-reg-student" onsubmit="handleFormRegistrationStudent(event)" class="space-y-4 text-xs font-semibold">
                     <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
                         <div class="w-16 h-20 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center overflow-hidden shrink-0">
@@ -572,7 +630,7 @@
                     </button>
                 </form>
 
-                <!-- FORM PEMBINA / GURU DENGAN UPLOAD PASFOTO UNTUK KTA PEMBINA -->
+                <!-- FORM PEMBINA / GURU -->
                 <form id="form-reg-teacher" onsubmit="handleFormRegistrationTeacher(event)" class="hidden space-y-4 text-xs font-semibold">
                     <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
                         <div class="w-16 h-20 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center overflow-hidden shrink-0">
@@ -666,12 +724,16 @@
         let selfieStream = null;
         let capturedSelfieDataUrl = null;
 
-        // Data Gambar Terupload (Base64 Data URLs)
         let uploadedNewsImageDataUrl = null;
         let uploadedStudentPasfotoDataUrl = null;
         let uploadedTeacherPasfotoDataUrl = null;
 
+        // Tanggal default hari ini (Format YYYY-MM-DD)
+        const todayISO = "2026-11-12";
+        let selectedFilterDate = todayISO;
+
         let activeAttendanceSession = {
+            date: todayISO,
             title: "Latihan Debat & MC Rutin SPENTWO",
             startTime: "14:00",
             endTime: "17:00",
@@ -679,6 +741,15 @@
             lat: -8.6521,
             lng: 115.2185
         };
+
+        // DATABASE REKAP KEHADIRAN MURID PER TANGGAL
+        let attendanceRecords = [
+            { date: "2026-11-12", name: "Ni Putu Ayu Saraswati", class: "8.1", spec: "Master of Ceremony", time: "14:05 WITA", status: "Hadir (GPS & Foto)" },
+            { date: "2026-11-12", name: "I Gede Putu Anggota", class: "8.5", spec: "Lomba Debat", time: "14:12 WITA", status: "Hadir (GPS & Foto)" },
+            { date: "2026-11-05", name: "Ni Putu Ayu Saraswati", class: "8.1", spec: "Master of Ceremony", time: "14:02 WITA", status: "Hadir (GPS & Foto)" },
+            { date: "2026-11-05", name: "Putu Gede Raka Pratama", class: "7.3", spec: "Storytelling", time: "14:15 WITA", status: "Hadir (GPS & Foto)" },
+            { date: "2026-11-05", name: "Kadek Ary Santi", class: "8.1", spec: "Master of Ceremony", time: "14:00 WITA", status: "Hadir (GPS & Foto)" }
+        ];
 
         const topicBank = {
             mc: [
@@ -703,7 +774,6 @@
             ]
         };
 
-        // Sample Berita dengan Gambar Sampul Default Media Berita
         let sampleNews = [
             {
                 title: "Juara 1 Lomba Debat Bahasa Indonesia Denpasar",
@@ -731,7 +801,6 @@
             }
         ];
 
-        // Preview Image Upload Functions
         window.previewNewsImage = function(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -785,6 +854,35 @@
             document.getElementById('modal-tambah-berita').classList.remove('hidden');
         };
         window.closeTambahBeritaModal = function() { document.getElementById('modal-tambah-berita').classList.add('hidden'); };
+
+        window.openAddSessionModal = function() {
+            document.getElementById('session-input-date').value = activeAttendanceSession.date;
+            document.getElementById('session-input-title').value = activeAttendanceSession.title;
+            document.getElementById('modal-buat-sesi').classList.remove('hidden');
+        };
+        window.closeAddSessionModal = function() { document.getElementById('modal-buat-sesi').classList.add('hidden'); };
+
+        window.handleCreateSessionSubmit = function(e) {
+            e.preventDefault();
+            const dateVal = document.getElementById('session-input-date').value;
+            const titleVal = document.getElementById('session-input-title').value;
+            const startVal = document.getElementById('session-input-start').value;
+            const endVal = document.getElementById('session-input-end').value;
+
+            activeAttendanceSession = {
+                date: dateVal,
+                title: titleVal,
+                startTime: startVal,
+                endTime: endVal,
+                isOpen: true,
+                lat: -8.6521,
+                lng: 115.2185
+            };
+            selectedFilterDate = dateVal;
+            closeAddSessionModal();
+            window.switchAppTab('absensi');
+            alert(`✅ Sesi absensi tanggal ${dateVal} berhasil diterbitkan!`);
+        };
 
         window.switchRegisterRoleTab = function(type) {
             const studentForm = document.getElementById('form-reg-student');
@@ -933,6 +1031,7 @@
                 alert('Maaf, sesi absensi saat ini sedang ditutup oleh Pembina.');
                 return;
             }
+            document.getElementById('modal-gps-date-label').textContent = activeAttendanceSession.date;
             document.getElementById('modal-absensi-gps').classList.remove('hidden');
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -981,48 +1080,104 @@
             const specToRecord = currentUser ? currentUser.spec : "Public Speaking";
 
             if (nameToRecord) {
-                const tbody = document.getElementById('attendance-tbody-list');
-                if (tbody) {
-                    const tr = document.createElement('tr');
-                    tr.className = "border-b hover:bg-emerald-50 transition";
-                    const now = new Date();
-                    const timeStr = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')} WITA`;
-                    tr.innerHTML = `
-                        <td class="p-3 font-bold text-slate-900">${nameToRecord}</td>
-                        <td class="p-3">${classToRecord}</td>
-                        <td class="p-3">${specToRecord}</td>
-                        <td class="p-3">
-                            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[11px] block w-max mb-0.5">✅ Hadir (GPS & Foto)</span>
-                            <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-camera mr-0.5"></i> Verified (${timeStr})</span>
-                        </td>
-                    `;
-                    tbody.prepend(tr);
-                }
+                const now = new Date();
+                const timeStr = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')} WITA`;
+                
+                attendanceRecords.unshift({
+                    date: activeAttendanceSession.date,
+                    name: nameToRecord,
+                    class: classToRecord,
+                    spec: specToRecord,
+                    time: timeStr,
+                    status: "Hadir (GPS & Foto)"
+                });
+
+                selectedFilterDate = activeAttendanceSession.date;
                 closeAbsensiGPSModal();
-                alert(`Terima kasih ${nameToRecord}, presensi GPS & Foto Selfie Anda berhasil dicatat!`);
+                window.switchAppTab('absensi');
+                alert(`Terima kasih ${nameToRecord}, presensi tanggal ${activeAttendanceSession.date} berhasil dicatat!`);
             }
         };
 
-        window.openAddSessionModal = function() {
-            const title = prompt("Masukkan Judul Sesi Absensi Baru (Pembina):", "Latihan Public Speaking Rutin SPENTWO");
-            const start = prompt("Jam Mulai Buka (WITA):", "14:00");
-            const end = prompt("Jam Batas Selesai (WITA):", "17:00");
-            if (title && start && end) {
-                activeAttendanceSession.title = title;
-                activeAttendanceSession.startTime = start;
-                activeAttendanceSession.endTime = end;
-                activeAttendanceSession.isOpen = true;
-
-                const displayTitle = document.getElementById('session-display-title');
-                const displayTime = document.getElementById('session-display-time');
-                if (displayTitle) displayTitle.textContent = title;
-                if (displayTime) displayTime.innerHTML = `Waktu Absen: ${start} - ${end} WITA | Status: <span class="text-emerald-600 font-bold">Terbuka (Maps Verified)</span>`;
-
-                alert('Sesi absensi khusus GPS Maps berhasil diterbitkan untuk seluruh siswa!');
-            }
+        // FILTER REKAP PER TANGGAL & DOWNLOAD EXCEL CSV
+        window.filterAttendanceByDate = function(dateValue) {
+            selectedFilterDate = dateValue;
+            renderAttendanceTableRows();
         };
 
-        // HANDLER TAMBAH BERITA DENGAN GAMBAR SAMPUL MEDIA BERITA
+        window.showAllAttendanceDates = function() {
+            selectedFilterDate = "";
+            const dateInput = document.getElementById('attendance-filter-date');
+            if (dateInput) dateInput.value = "";
+            renderAttendanceTableRows();
+        };
+
+        function getFilteredAttendanceRecords() {
+            if (!selectedFilterDate) return attendanceRecords;
+            return attendanceRecords.filter(r => r.date === selectedFilterDate);
+        }
+
+        function renderAttendanceTableRows() {
+            const tbody = document.getElementById('attendance-tbody-list');
+            const countBadge = document.getElementById('attendance-count-badge');
+            if (!tbody) return;
+
+            const filtered = getFilteredAttendanceRecords();
+            if (countBadge) {
+                countBadge.textContent = selectedFilterDate 
+                    ? `Total Hadir (${selectedFilterDate}): ${filtered.length} Siswa`
+                    : `Total Seluruh Rekap: ${filtered.length} Kehadiran`;
+            }
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-400 italic">Belum ada data kehadiran siswa pada tanggal yang dipilih.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map((rec, idx) => `
+                <tr class="border-b hover:bg-emerald-50/60 transition">
+                    <td class="p-3 font-mono text-slate-600">${rec.date}</td>
+                    <td class="p-3 font-bold text-slate-900">${rec.name}</td>
+                    <td class="p-3">${rec.class}</td>
+                    <td class="p-3">${rec.spec}</td>
+                    <td class="p-3">
+                        <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[11px] inline-block">✅ ${rec.status}</span>
+                        <span class="text-[10px] text-slate-500 block mt-0.5">Pukul: ${rec.time}</span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        window.downloadAttendanceCSV = function() {
+            const filtered = getFilteredAttendanceRecords();
+            if (filtered.length === 0) {
+                alert("Tidak ada data kehadiran pada tanggal ini untuk diunduh.");
+                return;
+            }
+
+            const labelTanggal = selectedFilterDate || "Semua-Tanggal";
+            let csvContent = "\uFEFF"; // BOM agar terbaca rapi di Microsoft Excel
+            csvContent += "No,Tanggal Pertemuan,Nama Siswa,Kelas,Spesifikasi,Waktu Absen,Status Verifikasi\n";
+
+            filtered.forEach((row, index) => {
+                const safeName = `"${row.name.replace(/"/g, '""')}"`;
+                const safeSpec = `"${row.spec.replace(/"/g, '""')}"`;
+                const safeStatus = `"${row.status.replace(/"/g, '""')}"`;
+                csvContent += `${index + 1},${row.date},${safeName},${row.class},${safeSpec},${row.time},${safeStatus}\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `Rekap-Absensi-DwiAndhiraGistara-${labelTanggal}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        };
+
+        // HANDLER TAMBAH BERITA
         window.handleCreateNewsSubmit = function(e) {
             e.preventDefault();
             const title = document.getElementById('news-input-title').value;
@@ -1226,15 +1381,15 @@
                     </div>
                 `;
             } else if (tab === 'absensi') {
-                document.getElementById('app-view-title').textContent = "Absensi Digital Latihan Rutin";
+                document.getElementById('app-view-title').textContent = "Absensi Digital & Rekap Per Tanggal";
                 const isSuperAdmin = currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'pengurus');
 
                 content.innerHTML = `
                     <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4 no-print">
                             <div>
                                 <h3 class="font-bold text-base text-emerald-950">Pencatatan Kehadiran Anggota Latihan Rutin</h3>
-                                <p class="text-xs text-slate-500 mt-0.5">Rekap absensi disinkronkan langsung dengan lokasi GPS & Foto Selfie.</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Filter kehadiran berdasarkan tanggal pertemuan & unduh rekap CSV/PDF.</p>
                             </div>
                             <div class="flex flex-wrap items-center gap-2">
                                 <button onclick="openAbsensiGPSModal()" class="px-4 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
@@ -1251,9 +1406,10 @@
                             </div>
                         </div>
 
-                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <!-- SESI ABSENSI AKTIF -->
+                        <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4 no-print">
                             <div>
-                                <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider block">Sesi Absensi Aktif Hari Ini</span>
+                                <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider block">Sesi Absensi Aktif (${activeAttendanceSession.date})</span>
                                 <h4 id="session-display-title" class="text-sm font-bold text-emerald-950">${activeAttendanceSession.title}</h4>
                                 <p id="session-display-time" class="text-xs text-slate-600 mt-0.5">Waktu Absen: ${activeAttendanceSession.startTime} - ${activeAttendanceSession.endTime} WITA | Status: <span class="text-emerald-600 font-bold">Terbuka (Maps & Selfie Verified)</span></p>
                             </div>
@@ -1262,19 +1418,58 @@
                             </button>
                         </div>
 
-                        <div class="overflow-x-auto rounded-2xl border border-slate-200">
-                            <table class="w-full text-xs text-left border-collapse">
-                                <thead>
-                                    <tr class="bg-emerald-900 text-white font-bold uppercase"><th class="p-3">Nama Siswa</th><th class="p-3">Kelas</th><th class="p-3">Spesifikasi</th><th class="p-3">Status Verifikasi</th></tr>
-                                </thead>
-                                <tbody id="attendance-tbody-list">
-                                    <tr class="border-b"><td class="p-3 font-bold text-slate-900">Ni Putu Ayu Saraswati</td><td class="p-3">8.1</td><td class="p-3">Master of Ceremony</td><td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[11px] block w-max">✅ Hadir (GPS Maps)</span></td></tr>
-                                    <tr class="border-b"><td class="p-3 font-bold text-slate-900">I Gede Putu Anggota</td><td class="p-3">8.5</td><td class="p-3">Lomba Debat</td><td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[11px] block w-max">✅ Hadir (GPS Maps)</span></td></tr>
-                                </tbody>
-                            </table>
+                        <!-- FILTER PERTANGGAL & TOMBOL DOWNLOAD -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 no-print">
+                            <div class="flex flex-wrap items-center gap-2 text-xs">
+                                <label for="attendance-filter-date" class="font-bold text-emerald-950 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-calendar-days text-emerald-700"></i> Pilih Tanggal Rekap:
+                                </label>
+                                <input type="date" id="attendance-filter-date" value="${selectedFilterDate}" onchange="filterAttendanceByDate(this.value)" class="px-3 py-2 rounded-xl border border-slate-300 bg-white font-semibold text-slate-800 focus:outline-none focus:border-emerald-600">
+                                <button onclick="showAllAttendanceDates()" class="px-3 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 font-bold transition">
+                                    Semua Tanggal
+                                </button>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-2">
+                                <button onclick="downloadAttendanceCSV()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-file-excel"></i> Download Excel (CSV)
+                                </button>
+                                <button onclick="window.print()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl shadow-sm transition flex items-center gap-1.5">
+                                    <i class="fa-solid fa-print"></i> Cetak / PDF
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- AREA TABEL REKAP KEHADIRAN (PRINTABLE) -->
+                        <div id="printable-attendance-area" class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold text-sm text-emerald-950">Daftar Rekapitulasi Kehadiran Dwi Andhira Gistara</h4>
+                                    <p class="text-[11px] text-slate-500">SMP Negeri 2 Denpasar • Ekstrakurikuler Public Speaking</p>
+                                </div>
+                                <span id="attendance-count-badge" class="px-3 py-1 bg-emerald-100 text-emerald-900 font-bold text-xs rounded-full"></span>
+                            </div>
+
+                            <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                                <table class="w-full text-xs text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-emerald-900 text-white font-bold uppercase">
+                                            <th class="p-3">Tanggal</th>
+                                            <th class="p-3">Nama Siswa</th>
+                                            <th class="p-3">Kelas</th>
+                                            <th class="p-3">Spesifikasi</th>
+                                            <th class="p-3">Status & Waktu</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="attendance-tbody-list">
+                                        <!-- Diisi dinamis oleh renderAttendanceTableRows() -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 `;
+                renderAttendanceTableRows();
             } else if (tab === 'berita') {
                 document.getElementById('app-view-title').textContent = "Kelola & Publikasi Berita Digital";
                 content.innerHTML = `
