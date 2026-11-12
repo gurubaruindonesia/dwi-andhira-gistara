@@ -1,144 +1,361 @@
---- index.html
-+++ index.html
-@@ -10,6 +10,12 @@
-     <script src="https://cdn.tailwindcss.com"></script>
-     <script>
-         tailwind.config = {
-+            darkMode: 'class',
-             theme: {
-                 extend: {
-                     colors: {
-@@ -350,22 +356,36 @@
-                     <!-- TIMER & VOICE RECORDER SECTION -->
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                         <!-- Timer Container -->
-                         <div class="bg-teal-900/60 border border-teal-700/50 rounded-2xl p-6 shadow-inner">
-                             <label class="block text-gold-400 font-bold mb-3 flex items-center gap-2">
-                                 <span>⏱️</span> Pengatur Durasi Latihan Bicara:
-                             </label>
-                             <div class="flex items-center gap-2 mb-4">
--                                <button onclick="window.setTimerDuration(1)" id="timer-btn-1" class="px-4 py-2 bg-teal-600 text-white rounded-xl text-sm font-bold shadow hover:bg-teal-500 transition-all">1 Menit</button>
--                                <button onclick="window.setTimerDuration(3)" id="timer-btn-3" class="px-4 py-2 bg-teal-900/80 text-teal-300 border border-teal-700 rounded-xl text-sm font-bold shadow hover:bg-teal-700 transition-all">3 Menit</button>
--                                <button onclick="window.setTimerDuration(5)" id="timer-btn-5" class="px-4 py-2 bg-teal-900/80 text-teal-300 border border-teal-700 rounded-xl text-sm font-bold shadow hover:bg-teal-700 transition-all">5 Menit</button>
-+                                <button type="button" onclick="window.setTimerDuration(1)" id="timer-btn-1" class="px-4 py-2 bg-gold-400 text-teal-950 font-bold rounded-xl text-sm shadow transition-all">1 Menit</button>
-+                                <button type="button" onclick="window.setTimerDuration(3)" id="timer-btn-3" class="px-4 py-2 bg-teal-800 text-teal-200 border border-teal-700 rounded-xl text-sm font-bold shadow hover:bg-teal-700 transition-all">3 Menit</button>
-+                                <button type="button" onclick="window.setTimerDuration(5)" id="timer-btn-5" class="px-4 py-2 bg-teal-800 text-teal-200 border border-teal-700 rounded-xl text-sm font-bold shadow hover:bg-teal-700 transition-all">5 Menit</button>
-                             </div>
-                             <div class="flex items-center justify-between bg-teal-950/80 p-4 rounded-xl border border-teal-800">
-                                 <div class="text-teal-300 font-medium text-sm">Waktu Tersisa:</div>
-                                 <div id="ai-timer-display" class="font-mono text-3xl font-black text-gold-400">01:00</div>
--                                <button onclick="window.toggleTimer()" id="ai-timer-control" class="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-teal-950 font-bold rounded-xl text-sm shadow flex items-center gap-1.5 transition-all">▶ Mulai Latihan</button>
-+                                <button type="button" onclick="window.toggleTimer()" id="ai-timer-control" class="px-5 py-2.5 bg-teal-500 hover:bg-teal-400 text-teal-950 font-bold rounded-xl text-sm shadow flex items-center gap-1.5 transition-all">▶ Mulai Latihan</button>
-                             </div>
-                         </div>
- 
-                         <!-- Voice Recorder Container -->
-                         <div class="bg-teal-900/60 border border-teal-700/50 rounded-2xl p-6 shadow-inner">
-                             <label class="block text-gold-400 font-bold mb-3 flex items-center gap-2">
-                                 <span>🎙️</span> Rekam Suara Langsung (Android / iPhone / Laptop):
-                             </label>
-                             <div class="flex items-center gap-3 mb-4">
--                                <button onclick="window.toggleVoiceRecording()" id="btn-record-voice" class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-sm shadow flex items-center gap-2 transition-all">
-+                                <button type="button" onclick="window.toggleVoiceRecording()" id="btn-record-voice" class="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-sm shadow flex items-center gap-2 transition-all">
-                                     <span class="w-3 h-3 rounded-full bg-white animate-ping" id="rec-dot" style="display:none;"></span>
-                                     <span id="btn-record-label">🎙️ Mulai Rekam Suara Baru</span>
-                                 </button>
-                                 <div id="voice-timer" class="font-mono text-lg font-bold text-teal-300 hidden">00:00</div>
-                             </div>
--                            <audio id="audio-playback" controls class="w-full h-10 rounded-lg bg-teal-950 border border-teal-800"></audio>
-+                            <div class="bg-teal-950 p-3 rounded-xl border border-teal-800">
-+                                <p class="text-xs text-teal-400 font-semibold mb-1">▶ Pemutar Rekaman Suara Kamu:</p>
-+                                <audio id="audio-playback" controls class="w-full h-10 rounded-lg bg-teal-900 border border-teal-700"></audio>
-+                            </div>
-                         </div>
-                     </div>
-@@ -515,6 +535,46 @@
-                     <!-- ABSENSI & PRESENSI DASHBOARD MODULE -->
-                     <div class="bg-teal-900/40 border border-teal-800 rounded-2xl p-6 mb-8 shadow-lg">
-                         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-                             <div>
-                                 <h3 class="text-xl font-bold text-white flex items-center gap-2">
-                                     <span>📋</span> Presensi & Absensi Latihan Rutin SPENTWO
-                                 </h3>
-                                 <p class="text-teal-300 text-xs mt-1">Rekap data kehadiran siswa ekstrakurikuler Dwi Andhira Gistara.</p>
-                             </div>
-+                            <!-- Role Control Actions -->
-+                            <div class="flex items-center gap-2">
-+                                <button type="button" onclick="window.openAbsenModal()" id="btn-absen-mandiri" class="px-4 py-2 bg-gold-400 hover:bg-gold-300 text-teal-950 text-xs font-bold rounded-xl shadow transition-all">
-+                                    ✍️ Absen Mandiri Siswa
-+                                </button>
-+                                <button type="button" onclick="window.openAddSessionModal()" id="btn-add-session" class="px-4 py-2 bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold rounded-xl shadow transition-all hidden">
-+                                    ➕ Buat Sesi Absen Baru (Guru)
-+                                </button>
-+                            </div>
-                         </div>
-+
-+                        <!-- Active Session Info Card -->
-+                        <div id="active-session-card" class="bg-teal-950/80 border border-teal-700 rounded-xl p-4 mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
-+                            <div>
-+                                <div class="text-xs text-gold-400 font-bold uppercase tracking-wider">Sesi Absensi Aktif Hari Ini</div>
-+                                <div id="session-title-display" class="text-base font-bold text-white">Latihan Debat & MC Mingguan SPENTWO</div>
-+                                <div id="session-time-display" class="text-xs text-teal-300 mt-0.5">Waktu Absen: 14:00 - 17:00 WITA | Status: <span class="text-emerald-400 font-bold">Terbuka</span></div>
-+                            </div>
-+                            <button type="button" onclick="window.doSelfAttendance()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-teal-950 font-bold text-xs rounded-xl shadow transition-all">
-+                                ✅ Klik Presensi Hadir
-+                            </button>
-+                        </div>
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwi Andhira Gistara - Public Speaking SMPN 2 Denpasar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        teal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            950: '#042f2e',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-teal-950 text-slate-100 min-h-screen flex flex-col justify-between">
 
-                         <div class="overflow-x-auto rounded-xl border border-teal-800">
-                             <table class="w-full text-left text-sm text-teal-200">
-@@ -750,11 +810,75 @@
-     <!-- SCRIPTS IMPLEMENTATION -->
-     <script>
-         // GLOBAL VARIABLES & STATES
-         let currentTimer = null;
-         let timerSeconds = 60;
-+        let initialTimerSeconds = 60;
-         let isTimerRunning = false;
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-teal-900/90 backdrop-blur-md border-b border-teal-700/50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-teal-950 font-black text-xl shadow-md border border-teal-300">
+                    DAG
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-lg sm:text-xl text-white tracking-tight leading-tight">DWI ANDHIRA GISTARA</h1>
+                    <p class="text-xs font-semibold text-teal-300">Ekstrakurikuler Public Speaking SMPN 2 Denpasar</p>
+                </div>
+            </div>
 
-         let mediaRecorder = null;
-         let audioChunks = [];
-         let voiceTimerInterval = null;
-         let voiceSeconds = 0;
-+        let currentUserRole = 'guest';
+            <!-- User Auth Bar -->
+            <div class="flex items-center gap-3">
+                <div id="user-badge" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-teal-950/80 border border-teal-700 text-xs text-teal-200">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span id="user-role-text">Tamu</span>
+                </div>
+                <button onclick="window.toggleLoginModal()" id="btn-login-toggle" class="px-4 py-2 bg-gold-400 hover:bg-gold-300 text-teal-950 text-xs sm:text-sm font-bold rounded-xl shadow-md transition-all">
+                    🔑 Masuk / Login
+                </button>
+            </div>
+        </div>
+    </header>
 
-+        // Sesi Absensi & Database
-+        let activeAttendanceSession = {
-+            title: "Latihan Debat & MC Mingguan SPENTWO",
-+            date: new Date().toISOString().split('T')[0],
-+            startTime: "14:00",
-+            endTime: "17:00",
-+            isOpen: true
-+        };
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+        
+        <!-- HERO SECTION -->
+        <section class="bg-gradient-to-r from-teal-900 via-teal-800 to-teal-900 rounded-3xl p-6 sm:p-10 border border-teal-700/50 shadow-2xl mb-8 relative overflow-hidden">
+            <div class="relative z-10 max-w-2xl">
+                <span class="px-3 py-1 bg-teal-950/60 border border-teal-500/40 text-gold-400 font-bold text-xs rounded-full inline-block mb-3">✨ Platform Latihan Digital SPENTWO</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight mb-4">Kuasai Panggung & Bicara Percaya Diri!</h2>
+                <p class="text-teal-200 text-sm sm:text-base mb-6 leading-relaxed">
+                    Wadah resmi anggota ekstrakurikuler Public Speaking SMPN 2 Denpasar untuk latihan MC, Debat, Presentasi, dan Storytelling interaktif.
+                </p>
+            </div>
+        </section>
 
-         // Timer Duration Switcher (1, 3, 5 Mins)
-         window.setTimerDuration = function(mins) {
-+            clearInterval(currentTimer);
-+            isTimerRunning = false;
-+            document.getElementById('ai-timer-control').innerText = "▶ Mulai Latihan";
-+            
-+            initialTimerSeconds = mins * 60;
-+            timerSeconds = initialTimerSeconds;
-+            
-+            // Update Display
-+            const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
-+            const s = String(timerSeconds % 60).padStart(2, '0');
-+            document.getElementById('ai-timer-display').innerText = `${m}:${s}`;
+        <!-- AI PRACTICE LAB SECTION -->
+        <section class="bg-teal-900/40 border border-teal-800 rounded-3xl p-6 sm:p-8 mb-8 shadow-xl">
+            <h3 class="text-2xl font-black text-white mb-2 flex items-center gap-2">
+                <span>🎙️</span> AI Practice Lab & Voice Recorder
+            </h3>
+            <p class="text-teal-300 text-sm mb-6">Pilih topik skenario, atur timer latihan, rekam suara langsung, dan dapatkan evaluasi.</p>
 
-+            // Highlight Button State
+            <!-- BANK TOPIK SCENARIOS -->
+            <div class="mb-6">
+                <label class="block text-gold-400 font-bold text-sm mb-2">Pilih Spesifikasi & Skenario Topik:</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+                    <button onclick="window.loadCategory('mc')" class="px-3 py-2 bg-teal-800 text-teal-100 hover:bg-teal-700 rounded-xl text-xs font-bold border border-teal-600 transition-all">🎤 Master of Ceremony</button>
+                    <button onclick="window.loadCategory('debat')" class="px-3 py-2 bg-teal-800 text-teal-100 hover:bg-teal-700 rounded-xl text-xs font-bold border border-teal-600 transition-all">⚔️ Debat Bahasa</button>
+                    <button onclick="window.loadCategory('presentasi')" class="px-3 py-2 bg-teal-800 text-teal-100 hover:bg-teal-700 rounded-xl text-xs font-bold border border-teal-600 transition-all">📊 Presentasi Ilmiah</button>
+                    <button onclick="window.loadCategory('storytelling')" class="px-3 py-2 bg-teal-800 text-teal-100 hover:bg-teal-700 rounded-xl text-xs font-bold border border-teal-600 transition-all">📖 Storytelling</button>
+                </div>
+                <select id="select-topic-prompt" onchange="window.updatePromptText()" class="w-full bg-teal-950 border border-teal-700 text-white rounded-xl p-3 text-sm focus:ring-2 focus:ring-gold-400 outline-none">
+                    <option value="">-- Pilih Topik Latihan --</option>
+                </select>
+            </div>
+
+            <!-- PROMPT CARD DISPLAY -->
+            <div id="prompt-display-box" class="bg-teal-950/80 border border-teal-700 rounded-2xl p-5 mb-6 text-sm text-teal-200">
+                <span class="text-gold-400 font-bold text-xs uppercase block mb-1">Skenario Terpilih:</span>
+                <p id="prompt-text" class="italic">Silakan pilih topik di atas untuk memulai latihan bicara.</p>
+            </div>
+
+            <!-- TIMER & VOICE RECORDER GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- TIMER -->
+                <div class="bg-teal-900/60 border border-teal-700/50 rounded-2xl p-5 shadow-inner">
+                    <label class="block text-gold-400 font-bold mb-3 text-sm flex items-center gap-2">
+                        <span>⏱️</span> Pengatur Durasi Latihan Bicara:
+                    </label>
+                    <div class="flex items-center gap-2 mb-4">
+                        <button type="button" onclick="window.setTimerDuration(1)" id="timer-btn-1" class="px-4 py-2 bg-gold-400 text-teal-950 font-bold rounded-xl text-xs shadow transition-all">1 Menit</button>
+                        <button type="button" onclick="window.setTimerDuration(3)" id="timer-btn-3" class="px-4 py-2 bg-teal-800 text-teal-200 border border-teal-700 rounded-xl text-xs font-bold shadow hover:bg-teal-700 transition-all">3 Menit</button>
+                        <button type="button" onclick="window.setTimerDuration(5)" id="timer-btn-5" class="px-4 py-2 bg-teal-800 text-teal-200 border border-teal-700 rounded-xl text-xs font-bold shadow hover:bg-teal-700 transition-all">5 Menit</button>
+                    </div>
+                    <div class="flex items-center justify-between bg-teal-950 p-4 rounded-xl border border-teal-800">
+                        <div class="text-teal-300 font-medium text-xs">Waktu Tersisa:</div>
+                        <div id="ai-timer-display" class="font-mono text-3xl font-black text-gold-400">01:00</div>
+                        <button type="button" onclick="window.toggleTimer()" id="ai-timer-control" class="px-4 py-2 bg-teal-500 hover:bg-teal-400 text-teal-950 font-bold rounded-xl text-xs shadow transition-all">▶ Mulai Latihan</button>
+                    </div>
+                </div>
+
+                <!-- REKAM SUARA -->
+                <div class="bg-teal-900/60 border border-teal-700/50 rounded-2xl p-5 shadow-inner">
+                    <label class="block text-gold-400 font-bold mb-3 text-sm flex items-center gap-2">
+                        <span>🎙️</span> Rekam Suara Langsung (Android / iPhone / Laptop):
+                    </label>
+                    <div class="flex items-center gap-3 mb-4">
+                        <button type="button" onclick="window.toggleVoiceRecording()" id="btn-record-voice" class="px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-xs shadow flex items-center gap-2 transition-all">
+                            <span class="w-2.5 h-2.5 rounded-full bg-white animate-ping" id="rec-dot" style="display:none;"></span>
+                            <span id="btn-record-label">🎙️ Mulai Rekam Suara Baru</span>
+                        </button>
+                        <div id="voice-timer" class="font-mono text-sm font-bold text-teal-300 hidden">00:00</div>
+                    </div>
+                    <div class="bg-teal-950 p-3 rounded-xl border border-teal-800">
+                        <p class="text-xs text-teal-400 font-semibold mb-1">▶ Pemutar Rekaman Suara Kamu:</p>
+                        <audio id="audio-playback" controls class="w-full h-10 rounded-lg bg-teal-900 border border-teal-700"></audio>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESENSI & ABSENSI SECTION -->
+        <section class="bg-teal-900/40 border border-teal-800 rounded-3xl p-6 sm:p-8 mb-8 shadow-xl">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                <div>
+                    <h3 class="text-2xl font-black text-white flex items-center gap-2">
+                        <span>📋</span> Presensi & Absensi Latihan Rutin SPENTWO
+                    </h3>
+                    <p class="text-teal-300 text-xs sm:text-sm mt-1">Rekap data kehadiran anggota & kelola jadwal sesi latihan.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="window.doSelfAttendance()" id="btn-absen-mandiri" class="px-4 py-2 bg-gold-400 hover:bg-gold-300 text-teal-950 text-xs font-bold rounded-xl shadow transition-all">
+                        ✍️ Absen Mandiri Siswa
+                    </button>
+                    <button type="button" onclick="window.openAddSessionModal()" id="btn-add-session" class="px-4 py-2 bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold rounded-xl shadow transition-all hidden">
+                        ➕ Buat Sesi Absen Baru (Guru)
+                    </button>
+                </div>
+            </div>
+
+            <!-- ACTIVE SESSION INFO -->
+            <div id="active-session-card" class="bg-teal-950 border border-teal-700 rounded-2xl p-4 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                    <div class="text-xs text-gold-400 font-bold uppercase tracking-wider">Sesi Absensi Aktif Hari Ini</div>
+                    <div id="session-title-display" class="text-base font-bold text-white">Latihan Debat & MC Mingguan SPENTWO</div>
+                    <div id="session-time-display" class="text-xs text-teal-300 mt-0.5">Waktu Absen: 14:00 - 17:00 WITA | Status: <span class="text-emerald-400 font-bold">Terbuka</span></div>
+                </div>
+                <button type="button" onclick="window.doSelfAttendance()" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-teal-950 font-bold text-xs rounded-xl shadow transition-all">
+                    ✅ Klik Presensi Hadir
+                </button>
+            </div>
+
+            <!-- REKAP RECENT ATTENDANCE -->
+            <div class="overflow-x-auto rounded-2xl border border-teal-800">
+                <table class="w-full text-left text-xs sm:text-sm text-teal-200">
+                    <thead class="bg-teal-950 text-gold-400 font-bold uppercase border-b border-teal-800">
+                        <tr>
+                            <th class="p-3">Nama Anggota</th>
+                            <th class="p-3">Kelas</th>
+                            <th class="p-3">Status</th>
+                            <th class="p-3">Waktu Presensi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-list-body" class="divide-y divide-teal-800/50 bg-teal-900/20">
+                        <tr>
+                            <td class="p-3 font-semibold text-white">Ni Putu Ayu Saraswati</td>
+                            <td class="p-3">VIII A</td>
+                            <td class="p-3"><span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded-md font-bold text-xs">Hadir</span></td>
+                            <td class="p-3 text-teal-400">14:15 WITA</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold text-white">I Gede Made Bayu</td>
+                            <td class="p-3">VII C</td>
+                            <td class="p-3"><span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded-md font-bold text-xs">Hadir</span></td>
+                            <td class="p-3 text-teal-400">14:22 WITA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-teal-950 border-t border-teal-800 py-6 text-center text-xs text-teal-400">
+        <p>© 2026 Dwi Andhira Gistara - SMP Negeri 2 Denpasar. All rights reserved.</p>
+    </footer>
+
+    <!-- MODAL LOGIN DEMO -->
+    <div id="modal-login" class="fixed inset-0 bg-teal-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-teal-900 border border-teal-700 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative">
+            <button onclick="window.toggleLoginModal()" class="absolute top-4 right-4 text-teal-400 hover:text-white text-lg font-bold">✕</button>
+            <h3 class="text-xl font-bold text-white mb-1">Masuk Akun Demo</h3>
+            <p class="text-xs text-teal-300 mb-4">Gunakan akun Pembina, Pengurus, atau Anggota.</p>
+            
+            <form onsubmit="window.handleLoginSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-teal-200 mb-1">Username:</label>
+                    <input type="text" id="login-username" required placeholder="pembina / pengurus / anggota" class="w-full bg-teal-950 border border-teal-700 text-white rounded-xl p-2.5 text-sm outline-none focus:ring-2 focus:ring-gold-400">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-teal-200 mb-1">Password:</label>
+                    <input type="password" id="login-password" required placeholder="******" class="w-full bg-teal-950 border border-teal-700 text-white rounded-xl p-2.5 text-sm outline-none focus:ring-2 focus:ring-gold-400">
+                </div>
+                <button type="submit" class="w-full py-3 bg-gold-400 hover:bg-gold-300 text-teal-950 font-bold rounded-xl text-sm shadow transition-all">
+                    Masuk Sekarang
+                </button>
+            </form>
+            <div class="mt-4 p-3 bg-teal-950/80 rounded-xl border border-teal-800 text-[11px] text-teal-300">
+                <strong>Info Akun Demo:</strong><br>
+                - Pembina: <code class="text-gold-400">pembina</code> / <code class="text-gold-400">pembina123</code><br>
+                - Anggota: <code class="text-gold-400">anggota</code> / <code class="text-gold-400">anggota123</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA BANK TOPIK SCENARIOS
+        const topicBank = {
+            mc: [
+                "MC Pembukaan Pembukaan Peringatan Hari Saraswati di SMPN 2 Denpasar",
+                "MC Formal Pelantikan Pengurus OSIS & Ekstrakurikuler Spentwo",
+                "MC Non-Formal Pentas Seni & Gelar Karya P5 Sekolah"
+            ],
+            debat: [
+                "Mosi: Penggunaan Artificial Intelligence (AI) Harus Dilarang dalam Penugasan Sekolah",
+                "Mosi: Ujian Berbasis Komputer Lebih Efektif Dibandingkan Penilaian Proyek Portofolio"
+            ],
+            presentasi: [
+                "Presentasi Karya Tulis Ilmiah Remaja: Pengolahan Sampah Plastik Mandiri Lingkungan Spentwo",
+                "Presentasi Inovasi Pembelajaran Digital Berbasis Website di SMP"
+            ],
+            storytelling: [
+                "Cerita Rakyat Bali: Kisah Asal Usul Danau Batur & Kebo Iwa",
+                "Narrative Story: The Legend of Calon Arang and The Wise Mpu Bharada"
+            ]
+        };
+
+        // TIMER & RECORDER STATES
+        let currentTimer = null;
+        let timerSeconds = 60;
+        let initialTimerSeconds = 60;
+        let isTimerRunning = false;
+
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let voiceTimerInterval = null;
+        let voiceSeconds = 0;
+        let currentUserRole = 'guest';
+
+        let activeAttendanceSession = {
+            title: "Latihan Debat & MC Mingguan SPENTWO",
+            startTime: "14:00",
+            endTime: "17:00",
+            isOpen: true
+        };
+
+        // TOPIC FUNCTIONS
+        window.loadCategory = function(cat) {
+            const select = document.getElementById('select-topic-prompt');
+            select.innerHTML = '<option value="">-- Pilih Skenario Latihan --</option>';
+            if (topicBank[cat]) {
+                topicBank[cat].forEach(t => {
+                    const opt = document.createElement('option');
+                    opt.value = t;
+                    opt.textContent = t;
+                    select.appendChild(opt);
+                });
+            }
+        };
+
+        window.updatePromptText = function() {
+            const val = document.getElementById('select-topic-prompt').value;
+            document.getElementById('prompt-text').innerText = val || "Silakan pilih topik di atas untuk memulai latihan bicara.";
+        };
+
+        // TIMER FUNCTIONS (1, 3, 5 MENIT)
+        window.setTimerDuration = function(mins) {
+            clearInterval(currentTimer);
+            isTimerRunning = false;
+            document.getElementById('ai-timer-control').innerText = "▶ Mulai Latihan";
+            
+            initialTimerSeconds = mins * 60;
+            timerSeconds = initialTimerSeconds;
+            
+            const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+            const s = String(timerSeconds % 60).padStart(2, '0');
+            document.getElementById('ai-timer-display').innerText = `${m}:${s}`;
+
             [1, 3, 5].forEach(num => {
                 const btn = document.getElementById(`timer-btn-${num}`);
                 if (btn) {
                     if (num === mins) {
-                        btn.className = "px-4 py-2 bg-gold-400 text-teal-950 font-bold rounded-xl text-sm shadow transition-all";
+                        btn.className = "px-4 py-2 bg-gold-400 text-teal-950 font-bold rounded-xl text-xs shadow transition-all";
                     } else {
-                        btn.className = "px-4 py-2 bg-teal-800 text-teal-200 border border-teal-700 rounded-xl text-sm font-bold shadow hover:bg-teal-700 transition-all";
+                        btn.className = "px-4 py-2 bg-teal-800 text-teal-200 border border-teal-700 rounded-xl text-xs font-bold shadow hover:bg-teal-700 transition-all";
                     }
                 }
             });
         };
 
-        // Voice Recorder Logic Fix
+        window.toggleTimer = function() {
+            const btn = document.getElementById('ai-timer-control');
+            if (isTimerRunning) {
+                clearInterval(currentTimer);
+                isTimerRunning = false;
+                btn.innerText = "▶ Lanjutkan";
+            } else {
+                isTimerRunning = true;
+                btn.innerText = "⏸️ Jeda";
+                currentTimer = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+                        const s = String(timerSeconds % 60).padStart(2, '0');
+                        document.getElementById('ai-timer-display').innerText = `${m}:${s}`;
+                    } else {
+                        clearInterval(currentTimer);
+                        isTimerRunning = false;
+                        btn.innerText = "▶ Mulai Latihan";
+                        alert("⏱️ Waktu latihan bicara Anda telah selesai!");
+                    }
+                }, 1000);
+            }
+        };
+
+        // VOICE RECORDER FUNCTION (MEDIARECORDER API)
         window.toggleVoiceRecording = async function() {
             const btn = document.getElementById('btn-record-voice');
             const label = document.getElementById('btn-record-label');
@@ -161,8 +378,6 @@
                         const audioUrl = URL.createObjectURL(audioBlob);
                         audioPlayback.src = audioUrl;
                         audioPlayback.load();
-                        
-                        // Stop all mic tracks
                         stream.getTracks().forEach(track => track.stop());
                     };
 
@@ -171,8 +386,8 @@
                     timerText.innerText = "00:00";
                     timerText.classList.remove('hidden');
                     recDot.style.display = 'inline-block';
-                    label.innerText = '⏹ Hentikan Rekaman Suara';
-                    btn.className = "px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-teal-950 font-bold rounded-xl text-sm shadow flex items-center gap-2 transition-all";
+                    label.innerText = '⏹ Hentikan Rekaman';
+                    btn.className = "px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-teal-950 font-bold rounded-xl text-xs shadow flex items-center gap-2 transition-all";
 
                     voiceTimerInterval = setInterval(() => {
                         voiceSeconds++;
@@ -182,32 +397,43 @@
                     }, 1000);
 
                 } catch (err) {
-                    alert('Akses mikrofon dibutuhkan untuk fitur ini. Izinkan mikrofon di browser HP/Laptop Anda.');
+                    alert('Akses mikrofon dibutuhkan. Izinkan akses mikrofon pada browser Anda.');
                 }
             } else if (mediaRecorder && mediaRecorder.state === 'recording') {
                 mediaRecorder.stop();
                 clearInterval(voiceTimerInterval);
                 recDot.style.display = 'none';
                 label.innerText = '🎙️ Mulai Rekam Suara Baru';
-                btn.className = "px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-sm shadow flex items-center gap-2 transition-all";
+                btn.className = "px-4 py-2.5 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl text-xs shadow flex items-center gap-2 transition-all";
             }
         };
 
-        // Attendance Actions for Student & Teacher
+        // ABSENSI & PRESENSI LOGIC
         window.doSelfAttendance = function() {
             if (!activeAttendanceSession.isOpen) {
-                alert('Maaf, sesi absensi saat ini sedang ditutup oleh Pembina.');
+                alert('Maaf, sesi absensi saat ini sedang ditutup.');
                 return;
             }
-            const nama = prompt("Masukkan Nama Lengkap Anda untuk Presensi:", "Siswa Spentwo");
+            const nama = prompt("Masukkan Nama Lengkap Anda untuk Presensi Hadir:", "Siswa Spentwo");
             if (nama) {
-                alert(`Terima kasih ${nama}, presensi kehadiran Anda pada sesi "${activeAttendanceSession.title}" berhasil dicatat!`);
+                const tbody = document.getElementById('attendance-list-body');
+                const tr = document.createElement('tr');
+                const now = new Date();
+                const timeStr = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')} WITA`;
+                tr.innerHTML = `
+                    <td class="p-3 font-semibold text-white">${nama}</td>
+                    <td class="p-3">Siswa</td>
+                    <td class="p-3"><span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded-md font-bold text-xs">Hadir</span></td>
+                    <td class="p-3 text-teal-400">${timeStr}</td>
+                `;
+                tbody.prepend(tr);
+                alert(`Terima kasih ${nama}, presensi kehadiran berhasil dicatat!`);
             }
         };
 
         window.openAddSessionModal = function() {
             const title = prompt("Masukkan Judul Sesi Absensi Baru (Pembina):", "Latihan Public Speaking");
-            const start = prompt("Jam Mulai Buka (WITA):", "14:00");
+            const start = prompt("Jam Mulai (WITA):", "14:00");
             const end = prompt("Jam Batas Selesai (WITA):", "17:00");
             if (title && start && end) {
                 activeAttendanceSession.title = title;
@@ -217,22 +443,33 @@
 
                 document.getElementById('session-title-display').innerText = title;
                 document.getElementById('session-time-display').innerHTML = `Waktu Absen: ${start} - ${end} WITA | Status: <span class="text-emerald-400 font-bold">Terbuka</span>`;
-                alert('Sesi absensi baru berhasil diterbitkan untuk seluruh siswa!');
+                alert('Sesi absensi baru berhasil diterbitkan!');
             }
         };
 
-        // Login Handler update for UI Role Customization
-        const originalHandleLogin = window.handleLoginSubmit;
+        // LOGIN SYSTEM
+        window.toggleLoginModal = function() {
+            document.getElementById('modal-login').classList.toggle('hidden');
+        };
+
         window.handleLoginSubmit = function(e) {
-            if (e) e.preventDefault();
-            const u = document.getElementById('login-username').value;
+            e.preventDefault();
+            const u = document.getElementById('login-username').value.toLowerCase();
             if (u === 'pembina') {
                 currentUserRole = 'pembina';
+                document.getElementById('user-role-text').innerText = 'Pembina (Guru)';
                 document.getElementById('btn-add-session').classList.remove('hidden');
             } else {
                 currentUserRole = 'anggota';
+                document.getElementById('user-role-text').innerText = 'Anggota Siswa';
                 document.getElementById('btn-add-session').classList.add('hidden');
             }
-            if (originalHandleLogin) originalHandleLogin(e);
+            window.toggleLoginModal();
+            alert(`Selamat datang kembali (${currentUserRole.toUpperCase()})!`);
         };
+
+        // INITIAL LOAD DEFAULT
+        window.loadCategory('mc');
     </script>
+</body>
+</html>
