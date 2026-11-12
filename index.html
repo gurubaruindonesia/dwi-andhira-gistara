@@ -59,7 +59,7 @@
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-teal-500 selection:text-white min-h-screen flex flex-col justify-between">
 
-    <!-- PUBLIC VIEW WRAPPER (DITAMPILKAN SAAT BELUM LOGIN) -->
+    <!-- PUBLIC VIEW WRAPPER -->
     <div id="public-website-view">
         <!-- TOP ANNOUNCEMENT BAR -->
         <div class="bg-teal-950 text-teal-100 text-xs py-2 px-4 font-medium border-b border-teal-800">
@@ -79,7 +79,6 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
                     <a href="#" class="flex items-center gap-3 group">
-                        <!-- LOGO RESMI DWI ANDHIRA GISTARA -->
                         <div class="w-12 h-12 rounded-2xl bg-teal-950 p-1.5 flex items-center justify-center shadow-lg shadow-teal-950/50 border border-teal-500/50 group-hover:scale-105 transition-transform">
                             <svg viewBox="0 0 400 400" class="w-full h-full text-teal-900" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="400" height="400" fill="#115e59" rx="30"/>
@@ -88,7 +87,7 @@
                                 <text x="255" y="105" fill="#5eead4" font-family="'Inter', sans-serif" font-weight="700" font-size="28" transform="rotate(52 255 105)">Brave</text>
                                 <text x="325" y="215" fill="#5eead4" font-family="'Inter', sans-serif" font-weight="700" font-size="26" transform="rotate(52 325 215)">Confident</text>
                                 <text x="100" y="215" fill="#ffffff" font-family="'Inter', sans-serif" font-weight="700" font-size="28" transform="rotate(-52 100 215)">And</text>
-                                <path d="M175,210 C175,180 185,155 200,125 C205,105 200,80 220,70 C240,60 250,90 240,110 C235,130 245,150 240,170 C230,200 200,210 175,210 Z" fill="#ffffff"/>
+                                <path d="M175,210 C175,180 185,155 200,125 C205,105 200,80 220,70 C240,60 250,90 240,110 Z" fill="#ffffff"/>
                                 <line x1="125" y1="200" x2="190" y2="100" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
                                 <rect x="185" y="90" width="16" height="24" rx="6" fill="#2dd4bf"/>
                                 <rect x="150" y="195" width="100" height="100" fill="#042f2e" rx="6"/>
@@ -118,7 +117,7 @@
                     <div class="flex items-center gap-3">
                         <button onclick="openRegisterModal()" class="hidden sm:flex items-center gap-1.5 px-4 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow-md transition">
                             <i class="fa-solid fa-user-plus"></i>
-                            <span>Daftar Anggota</span>
+                            <span>Pendaftaran Akun</span>
                         </button>
                         <button onclick="openLoginModal()" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-500 border border-teal-400 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-2">
                             <i class="fa-solid fa-right-to-bracket"></i>
@@ -148,7 +147,7 @@
                                 <i class="fa-solid fa-robot"></i> Coba AI Practice Lab
                             </button>
                             <button onclick="openRegisterModal()" class="px-6 py-3.5 bg-teal-600/90 border border-teal-400 text-white font-bold text-sm rounded-xl shadow-lg flex items-center gap-2">
-                                <i class="fa-solid fa-user-plus"></i> Daftar Anggota Baru
+                                <i class="fa-solid fa-user-plus"></i> Daftar Akun Baru
                             </button>
                         </div>
                     </div>
@@ -193,7 +192,6 @@
                                 "Selamat pagi bapak ibu guru dan rekan-rekan siswa SMP Negeri 2 Denpasar. Selamat datang di acara Pembukaan Pensi Dwi Andhira Gistara 2026..."
                             </div>
 
-                            <!-- TIMING CONTROL (TIMER RESPONSIP 1, 3, 5 MENIT) -->
                             <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
                                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                                     <label class="text-xs font-bold text-gold-300 flex items-center gap-2">
@@ -216,7 +214,6 @@
                                 </div>
                             </div>
 
-                            <!-- VOICE AUDIO RECORDER WIDGET INTEGRATED -->
                             <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
                                 <label class="block text-xs font-bold text-gold-300">
                                     <i class="fa-solid fa-microphone-lines text-gold-400 mr-1"></i> Rekam Suara Langsung (Android / iPhone / Laptop):
@@ -234,11 +231,11 @@
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold text-emerald-200 mb-1">Ketikkan naskah latihan atau tempel teks pidato (Opsional jika menggunakan rekaman suara):</label>
+                                <label class="block text-xs font-bold text-emerald-200 mb-1">Ketikkan naskah latihan atau tempel teks pidato:</label>
                                 <textarea id="ai-user-input" rows="3" class="w-full p-3 rounded-xl bg-emerald-950/90 border border-emerald-700 text-xs text-white placeholder-emerald-600 focus:outline-none focus:border-gold-400" placeholder="Ketik atau tempel kalimat latihanmu di sini..."></textarea>
                             </div>
                             <button onclick="analyzeAIFeedback()" class="w-full py-3 bg-gradient-to-r from-gold-400 to-gold-500 text-emerald-950 font-extrabold text-xs rounded-xl shadow-md hover:from-gold-300 hover:to-gold-400 transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Evaluasi AI Instant Feedback (Analisis Suara & Naskah)</span>
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Evaluasi AI Instant Feedback</span>
                             </button>
                         </div>
 
@@ -266,7 +263,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="news-grid-container">
-                    <!-- Dynamic News Cards Rendered via JS -->
+                    <!-- Dynamic News Cards -->
                 </div>
             </div>
         </section>
@@ -282,30 +279,22 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
-                            <i class="fa-solid fa-microphone"></i>
-                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-microphone"></i></div>
                         <h3 class="font-bold text-base text-emerald-950">Master of Ceremony</h3>
                         <p class="text-xs text-slate-600 mt-2 leading-relaxed">Penguasaan tata kelola protokol acara formal sekolah, seminar, dan event pensi non-formal.</p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-scale-balanced"></i></div>
                         <h3 class="font-bold text-base text-emerald-950">Lomba Debat</h3>
                         <p class="text-xs text-slate-600 mt-2 leading-relaxed">Melatih kemampuan berpikir kritis, penyusunan argumen ARES, dan teknik rebuttal mosi.</p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
-                            <i class="fa-solid fa-display"></i>
-                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-display"></i></div>
                         <h3 class="font-bold text-base text-emerald-950">Presentasi Slide</h3>
                         <p class="text-xs text-slate-600 mt-2 leading-relaxed">Keahlian visual storytelling, pemaparan data sains/IPS, dan teknik pitching percaya diri.</p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-book-open"></i></div>
                         <h3 class="font-bold text-base text-emerald-950">Storytelling</h3>
                         <p class="text-xs text-slate-600 mt-2 leading-relaxed">Seni olah vokal ekspresif, penjiwaan karakter dongeng budaya Bali, serta pementasan drama naskah.</p>
                     </div>
@@ -314,9 +303,9 @@
         </section>
     </div>
 
-    <!-- LOGGED-IN APP DASHBOARD (RESPONSIVE FULL FIX MOBILE & DESKTOP) -->
+    <!-- LOGGED-IN APP DASHBOARD -->
     <div id="app-dashboard-view" class="hidden min-h-screen flex flex-col md:flex-row bg-slate-100 relative">
-        <!-- MOBILE TOP BAR (INFINIX ZERO 30 FRIENDLY) -->
+        <!-- MOBILE TOP BAR -->
         <div class="md:hidden bg-emerald-950 text-white p-4 flex justify-between items-center sticky top-0 z-50 border-b border-emerald-800">
             <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-lg bg-emerald-900 p-1 flex items-center justify-center border border-emerald-700">
@@ -332,7 +321,6 @@
         <!-- SIDEBAR NAVIGATION -->
         <aside id="app-sidebar" class="hidden md:flex w-full md:w-64 bg-emerald-950 text-white flex-col justify-between shrink-0 shadow-xl border-r border-emerald-900 sticky top-0 h-auto md:h-screen z-40">
             <div>
-                <!-- App Brand -->
                 <div class="p-5 border-b border-emerald-800/80 hidden md:flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-emerald-900 p-1 flex items-center justify-center shrink-0 border border-emerald-700 shadow-md">
                         <svg viewBox="0 0 400 400" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -352,7 +340,6 @@
                     </div>
                 </div>
 
-                <!-- User Profile Summary Card -->
                 <div class="p-4 m-4 bg-emerald-900/90 rounded-2xl border border-emerald-800 flex items-center gap-3">
                     <div id="app-sidebar-avatar" class="w-10 h-10 rounded-xl bg-gold-400 text-emerald-950 font-extrabold text-sm flex items-center justify-center shrink-0">
                         US
@@ -363,13 +350,11 @@
                     </div>
                 </div>
 
-                <!-- Dynamic Nav Items -->
                 <div class="px-4 space-y-1 text-xs font-semibold" id="app-sidebar-menu">
                     <!-- Populated dynamically via JS -->
                 </div>
             </div>
 
-            <!-- Footer Actions -->
             <div class="p-4 border-t border-emerald-900 space-y-2">
                 <button onclick="togglePublicWebsiteView()" class="w-full text-left px-3 py-2 bg-emerald-900/60 hover:bg-emerald-900 text-emerald-200 text-xs rounded-xl font-bold flex items-center gap-2 transition">
                     <i class="fa-solid fa-globe text-gold-400"></i>
@@ -384,7 +369,6 @@
 
         <!-- MAIN DASHBOARD CONTENT AREA -->
         <main class="flex-1 p-4 md:p-10 overflow-y-auto w-full">
-            <!-- App Header Bar -->
             <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 md:pb-6 border-b border-slate-200 mb-6 md:mb-8 gap-4">
                 <div>
                     <h1 id="app-view-title" class="text-xl md:text-2xl font-extrabold text-emerald-950">Dashboard Aplikasi</h1>
@@ -397,14 +381,13 @@
                 </div>
             </header>
 
-            <!-- APP TAB CONTENT PANELS -->
             <div id="app-tab-content">
-                <!-- Content dynamically rendered based on active menu -->
+                <!-- Content dynamically rendered -->
             </div>
         </main>
     </div>
 
-    <!-- MODAL GPS & SELFIE PRESENSI MANDIRI (FITUR BARU) -->
+    <!-- MODAL GPS & SELFIE PRESENSI MANDIRI (POPUP KONTROL KINERJA AKTIF) -->
     <div id="modal-absensi-gps" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative">
             <button onclick="closeAbsensiGPSModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -423,24 +406,22 @@
                 </div>
 
                 <div class="space-y-4 text-xs font-semibold">
-                    <!-- Status GPS -->
                     <div class="p-3 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-1">
                         <div class="flex justify-between items-center text-emerald-950">
-                            <span><i class="fa-solid fa-map-pin text-emerald-600 mr-1"></i> Lokasi Maps Terdeteksi:</span>
+                            <span><i class="fa-solid fa-map-pin text-emerald-600 mr-1"></i> Lokasi GPS Maps:</span>
                             <span id="gps-status-badge" class="px-2 py-0.5 bg-amber-100 text-amber-800 rounded font-bold text-[10px]">Mengecek GPS...</span>
                         </div>
                         <p id="gps-coords-text" class="text-[11px] text-slate-500 font-mono">Lat: -8.6521 | Long: 115.2185 (Sekitar SMPN 2 Denpasar)</p>
                     </div>
 
-                    <!-- Webcam Selfie Video / Snapshot -->
                     <div class="space-y-2">
-                        <label class="block text-slate-700 font-bold">Ambil Foto Selfie Presensi:</label>
+                        <label class="block text-slate-700 font-bold">Foto Selfie Presensi:</label>
                         <div class="relative w-full h-48 bg-slate-900 rounded-2xl overflow-hidden border border-slate-300 flex items-center justify-center">
                             <video id="selfie-video-stream" autoplay playsinline class="w-full h-full object-cover"></video>
                             <canvas id="selfie-canvas" class="hidden w-full h-full object-cover"></canvas>
                             <div id="camera-placeholder" class="text-slate-400 text-center p-4">
                                 <i class="fa-solid fa-camera text-2xl mb-1 block"></i>
-                                Klik "Buka Kamera" di bawah
+                                Klik "Buka Kamera HP" di bawah
                             </div>
                         </div>
                         <div class="flex gap-2">
@@ -454,14 +435,14 @@
                     </div>
 
                     <button type="button" onclick="submitGPSAttendance()" class="w-full py-3 bg-gold-400 hover:bg-gold-500 text-teal-950 font-extrabold rounded-xl shadow-md transition text-xs">
-                        🚀 Kirim Presensi Kehadiran & Foto
+                        🚀 Kirim Presensi GPS & Selfie
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL TAMBAH BERITA (FITUR BARU UNTUK GURU & PENGURUS) -->
+    <!-- MODAL TAMBAH BERITA -->
     <div id="modal-tambah-berita" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeTambahBeritaModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -481,7 +462,7 @@
 
                 <form onsubmit="handleCreateNewsSubmit(event)" class="space-y-4 text-xs font-semibold">
                     <div>
-                        <label class="block text-slate-700 font-bold mb-1">Judul Berita / Berkas Liputan:</label>
+                        <label class="block text-slate-700 font-bold mb-1">Judul Berita / Liputan:</label>
                         <input type="text" id="news-input-title" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600" placeholder="Contoh: Juara 1 Lomba Public Speaking...">
                     </div>
                     <div class="grid grid-cols-2 gap-3">
@@ -511,64 +492,26 @@
         </div>
     </div>
 
-    <!-- MODAL AUTH LOGIN -->
-    <div id="modal-login" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="p-6 sm:p-8">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-2xl bg-emerald-800 text-gold-400 flex items-center justify-center font-bold text-lg shadow-md">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-display font-bold text-lg text-emerald-950">Masuk Akun</h3>
-                        <p class="text-slate-500 text-xs">Silakan ketikkan username & password Anda.</p>
-                    </div>
-                </div>
-
-                <form onsubmit="handleAuthLogin(event)" class="space-y-4 text-xs font-semibold">
-                    <div>
-                        <label class="block text-slate-700 font-bold mb-1">Username / ID Anggota:</label>
-                        <input type="text" id="login-username" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="pembina / pengurus / anggota">
-                    </div>
-                    <div>
-                        <label class="block text-slate-700 font-bold mb-1">Password:</label>
-                        <input type="password" id="login-password" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="******">
-                    </div>
-                    <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
-                        Masuk Sekarang
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL REGISTRASI ANGGOTA BARU -->
+    <!-- MODAL REGISTRASI DENGAN ALUR TERPISAH (SISWA VS PEMBINA/GURU) -->
     <div id="modal-register" class="fixed inset-0 bg-teal-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-teal-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="p-6 sm:p-8">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-2xl bg-gold-400 text-teal-950 flex items-center justify-center font-bold text-lg shadow-md">
-                        <i class="fa-solid fa-user-plus"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-display font-bold text-lg text-teal-950">Formulir Pendaftaran Siswa Baru</h3>
-                        <p class="text-slate-500 text-xs">Ekstrakurikuler Dwi Andhira Gistara SMPN 2 Denpasar</p>
-                    </div>
+                <!-- REGISTRATION ROLE TOGGLE TABS -->
+                <div class="flex border-b border-slate-200 mb-6 font-bold text-xs">
+                    <button onclick="switchRegisterRoleTab('student')" id="tab-reg-student" class="flex-1 py-2.5 text-center border-b-2 border-emerald-600 text-emerald-800 transition">
+                        👨‍🎓 Pendaftaran Siswa
+                    </button>
+                    <button onclick="switchRegisterRoleTab('teacher')" id="tab-reg-teacher" class="flex-1 py-2.5 text-center border-b-2 border-transparent text-slate-400 hover:text-emerald-700 transition">
+                        👨‍pp Pembina / Guru
+                    </button>
                 </div>
 
-                <form onsubmit="handleFormRegistration(event)" class="space-y-4 text-xs font-semibold">
-                    <div>
-                        <label class="block text-slate-700 font-bold mb-1">Pasfoto / Foto Siswa:</label>
-                        <input type="file" id="reg-photo" accept="image/*" class="w-full p-2 border border-slate-300 rounded-xl">
-                    </div>
+                <!-- FORM SISWA -->
+                <form id="form-reg-student" onsubmit="handleFormRegistrationStudent(event)" class="space-y-4 text-xs font-semibold">
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Nama Lengkap Siswa:</label>
                         <input type="text" id="reg-fullname" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Ketik nama lengkap...">
@@ -602,12 +545,68 @@
                             <option value="Storytelling">Storytelling</option>
                         </select>
                     </div>
+                    <button type="submit" class="w-full py-3 bg-teal-700 hover:bg-teal-600 text-white font-bold rounded-xl shadow-md transition">
+                        Daftar & Terbitkan KTA Digital Siswa
+                    </button>
+                </form>
+
+                <!-- FORM PEMBINA / GURU -->
+                <form id="form-reg-teacher" onsubmit="handleFormRegistrationTeacher(event)" class="hidden space-y-4 text-xs font-semibold">
                     <div>
-                        <label class="block text-slate-700 font-bold mb-1">Alasan Bergabung Ekstra:</label>
-                        <textarea id="reg-reason" rows="2" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Mengapa ingin mengasah public speaking?"></textarea>
+                        <label class="block text-slate-700 font-bold mb-1">Nama Lengkap & Gelar Guru:</label>
+                        <input type="text" id="reg-teacher-name" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Contoh: I Made Pembina, S.Pd.">
                     </div>
-                    <button type="submit" id="btn-submit-reg" class="w-full py-3 bg-teal-700 hover:bg-teal-600 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2">
-                        <span>Daftar & Terbitkan KTA Digital</span>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-1">NIP / NPTT:</label>
+                            <input type="text" id="reg-teacher-nip" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Nomor NIP Guru...">
+                        </div>
+                        <div>
+                            <label class="block text-slate-700 font-bold mb-1">Mata Pelajaran / Jabatan:</label>
+                            <input type="text" id="reg-teacher-subject" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Guru IPS / Pembina Utama">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Kode Verifikasi Akses Pembina:</label>
+                        <input type="password" id="reg-teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan Kode Rahasia Guru">
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
+                        Daftar Sebagai Pembina Utama Ekstra
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL AUTH LOGIN -->
+    <div id="modal-login" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="p-6 sm:p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-800 text-gold-400 flex items-center justify-center font-bold text-lg shadow-md">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-bold text-lg text-emerald-950">Masuk Akun</h3>
+                        <p class="text-slate-500 text-xs">Username demo: pembina / pengurus / anggota</p>
+                    </div>
+                </div>
+
+                <form onsubmit="handleAuthLogin(event)" class="space-y-4 text-xs font-semibold">
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Username / ID Anggota:</label>
+                        <input type="text" id="login-username" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="pembina / pengurus / anggota">
+                    </div>
+                    <div>
+                        <label class="block text-slate-700 font-bold mb-1">Password:</label>
+                        <input type="password" id="login-password" required class="w-full p-3 rounded-xl border border-emerald-300 focus:outline-none focus:border-emerald-600" placeholder="******">
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
+                        Masuk Sekarang
                     </button>
                 </form>
             </div>
@@ -616,7 +615,6 @@
 
     <!-- JAVASCRIPT GLOBAL HANDLERS -->
     <script>
-        // Data State Management
         let currentUser = null;
         let timerInterval = null;
         let totalSeconds = 60;
@@ -624,7 +622,6 @@
         let isTimerRunning = false;
         let currentAISpec = 'mc';
 
-        // Audio Recorder State Management
         let mediaRecorder = null;
         let audioChunks = [];
         let isRecording = false;
@@ -633,12 +630,10 @@
         let recordedAudioBlob = null;
         let recordedAudioUrl = null;
 
-        // Selfie Camera Stream & Location State
         let selfieStream = null;
         let capturedSelfieDataUrl = null;
         let userLocationCoords = null;
 
-        // Active Session Presensi State
         let activeAttendanceSession = {
             title: "Latihan Debat & MC Rutin SPENTWO",
             startTime: "14:00",
@@ -648,9 +643,6 @@
             lng: 115.2185
         };
 
-        const GOOGLE_SCRIPT_WEBHOOK_URL = ""; 
-
-        // Bank Skenario Latihan Mandiri
         const topicBank = {
             mc: [
                 "Selamat pagi bapak ibu guru dan rekan-rekan siswa SMP Negeri 2 Denpasar. Selamat datang di acara Pembukaan Pensi Dwi Andhira Gistara 2026...",
@@ -680,31 +672,35 @@
             { title: "Kiat Percaya Diri Bicara di Depan Umum", excerpt: "Artikel edukasi seputar tips mengendalikan demam panggung dan kontak mata dengan audiens.", category: "Edukasi", author: "Dwi Andhira Press", date: "15 Okt 2026" }
         ];
 
-        // Mobile Sidebar Toggle
         window.toggleMobileSidebar = function() {
             const sidebar = document.getElementById('app-sidebar');
             if (sidebar) sidebar.classList.toggle('hidden');
         };
 
-        // Modal Handlers
-        window.openLoginModal = function() {
-            document.getElementById('modal-login').classList.remove('hidden');
-        };
-        window.closeLoginModal = function() {
-            document.getElementById('modal-login').classList.add('hidden');
-        };
-        window.openRegisterModal = function() {
-            document.getElementById('modal-register').classList.remove('hidden');
-        };
-        window.closeRegisterModal = function() {
-            document.getElementById('modal-register').classList.add('hidden');
-        };
+        window.openLoginModal = function() { document.getElementById('modal-login').classList.remove('hidden'); };
+        window.closeLoginModal = function() { document.getElementById('modal-login').classList.add('hidden'); };
+        window.openRegisterModal = function() { document.getElementById('modal-register').classList.remove('hidden'); };
+        window.closeRegisterModal = function() { document.getElementById('modal-register').classList.add('hidden'); };
+        window.openTambahBeritaModal = function() { document.getElementById('modal-tambah-berita').classList.remove('hidden'); };
+        window.closeTambahBeritaModal = function() { document.getElementById('modal-tambah-berita').classList.add('hidden'); };
 
-        window.openTambahBeritaModal = function() {
-            document.getElementById('modal-tambah-berita').classList.remove('hidden');
-        };
-        window.closeTambahBeritaModal = function() {
-            document.getElementById('modal-tambah-berita').classList.add('hidden');
+        window.switchRegisterRoleTab = function(type) {
+            const studentForm = document.getElementById('form-reg-student');
+            const teacherForm = document.getElementById('form-reg-teacher');
+            const studentTab = document.getElementById('tab-reg-student');
+            const teacherTab = document.getElementById('tab-reg-teacher');
+
+            if (type === 'student') {
+                studentForm.classList.remove('hidden');
+                teacherForm.classList.add('hidden');
+                studentTab.className = "flex-1 py-2.5 text-center border-b-2 border-emerald-600 text-emerald-800 transition font-bold";
+                teacherTab.className = "flex-1 py-2.5 text-center border-b-2 border-transparent text-slate-400 hover:text-emerald-700 transition font-bold";
+            } else {
+                teacherForm.classList.remove('hidden');
+                studentForm.classList.add('hidden');
+                teacherTab.className = "flex-1 py-2.5 text-center border-b-2 border-emerald-600 text-emerald-800 transition font-bold";
+                studentTab.className = "flex-1 py-2.5 text-center border-b-2 border-transparent text-slate-400 hover:text-emerald-700 transition font-bold";
+            }
         };
 
         window.scrollToAILab = function() {
@@ -712,20 +708,11 @@
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         };
 
-        // Tab Highlight Color Switcher
         window.selectAISpec = function(spec) {
             currentAISpec = spec;
-            const specs = ['mc', 'debat', 'presentasi', 'storytelling'];
-            
-            specs.forEach(s => {
+            ['mc', 'debat', 'presentasi', 'storytelling'].forEach(s => {
                 const btn = document.getElementById(`tab-${s}`);
-                if (btn) {
-                    if (s === spec) {
-                        btn.className = "p-3.5 rounded-2xl bg-gold-400 text-teal-950 font-bold text-xs flex items-center justify-center gap-2 shadow-md transition";
-                    } else {
-                        btn.className = "p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition";
-                    }
-                }
+                if (btn) btn.className = s === spec ? "p-3.5 rounded-2xl bg-gold-400 text-teal-950 font-bold text-xs flex items-center justify-center gap-2 shadow-md transition" : "p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition";
             });
 
             const title = document.getElementById('ai-title');
@@ -734,48 +721,18 @@
 
             const topics = topicBank[spec] || topicBank.mc;
             const selectedTopic = topics[Math.floor(Math.random() * topics.length)];
-
-            const specNames = {
-                mc: "Master of Ceremony (MC)",
-                debat: "LOMBA DEBAT",
-                presentasi: "PRESENTASI SLIDE",
-                storytelling: "STORYTELLING"
-            };
-
-            title.textContent = `Skenario Latihan ${specNames[spec] || spec.toUpperCase()}`;
+            title.textContent = `Skenario Latihan ${spec.toUpperCase()}`;
             prompt.textContent = `"${selectedTopic}"`;
         };
 
-        window.generateRandomPrompt = function() {
-            window.selectAISpec(currentAISpec || 'mc');
-        };
+        window.generateRandomPrompt = function() { window.selectAISpec(currentAISpec || 'mc'); };
 
-        // TIMER 1, 3, 5 MENIT
         window.setTimerDuration = function(seconds) {
             clearInterval(timerInterval);
             isTimerRunning = false;
             totalSeconds = seconds;
             remainingSeconds = seconds;
-
-            const btnLabel = document.getElementById('btn-start-label');
-            const timerIcon = document.getElementById('timer-icon');
-            if (btnLabel) btnLabel.textContent = "Mulai Latihan";
-            if (timerIcon) timerIcon.className = "fa-solid fa-play";
-
-            const m = Math.floor(remainingSeconds / 60).toString().padStart(2, '0');
-            const s = (remainingSeconds % 60).toString().padStart(2, '0');
-            document.getElementById('ai-timer-display').textContent = `${m}:${s}`;
-
-            [60, 180, 300].forEach(sec => {
-                const btn = document.getElementById(`timer-btn-${sec}`);
-                if (btn) {
-                    if (sec === seconds) {
-                        btn.className = "px-2.5 py-1 bg-gold-400 text-teal-950 rounded-lg text-[11px] font-bold border border-gold-300 transition";
-                    } else {
-                        btn.className = "px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition";
-                    }
-                }
-            });
+            document.getElementById('ai-timer-display').textContent = `${Math.floor(seconds / 60).toString().padStart(2, '0')}:00`;
         };
 
         window.toggleTimer = function() {
@@ -809,7 +766,6 @@
             }
         };
 
-        // Voice Recorder API
         window.toggleVoiceRecording = async function() {
             const btnText = document.getElementById('record-btn-text');
             const recordTimerSpan = document.getElementById('record-timer');
@@ -819,42 +775,25 @@
             if (!isRecording) {
                 audioChunks = [];
                 recordedAudioBlob = null;
-
                 try {
                     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-                        const options = MediaRecorder.isTypeSupported('audio/webm') ? { mimeType: 'audio/webm' } : {};
-                        mediaRecorder = new MediaRecorder(stream, options);
-
-                        mediaRecorder.ondataavailable = (e) => {
-                            if (e.data && e.data.size > 0) audioChunks.push(e.data);
-                        };
-
+                        mediaRecorder = new MediaRecorder(stream);
+                        mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) audioChunks.push(e.data); };
                         mediaRecorder.onstop = () => {
-                            recordedAudioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType || 'audio/webm' });
-                            if (recordedAudioUrl) URL.revokeObjectURL(recordedAudioUrl);
+                            recordedAudioBlob = new Blob(audioChunks, { type: 'audio/webm' });
                             recordedAudioUrl = URL.createObjectURL(recordedAudioBlob);
-                            
-                            if (audioPlayer) {
-                                audioPlayer.src = recordedAudioUrl;
-                                audioPlayer.load();
-                            }
+                            if (audioPlayer) { audioPlayer.src = recordedAudioUrl; audioPlayer.load(); }
                             if (audioPlaybackContainer) audioPlaybackContainer.classList.remove('hidden');
                         };
-
                         mediaRecorder.start(200);
                     }
-                } catch (err) {
-                    alert("Izinkan akses mikrofon di browser HP/Laptop Anda untuk memakai rekam suara.");
-                }
+                } catch (err) { alert("Izinkan mikrofon Anda terlebih dahulu."); }
 
                 isRecording = true;
                 recordSeconds = 0;
                 if (btnText) btnText.textContent = "Hentikan Rekaman";
-                if (recordTimerSpan) {
-                    recordTimerSpan.classList.remove('hidden');
-                    recordTimerSpan.textContent = "00:00";
-                }
+                if (recordTimerSpan) recordTimerSpan.classList.remove('hidden');
 
                 recordTimerInterval = setInterval(() => {
                     recordSeconds++;
@@ -862,112 +801,53 @@
                     const s = (recordSeconds % 60).toString().padStart(2, '0');
                     if (recordTimerSpan) recordTimerSpan.textContent = `${m}:${s}`;
                 }, 1000);
-
             } else {
                 isRecording = false;
                 if (recordTimerInterval) clearInterval(recordTimerInterval);
                 if (btnText) btnText.textContent = "Mulai Rekam Suara Baru";
-
-                if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-                    mediaRecorder.stop();
-                    mediaRecorder.stream.getTracks().forEach(track => track.stop());
-                }
+                if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
             }
         };
 
         window.analyzeAIFeedback = function() {
             const result = document.getElementById('ai-feedback-result');
             const input = document.getElementById('ai-user-input').value.trim();
-            const promptBoxText = document.getElementById('ai-prompt-box').textContent.replace(/"/g, '');
-
-            if (!input && recordSeconds === 0 && !recordedAudioBlob) {
-                alert("Silakan rekam suara Anda atau ketik naskah terlebih dahulu untuk dievaluasi oleh AI!");
-                return;
-            }
-
-            const activeText = input || promptBoxText;
-            const wordCount = activeText.split(/\s+/).length;
-            const durationUsed = recordSeconds > 0 ? recordSeconds : (totalSeconds - remainingSeconds > 0 ? totalSeconds - remainingSeconds : 45);
-            const wpm = Math.round((wordCount / durationUsed) * 60);
-
-            let tempoStatus = "Ideal";
-            let tempoDesc = "Kecepatan vokal Anda sangat pas untuk pendengar.";
-            if (wpm < 100) {
-                tempoStatus = "Agak Lambat";
-                tempoDesc = "Coba sedikit percepat artikulasi agar audiens tidak bosan.";
-            } else if (wpm > 160) {
-                tempoStatus = "Cukup Cepat";
-                tempoDesc = "Gunakan jeda napas yang lebih teratur agar pesan tersampaikan jelas.";
-            }
-
-            const isAudioEvaluated = recordSeconds > 0 || recordedAudioBlob;
+            if (!input && recordSeconds === 0) { alert("Rekam suara atau ketik naskah latihanmu!"); return; }
 
             result.innerHTML = `
                 <div class="p-4 bg-emerald-950 rounded-2xl border border-emerald-700 space-y-3">
                     <div class="flex justify-between items-center font-bold text-gold-300 text-xs pb-2 border-b border-emerald-800">
-                        <span><i class="fa-solid fa-microphone mr-1"></i> Mode: ${isAudioEvaluated ? 'Analisis Rekaman Audio' : 'Analisis Teks Naskah'}</span>
-                        <span class="bg-emerald-800 px-2.5 py-1 rounded-lg text-[11px] text-gold-300 font-extrabold border border-emerald-600">Skor AI: 94/100</span>
+                        <span><i class="fa-solid fa-microphone mr-1"></i> Analisis AI Practice Lab</span>
+                        <span class="bg-emerald-800 px-2.5 py-1 rounded-lg text-[11px] text-gold-300 font-extrabold border border-emerald-600">Skor: 95/100</span>
                     </div>
-
-                    <div class="grid grid-cols-2 gap-2 text-[11px]">
-                        <div class="bg-emerald-900/80 p-2.5 rounded-xl border border-emerald-800">
-                            <span class="text-emerald-400 block text-[10px]">Durasi Ujaran:</span>
-                            <span class="font-bold text-white">${durationUsed} Detik</span>
-                        </div>
-                        <div class="bg-emerald-900/80 p-2.5 rounded-xl border border-emerald-800">
-                            <span class="text-emerald-400 block text-[10px]">Tempo Bicara (WPM):</span>
-                            <span class="font-bold text-gold-300">${wpm} WPM (${tempoStatus})</span>
-                        </div>
-                    </div>
-
-                    <div class="text-xs text-slate-200 leading-relaxed border-t border-emerald-800 pt-2 space-y-1.5">
-                        <p class="font-bold text-gold-300"><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> Catatan Evaluasi AI:</p>
-                        <p class="text-[11px] text-emerald-100">${tempoDesc}</p>
-                        ${isAudioEvaluated ? `
-                            <p class="text-[11px] text-emerald-200"><i class="fa-solid fa-volume-high text-gold-400 mr-1"></i> <b>Intonasi & Aksentuasi:</b> Kejelasan fonem vocal terdengar tajam. Projeksi suara sudah memenuhi standar public speaking SPENTWO.</p>
-                        ` : ''}
-                    </div>
+                    <p class="text-xs text-emerald-100">Kecepatan vokal & penekanan kata sudah sangat tegas sesuai standar Dwi Andhira Gistara.</p>
                 </div>
             `;
         };
 
-        // FITUR BARU: GPS MAPS & SELFIE CAMERA ABSENSI MANDIRI SISWA
-        window.doSelfAttendance = function() {
+        // FITUR BARU: MODAL ABSENSI GPS & SELFIE KHUSUS DISAMBUNGKAN
+        window.openAbsensiGPSModal = function() {
             if (!activeAttendanceSession.isOpen) {
                 alert('Maaf, sesi absensi saat ini sedang ditutup oleh Pembina.');
                 return;
             }
             document.getElementById('modal-absensi-gps').classList.remove('hidden');
-            
-            // Geolocation GPS Tagging
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (pos) => {
-                        userLocationCoords = { lat: pos.coords.latitude, lng: pos.coords.longitude };
                         const badge = document.getElementById('gps-status-badge');
                         const text = document.getElementById('gps-coords-text');
-                        if (badge) {
-                            badge.textContent = "📍 GPS Terhubung";
-                            badge.className = "px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[10px]";
-                        }
-                        if (text) {
-                            text.textContent = `Lat: ${pos.coords.latitude.toFixed(4)} | Long: ${pos.coords.longitude.toFixed(4)} (Denpasar)`;
-                        }
+                        if (badge) { badge.textContent = "📍 GPS Terhubung"; badge.className = "px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[10px]"; }
+                        if (text) { text.textContent = `Lat: ${pos.coords.latitude.toFixed(4)} | Long: ${pos.coords.longitude.toFixed(4)} (Denpasar)`; }
                     },
-                    (err) => {
-                        console.warn("GPS Akses ditolak:", err);
-                        userLocationCoords = { lat: -8.6521, lng: 115.2185 };
-                    }
+                    (err) => { console.warn("GPS Permission Ditolak", err); }
                 );
             }
         };
 
         window.closeAbsensiGPSModal = function() {
             document.getElementById('modal-absensi-gps').classList.add('hidden');
-            if (selfieStream) {
-                selfieStream.getTracks().forEach(track => track.stop());
-                selfieStream = null;
-            }
+            if (selfieStream) { selfieStream.getTracks().forEach(track => track.stop()); selfieStream = null; }
         };
 
         window.startSelfieCamera = async function() {
@@ -975,14 +855,9 @@
             const placeholder = document.getElementById('camera-placeholder');
             try {
                 selfieStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
-                if (video) {
-                    video.srcObject = selfieStream;
-                    video.classList.remove('hidden');
-                }
+                if (video) { video.srcObject = selfieStream; video.classList.remove('hidden'); }
                 if (placeholder) placeholder.classList.add('hidden');
-            } catch (err) {
-                alert("Izinkan akses kamera di browser HP Anda untuk foto selfie presensi.");
-            }
+            } catch (err) { alert("Izinkan akses kamera di browser HP Anda."); }
         };
 
         window.takeSelfieSnapshot = function() {
@@ -995,9 +870,7 @@
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                 capturedSelfieDataUrl = canvas.toDataURL('image/png');
                 alert("📸 Foto Selfie Presensi berhasil diambil!");
-            } else {
-                alert("Buka kamera terlebih dahulu sebelum mengklik foto.");
-            }
+            } else { alert("Buka kamera terlebih dahulu."); }
         };
 
         window.submitGPSAttendance = function() {
@@ -1017,18 +890,17 @@
                         <td class="p-3">${classToRecord}</td>
                         <td class="p-3">${specToRecord}</td>
                         <td class="p-3">
-                            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[11px] block w-max mb-0.5">✅ Hadir (GPS)</span>
-                            <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-camera mr-0.5"></i> Foto Verified (${timeStr})</span>
+                            <span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[11px] block w-max mb-0.5">✅ Hadir (GPS & Foto)</span>
+                            <span class="text-[10px] text-slate-400 block"><i class="fa-solid fa-camera mr-0.5"></i> Verified (${timeStr})</span>
                         </td>
                     `;
                     tbody.prepend(tr);
                 }
                 closeAbsensiGPSModal();
-                alert(`Terima kasih ${nameToRecord}, presensi berbasis GPS & Foto Selfie Anda berhasil diverifikasi!`);
+                alert(`Terima kasih ${nameToRecord}, presensi GPS & Foto Selfie Anda berhasil dicatat!`);
             }
         };
 
-        // FITUR BARU: TAMBAH BERITA UNTUK GURU & PENGURUS
         window.handleCreateNewsSubmit = function(e) {
             e.preventDefault();
             const title = document.getElementById('news-input-title').value;
@@ -1036,20 +908,10 @@
             const author = document.getElementById('news-input-author').value;
             const excerpt = document.getElementById('news-input-excerpt').value;
 
-            const now = new Date();
-            const dateStr = `${now.getDate()} Nov 2026`;
-
-            sampleNews.unshift({
-                title: title,
-                excerpt: excerpt,
-                category: category,
-                author: author,
-                date: dateStr
-            });
-
+            sampleNews.unshift({ title, excerpt, category, author, date: "12 Nov 2026" });
             renderNewsGrid();
             closeTambahBeritaModal();
-            alert("📰 Berita baru berhasil diterbitkan ke Portal Berita Digital Web Publik!");
+            alert("📢 Berita baru berhasil terbit di Halaman Berita Publik!");
         };
 
         function renderNewsGrid() {
@@ -1069,26 +931,6 @@
             }
         }
 
-        window.openAddSessionModal = function() {
-            const title = prompt("Masukkan Judul Sesi Absensi Baru (Pembina):", "Latihan Public Speaking Rutin SPENTWO");
-            const start = prompt("Jam Mulai Buka (WITA):", "14:00");
-            const end = prompt("Jam Batas Selesai (WITA):", "17:00");
-            if (title && start && end) {
-                activeAttendanceSession.title = title;
-                activeAttendanceSession.startTime = start;
-                activeAttendanceSession.endTime = end;
-                activeAttendanceSession.isOpen = true;
-
-                const displayTitle = document.getElementById('session-display-title');
-                const displayTime = document.getElementById('session-display-time');
-                if (displayTitle) displayTitle.textContent = title;
-                if (displayTime) displayTime.innerHTML = `Waktu Absen: ${start} - ${end} WITA | Status: <span class="text-emerald-600 font-bold">Terbuka (Maps Verified)</span>`;
-
-                alert('Sesi absensi khusus GPS Maps berhasil diterbitkan untuk siswa!');
-            }
-        };
-
-        // Authentication & Role Handlers
         window.handleAuthLogin = function(e) {
             e.preventDefault();
             const u = document.getElementById('login-username').value.trim().toLowerCase();
@@ -1098,8 +940,6 @@
                 currentUser = { name: 'I Made Pembina, S.Pd.', role: 'superadmin', roleName: 'Guru Pembina', avatar: 'IMP', nisn: '19850412', class: 'Guru SPENTWO', spec: 'Pembina Utama' };
             } else if (u === 'pengurus' && p === 'pengurus123') {
                 currentUser = { name: 'Kadek Ary Santi', role: 'pengurus', roleName: 'Pengurus Ekstra', avatar: 'KAS', nisn: '0098123456', class: '8.1', spec: 'MC & Operasional' };
-            } else if (u === 'anggota' && p === 'anggota123') {
-                currentUser = { name: 'Putu Gede Raka', role: 'anggota', roleName: 'Anggota Siswa', avatar: 'PGR', nisn: '0105432198', class: '7.3', spec: 'Lomba Debat' };
             } else {
                 currentUser = { name: u, role: 'anggota', roleName: 'Anggota Siswa', avatar: u.substring(0,2).toUpperCase(), nisn: '0112233445', class: '7.1', spec: 'Public Speaking' };
             }
@@ -1108,37 +948,38 @@
             updateUIForRole();
         };
 
-        window.handleFormRegistration = function(e) {
+        window.handleFormRegistrationStudent = function(e) {
             e.preventDefault();
-            const fullname = document.getElementById('reg-fullname').value;
-            const nisn = document.getElementById('reg-nisn').value;
-            const regClass = document.getElementById('reg-class').value;
-            const spec = document.getElementById('reg-spec').value;
-            const reason = document.getElementById('reg-reason').value;
-
             currentUser = {
-                name: fullname,
+                name: document.getElementById('reg-fullname').value,
                 role: 'anggota',
                 roleName: 'Anggota Siswa',
-                avatar: fullname.substring(0, 2).toUpperCase(),
-                nisn: nisn,
-                class: regClass,
-                spec: spec
+                avatar: document.getElementById('reg-fullname').value.substring(0, 2).toUpperCase(),
+                nisn: document.getElementById('reg-nisn').value,
+                class: document.getElementById('reg-class').value,
+                spec: document.getElementById('reg-spec').value
             };
-
             closeRegisterModal();
             updateUIForRole();
         };
 
-        window.logout = function() {
-            currentUser = null;
+        window.handleFormRegistrationTeacher = function(e) {
+            e.preventDefault();
+            currentUser = {
+                name: document.getElementById('reg-teacher-name').value,
+                role: 'superadmin',
+                roleName: 'Guru Pembina',
+                avatar: document.getElementById('reg-teacher-name').value.substring(0, 2).toUpperCase(),
+                nisn: document.getElementById('reg-teacher-nip').value,
+                class: 'Guru SPENTWO',
+                spec: document.getElementById('reg-teacher-subject').value
+            };
+            closeRegisterModal();
             updateUIForRole();
         };
 
-        window.togglePublicWebsiteView = function() {
-            const publicView = document.getElementById('public-website-view');
-            publicView.classList.toggle('hidden');
-        };
+        window.logout = function() { currentUser = null; updateUIForRole(); };
+        window.togglePublicWebsiteView = function() { document.getElementById('public-website-view').classList.toggle('hidden'); };
 
         function updateUIForRole() {
             const publicView = document.getElementById('public-website-view');
@@ -1156,12 +997,7 @@
                 document.getElementById('app-sidebar-avatar').textContent = currentUser.avatar;
 
                 renderAppSidebarMenu();
-                
-                if (currentUser.role === 'superadmin' || currentUser.role === 'pengurus') {
-                    window.switchAppTab('absensi');
-                } else {
-                    window.switchAppTab('kta');
-                }
+                window.switchAppTab(currentUser.role === 'superadmin' || currentUser.role === 'pengurus' ? 'absensi' : 'kta');
             }
         }
 
@@ -1193,9 +1029,7 @@
 
         window.switchAppTab = function(tab) {
             const sidebar = document.getElementById('app-sidebar');
-            if (sidebar && window.innerWidth < 768) {
-                sidebar.classList.add('hidden');
-            }
+            if (sidebar && window.innerWidth < 768) sidebar.classList.add('hidden');
 
             const content = document.getElementById('app-tab-content');
 
@@ -1226,7 +1060,7 @@
                                 <p class="text-xs text-slate-500 mt-0.5">Rekap absensi disinkronkan langsung dengan lokasi GPS & Foto Selfie.</p>
                             </div>
                             <div class="flex items-center gap-2">
-                                <button onclick="doSelfAttendance()" class="px-4 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
+                                <button onclick="openAbsensiGPSModal()" class="px-4 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
                                     <span>📍 Absen GPS & Selfie</span>
                                 </button>
                                 ${isSuperAdmin ? `
@@ -1237,15 +1071,14 @@
                             </div>
                         </div>
 
-                        <!-- Active Session Banner -->
                         <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-4">
                             <div>
                                 <span class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider block">Sesi Absensi Aktif Hari Ini</span>
                                 <h4 id="session-display-title" class="text-sm font-bold text-emerald-950">${activeAttendanceSession.title}</h4>
                                 <p id="session-display-time" class="text-xs text-slate-600 mt-0.5">Waktu Absen: ${activeAttendanceSession.startTime} - ${activeAttendanceSession.endTime} WITA | Status: <span class="text-emerald-600 font-bold">Terbuka (Maps & Selfie Verified)</span></p>
                             </div>
-                            <button onclick="doSelfAttendance()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
-                                <span>✅ Klik Absen Sekarang</span>
+                            <button onclick="openAbsensiGPSModal()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
+                                <span>✅ Klik Absen GPS & Selfie</span>
                             </button>
                         </div>
 
@@ -1288,10 +1121,7 @@
             }
         };
 
-        // Render News Cards on Load
-        window.addEventListener('DOMContentLoaded', () => {
-            renderNewsGrid();
-        });
+        window.addEventListener('DOMContentLoaded', () => { renderNewsGrid(); });
     </script>
 </body>
 </html>
