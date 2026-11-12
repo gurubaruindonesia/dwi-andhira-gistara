@@ -115,13 +115,13 @@
                     </div>
 
                     <div class="flex items-center gap-3">
-                        <button onclick="openRegisterModal()" class="hidden sm:flex items-center gap-1.5 px-4 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow-md transition">
+                        <button onclick="openRegisterModal()" class="flex items-center gap-1.5 px-3.5 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow-md transition">
                             <i class="fa-solid fa-user-plus"></i>
-                            <span>Pendaftaran Akun</span>
+                            <span>Daftar Akun</span>
                         </button>
-                        <button onclick="openLoginModal()" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-500 border border-teal-400 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-2">
+                        <button onclick="openLoginModal()" class="px-4 py-2 bg-teal-600 hover:bg-teal-500 border border-teal-400 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-2">
                             <i class="fa-solid fa-right-to-bracket"></i>
-                            <span>Masuk / Login</span>
+                            <span>Masuk</span>
                         </button>
                     </div>
                 </div>
@@ -387,7 +387,7 @@
         </main>
     </div>
 
-    <!-- MODAL GPS & SELFIE PRESENSI MANDIRI (POPUP KONTROL KINERJA AKTIF) -->
+    <!-- MODAL GPS & SELFIE PRESENSI MANDIRI -->
     <div id="modal-absensi-gps" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative">
             <button onclick="closeAbsensiGPSModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -442,7 +442,7 @@
         </div>
     </div>
 
-    <!-- MODAL TAMBAH BERITA -->
+    <!-- MODAL TAMBAH BERITA (PEMBINA & PENGURUS) -->
     <div id="modal-tambah-berita" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeTambahBeritaModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -500,13 +500,12 @@
             </button>
 
             <div class="p-6 sm:p-8">
-                <!-- REGISTRATION ROLE TOGGLE TABS -->
                 <div class="flex border-b border-slate-200 mb-6 font-bold text-xs">
                     <button onclick="switchRegisterRoleTab('student')" id="tab-reg-student" class="flex-1 py-2.5 text-center border-b-2 border-emerald-600 text-emerald-800 transition">
                         👨‍🎓 Pendaftaran Siswa
                     </button>
                     <button onclick="switchRegisterRoleTab('teacher')" id="tab-reg-teacher" class="flex-1 py-2.5 text-center border-b-2 border-transparent text-slate-400 hover:text-emerald-700 transition">
-                        👨‍pp Pembina / Guru
+                        👨‍🏫 Pembina / Guru
                     </button>
                 </div>
 
@@ -554,7 +553,7 @@
                 <form id="form-reg-teacher" onsubmit="handleFormRegistrationTeacher(event)" class="hidden space-y-4 text-xs font-semibold">
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Nama Lengkap & Gelar Guru:</label>
-                        <input type="text" id="reg-teacher-name" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Contoh: I Made Pembina, S.Pd.">
+                        <input type="text" id="reg-teacher-name" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Contoh: Muhammad Fajrin, S.Pd.">
                     </div>
                     <div class="grid grid-cols-2 gap-3">
                         <div>
@@ -567,8 +566,8 @@
                         </div>
                     </div>
                     <div>
-                        <label class="block text-slate-700 font-bold mb-1">Kode Verifikasi Akses Pembina:</label>
-                        <input type="password" id="reg-teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan Kode Rahasia Guru">
+                        <label class="block text-slate-700 font-bold mb-1">Kode Verifikasi Guru (Gunakan: <span class="text-emerald-700 font-extrabold">SPENTWO2026</span>):</label>
+                        <input type="text" id="reg-teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan SPENTWO2026">
                     </div>
                     <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
                         Daftar Sebagai Pembina Utama Ekstra
@@ -592,7 +591,7 @@
                     </div>
                     <div>
                         <h3 class="font-display font-bold text-lg text-emerald-950">Masuk Akun</h3>
-                        <p class="text-slate-500 text-xs">Username demo: pembina / pengurus / anggota</p>
+                        <p class="text-slate-500 text-xs">Login Demo: <b>pembina</b> (pass: pembina123) atau <b>pengurus</b> (pass: pengurus123)</p>
                     </div>
                 </div>
 
@@ -825,7 +824,7 @@
             `;
         };
 
-        // FITUR BARU: MODAL ABSENSI GPS & SELFIE KHUSUS DISAMBUNGKAN
+        // MODAL ABSENSI GPS & SELFIE
         window.openAbsensiGPSModal = function() {
             if (!activeAttendanceSession.isOpen) {
                 alert('Maaf, sesi absensi saat ini sedang ditutup oleh Pembina.');
@@ -901,6 +900,26 @@
             }
         };
 
+        window.openAddSessionModal = function() {
+            const title = prompt("Masukkan Judul Sesi Absensi Baru (Pembina):", "Latihan Public Speaking Rutin SPENTWO");
+            const start = prompt("Jam Mulai Buka (WITA):", "14:00");
+            const end = prompt("Jam Batas Selesai (WITA):", "17:00");
+            if (title && start && end) {
+                activeAttendanceSession.title = title;
+                activeAttendanceSession.startTime = start;
+                activeAttendanceSession.endTime = end;
+                activeAttendanceSession.isOpen = true;
+
+                const displayTitle = document.getElementById('session-display-title');
+                const displayTime = document.getElementById('session-display-time');
+                if (displayTitle) displayTitle.textContent = title;
+                if (displayTime) displayTime.innerHTML = `Waktu Absen: ${start} - ${end} WITA | Status: <span class="text-emerald-600 font-bold">Terbuka (Maps Verified)</span>`;
+
+                alert('Sesi absensi khusus GPS Maps berhasil diterbitkan untuk seluruh siswa!');
+            }
+        };
+
+        // HANDLER TAMBAH BERITA & RENDER BERITA
         window.handleCreateNewsSubmit = function(e) {
             e.preventDefault();
             const title = document.getElementById('news-input-title').value;
@@ -911,7 +930,18 @@
             sampleNews.unshift({ title, excerpt, category, author, date: "12 Nov 2026" });
             renderNewsGrid();
             closeTambahBeritaModal();
-            alert("📢 Berita baru berhasil terbit di Halaman Berita Publik!");
+            if (currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'pengurus')) {
+                window.switchAppTab('berita');
+            }
+            alert("📢 Berita baru berhasil terbit di Halaman Berita Publik & Dashboard!");
+        };
+
+        window.deleteNewsItem = function(index) {
+            if (confirm("Hapus berita ini?")) {
+                sampleNews.splice(index, 1);
+                renderNewsGrid();
+                window.switchAppTab('berita');
+            }
         };
 
         function renderNewsGrid() {
@@ -965,6 +995,11 @@
 
         window.handleFormRegistrationTeacher = function(e) {
             e.preventDefault();
+            const code = document.getElementById('reg-teacher-code').value.trim();
+            if (code !== 'SPENTWO2026') {
+                alert('Kode Verifikasi Guru salah! Silakan masukkan SPENTWO2026');
+                return;
+            }
             currentUser = {
                 name: document.getElementById('reg-teacher-name').value,
                 role: 'superadmin',
@@ -1008,14 +1043,14 @@
             if (role === 'superadmin') {
                 container.innerHTML = `
                     <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Rekap & Sesi Absensi</button>
-                    <button onclick="openTambahBeritaModal()" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> ➕ Tambah Berita Baru</button>
+                    <button onclick="switchAppTab('berita')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> Kelola & Tambah Berita</button>
                     <button onclick="switchAppTab('home')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-chalkboard-user text-gold-400"></i> Penilaian Tugas</button>
                     <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
                 `;
             } else if (role === 'pengurus') {
                 container.innerHTML = `
                     <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Absensi Digital</button>
-                    <button onclick="openTambahBeritaModal()" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> ➕ Tambah Berita Baru</button>
+                    <button onclick="switchAppTab('berita')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> Kelola & Tambah Berita</button>
                     <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
                 `;
             } else {
@@ -1059,13 +1094,16 @@
                                 <h3 class="font-bold text-base text-emerald-950">Pencatatan Kehadiran Anggota Latihan Rutin</h3>
                                 <p class="text-xs text-slate-500 mt-0.5">Rekap absensi disinkronkan langsung dengan lokasi GPS & Foto Selfie.</p>
                             </div>
-                            <div class="flex items-center gap-2">
+                            <div class="flex flex-wrap items-center gap-2">
                                 <button onclick="openAbsensiGPSModal()" class="px-4 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow transition flex items-center gap-1.5">
                                     <span>📍 Absen GPS & Selfie</span>
                                 </button>
                                 ${isSuperAdmin ? `
                                     <button onclick="openAddSessionModal()" class="px-4 py-2 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow transition">
                                         ➕ Buat Sesi Absen Baru (Guru)
+                                    </button>
+                                    <button onclick="openTambahBeritaModal()" class="px-4 py-2 bg-teal-700 hover:bg-teal-600 text-white font-bold text-xs rounded-xl shadow transition">
+                                        📰 + Tambah Berita
                                     </button>
                                 ` : ''}
                             </div>
@@ -1092,6 +1130,37 @@
                                     <tr class="border-b"><td class="p-3 font-bold text-slate-900">I Gede Putu Anggota</td><td class="p-3">8.5</td><td class="p-3">Lomba Debat</td><td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold text-[11px] block w-max">✅ Hadir (GPS Maps)</span></td></tr>
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                `;
+            } else if (tab === 'berita') {
+                document.getElementById('app-view-title').textContent = "Kelola & Publikasi Berita Digital";
+                content.innerHTML = `
+                    <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
+                            <div>
+                                <h3 class="font-bold text-base text-emerald-950">Manajemen Portal Berita Dwi Andhira Gistara</h3>
+                                <p class="text-xs text-slate-500 mt-0.5">Publikasikan prestasi dan liputan kegiatan ekstra ke halaman utama.</p>
+                            </div>
+                            <button onclick="openTambahBeritaModal()" class="px-5 py-2.5 bg-gold-400 hover:bg-gold-500 text-teal-950 font-extrabold text-xs rounded-xl shadow transition flex items-center gap-2">
+                                <i class="fa-solid fa-plus"></i> Tulis & Terbitkan Berita Baru
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${sampleNews.map((item, idx) => `
+                                <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col justify-between gap-3">
+                                    <div>
+                                        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded uppercase">${item.category}</span>
+                                        <h4 class="font-bold text-sm text-emerald-950 mt-2">${item.title}</h4>
+                                        <p class="text-xs text-slate-600 mt-1">${item.excerpt}</p>
+                                    </div>
+                                    <div class="flex justify-between items-center pt-2 border-t border-slate-200 text-[11px] text-slate-400">
+                                        <span>Oleh: ${item.author} (${item.date})</span>
+                                        <button onclick="deleteNewsItem(${idx})" class="text-red-600 hover:text-red-800 font-bold"><i class="fa-solid fa-trash mr-1"></i> Hapus</button>
+                                    </div>
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
                 `;
