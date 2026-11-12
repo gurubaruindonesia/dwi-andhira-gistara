@@ -252,7 +252,7 @@
             </div>
         </section>
 
-        <!-- PORTAL BERITA DIGITAL SECTION -->
+        <!-- PORTAL BERITA DIGITAL SECTION (DENGAN FOTO SAMPUL MEDIA BERITA) -->
         <section id="portal-berita" class="py-16 bg-mint-50/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
@@ -263,7 +263,7 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="news-grid-container">
-                    <!-- Dynamic News Cards -->
+                    <!-- Dynamic Media News Cards -->
                 </div>
             </div>
         </section>
@@ -340,8 +340,9 @@
                     </div>
                 </div>
 
+                <!-- User Profile Summary Card dengan Pasfoto -->
                 <div class="p-4 m-4 bg-emerald-900/90 rounded-2xl border border-emerald-800 flex items-center gap-3">
-                    <div id="app-sidebar-avatar" class="w-10 h-10 rounded-xl bg-gold-400 text-emerald-950 font-extrabold text-sm flex items-center justify-center shrink-0">
+                    <div id="app-sidebar-avatar" class="w-11 h-11 rounded-xl bg-gold-400 text-emerald-950 font-extrabold text-sm flex items-center justify-center shrink-0 overflow-hidden border border-gold-300">
                         US
                     </div>
                     <div class="overflow-hidden">
@@ -442,7 +443,7 @@
         </div>
     </div>
 
-    <!-- MODAL TAMBAH BERITA (PEMBINA & PENGURUS) -->
+    <!-- MODAL TAMBAH BERITA DENGAN UPLOAD FOTO MEDIA BERITA -->
     <div id="modal-tambah-berita" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeTambahBeritaModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -462,9 +463,18 @@
 
                 <form onsubmit="handleCreateNewsSubmit(event)" class="space-y-4 text-xs font-semibold">
                     <div>
+                        <label class="block text-slate-700 font-bold mb-1">Upload Foto Sampul Berita (Media Berita):</label>
+                        <input type="file" id="news-input-image" accept="image/*" onchange="previewNewsImage(event)" class="w-full p-2.5 rounded-xl border border-slate-300 bg-slate-50 text-xs">
+                        <div id="news-image-preview-box" class="hidden mt-2 relative w-full h-36 rounded-xl overflow-hidden border border-slate-200">
+                            <img id="news-image-preview" src="" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <div>
                         <label class="block text-slate-700 font-bold mb-1">Judul Berita / Liputan:</label>
                         <input type="text" id="news-input-title" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600" placeholder="Contoh: Juara 1 Lomba Public Speaking...">
                     </div>
+
                     <div class="grid grid-cols-2 gap-3">
                         <div>
                             <label class="block text-slate-700 font-bold mb-1">Kategori Berita:</label>
@@ -480,10 +490,12 @@
                             <input type="text" id="news-input-author" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600" placeholder="Nama Penulis...">
                         </div>
                     </div>
+
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Ringkasan / Isi Berita Singkat:</label>
                         <textarea id="news-input-excerpt" rows="3" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600" placeholder="Tuliskan berita lengkap liputan kegiatan di sini..."></textarea>
                     </div>
+
                     <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
                         📢 Terbitkan Berita Ke Web Publik
                     </button>
@@ -492,7 +504,7 @@
         </div>
     </div>
 
-    <!-- MODAL REGISTRASI DENGAN ALUR TERPISAH (SISWA VS PEMBINA/GURU) -->
+    <!-- MODAL REGISTRASI DENGAN UPLOAD PASFOTO UNTUK KTA (SISWA VS PEMBINA/GURU) -->
     <div id="modal-register" class="fixed inset-0 bg-teal-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-teal-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -509,8 +521,19 @@
                     </button>
                 </div>
 
-                <!-- FORM SISWA -->
+                <!-- FORM SISWA DENGAN UPLOAD PASFOTO -->
                 <form id="form-reg-student" onsubmit="handleFormRegistrationStudent(event)" class="space-y-4 text-xs font-semibold">
+                    <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                        <div class="w-16 h-20 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center overflow-hidden shrink-0">
+                            <img id="student-photo-preview" src="" class="hidden w-full h-full object-cover">
+                            <i id="student-photo-icon" class="fa-solid fa-user text-emerald-600 text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-slate-700 font-bold mb-1">Upload Pasfoto Siswa (Untuk KTA):</label>
+                            <input type="file" id="reg-student-photo" accept="image/*" onchange="previewPasfoto(event, 'student')" class="w-full text-[11px] text-slate-600">
+                        </div>
+                    </div>
+
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Nama Lengkap Siswa:</label>
                         <input type="text" id="reg-fullname" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Ketik nama lengkap...">
@@ -549,8 +572,19 @@
                     </button>
                 </form>
 
-                <!-- FORM PEMBINA / GURU -->
+                <!-- FORM PEMBINA / GURU DENGAN UPLOAD PASFOTO UNTUK KTA PEMBINA -->
                 <form id="form-reg-teacher" onsubmit="handleFormRegistrationTeacher(event)" class="hidden space-y-4 text-xs font-semibold">
+                    <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                        <div class="w-16 h-20 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center overflow-hidden shrink-0">
+                            <img id="teacher-photo-preview" src="" class="hidden w-full h-full object-cover">
+                            <i id="teacher-photo-icon" class="fa-solid fa-user-tie text-emerald-600 text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-slate-700 font-bold mb-1">Upload Pasfoto Pembina (Untuk KTA):</label>
+                            <input type="file" id="reg-teacher-photo" accept="image/*" onchange="previewPasfoto(event, 'teacher')" class="w-full text-[11px] text-slate-600">
+                        </div>
+                    </div>
+
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Nama Lengkap & Gelar Guru:</label>
                         <input type="text" id="reg-teacher-name" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Contoh: Muhammad Fajrin, S.Pd.">
@@ -570,7 +604,7 @@
                         <input type="text" id="reg-teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan SPENTWO2026">
                     </div>
                     <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
-                        Daftar Sebagai Pembina Utama Ekstra
+                        Daftar & Terbitkan KTA Digital Pembina
                     </button>
                 </form>
             </div>
@@ -591,7 +625,7 @@
                     </div>
                     <div>
                         <h3 class="font-display font-bold text-lg text-emerald-950">Masuk Akun</h3>
-                        <p class="text-slate-500 text-xs">Login Demo: <b>pembina</b> (pass: pembina123) atau <b>pengurus</b> (pass: pengurus123)</p>
+                        <p class="text-slate-500 text-xs">Demo: <b>pembina</b> (pass: pembina123) atau <b>pengurus</b> (pass: pengurus123)</p>
                     </div>
                 </div>
 
@@ -631,7 +665,11 @@
 
         let selfieStream = null;
         let capturedSelfieDataUrl = null;
-        let userLocationCoords = null;
+
+        // Data Gambar Terupload (Base64 Data URLs)
+        let uploadedNewsImageDataUrl = null;
+        let uploadedStudentPasfotoDataUrl = null;
+        let uploadedTeacherPasfotoDataUrl = null;
 
         let activeAttendanceSession = {
             title: "Latihan Debat & MC Rutin SPENTWO",
@@ -665,11 +703,71 @@
             ]
         };
 
+        // Sample Berita dengan Gambar Sampul Default Media Berita
         let sampleNews = [
-            { title: "Juara 1 Lomba Debat Bahasa Indonesia Denpasar", excerpt: "Tim Dwi Andhira Gistara SPENTWO kembali mengukir prestasi gemilang di ajang debat antar SMP.", category: "Prestasi", author: "Pembina Ekstra", date: "02 Nov 2026" },
-            { title: "Pelatihan Protokoler MC Formal untuk Pengurus", excerpt: "Kegiatan intensif simulasi pembawa acara formal guna mempersiapkan petugas upacara dan pensi.", category: "Kegiatan", author: "Pengurus Redaksi", date: "28 Okt 2026" },
-            { title: "Kiat Percaya Diri Bicara di Depan Umum", excerpt: "Artikel edukasi seputar tips mengendalikan demam panggung dan kontak mata dengan audiens.", category: "Edukasi", author: "Dwi Andhira Press", date: "15 Okt 2026" }
+            {
+                title: "Juara 1 Lomba Debat Bahasa Indonesia Denpasar",
+                excerpt: "Tim Dwi Andhira Gistara SPENTWO kembali mengukir prestasi gemilang di ajang debat antar SMP.",
+                category: "Prestasi",
+                author: "Pembina Ekstra",
+                date: "02 Nov 2026",
+                image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                title: "Pelatihan Protokoler MC Formal untuk Pengurus",
+                excerpt: "Kegiatan intensif simulasi pembawa acara formal guna mempersiapkan petugas upacara dan pensi.",
+                category: "Kegiatan",
+                author: "Pengurus Redaksi",
+                date: "28 Okt 2026",
+                image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                title: "Kiat Percaya Diri Bicara di Depan Umum",
+                excerpt: "Artikel edukasi seputar tips mengendalikan demam panggung dan kontak mata dengan audiens.",
+                category: "Edukasi",
+                author: "Dwi Andhira Press",
+                date: "15 Okt 2026",
+                image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80"
+            }
         ];
+
+        // Preview Image Upload Functions
+        window.previewNewsImage = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedNewsImageDataUrl = e.target.result;
+                const previewImg = document.getElementById('news-image-preview');
+                const previewBox = document.getElementById('news-image-preview-box');
+                if (previewImg) previewImg.src = uploadedNewsImageDataUrl;
+                if (previewBox) previewBox.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.previewPasfoto = function(event, roleType) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                if (roleType === 'student') {
+                    uploadedStudentPasfotoDataUrl = dataUrl;
+                    const img = document.getElementById('student-photo-preview');
+                    const icon = document.getElementById('student-photo-icon');
+                    if (img) { img.src = dataUrl; img.classList.remove('hidden'); }
+                    if (icon) icon.classList.add('hidden');
+                } else {
+                    uploadedTeacherPasfotoDataUrl = dataUrl;
+                    const img = document.getElementById('teacher-photo-preview');
+                    const icon = document.getElementById('teacher-photo-icon');
+                    if (img) { img.src = dataUrl; img.classList.remove('hidden'); }
+                    if (icon) icon.classList.add('hidden');
+                }
+            };
+            reader.readAsDataURL(file);
+        };
 
         window.toggleMobileSidebar = function() {
             const sidebar = document.getElementById('app-sidebar');
@@ -680,7 +778,12 @@
         window.closeLoginModal = function() { document.getElementById('modal-login').classList.add('hidden'); };
         window.openRegisterModal = function() { document.getElementById('modal-register').classList.remove('hidden'); };
         window.closeRegisterModal = function() { document.getElementById('modal-register').classList.add('hidden'); };
-        window.openTambahBeritaModal = function() { document.getElementById('modal-tambah-berita').classList.remove('hidden'); };
+        window.openTambahBeritaModal = function() {
+            uploadedNewsImageDataUrl = null;
+            const previewBox = document.getElementById('news-image-preview-box');
+            if (previewBox) previewBox.classList.add('hidden');
+            document.getElementById('modal-tambah-berita').classList.remove('hidden');
+        };
         window.closeTambahBeritaModal = function() { document.getElementById('modal-tambah-berita').classList.add('hidden'); };
 
         window.switchRegisterRoleTab = function(type) {
@@ -919,21 +1022,22 @@
             }
         };
 
-        // HANDLER TAMBAH BERITA & RENDER BERITA
+        // HANDLER TAMBAH BERITA DENGAN GAMBAR SAMPUL MEDIA BERITA
         window.handleCreateNewsSubmit = function(e) {
             e.preventDefault();
             const title = document.getElementById('news-input-title').value;
             const category = document.getElementById('news-input-category').value;
             const author = document.getElementById('news-input-author').value;
             const excerpt = document.getElementById('news-input-excerpt').value;
+            const finalImg = uploadedNewsImageDataUrl || "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80";
 
-            sampleNews.unshift({ title, excerpt, category, author, date: "12 Nov 2026" });
+            sampleNews.unshift({ title, excerpt, category, author, date: "12 Nov 2026", image: finalImg });
             renderNewsGrid();
             closeTambahBeritaModal();
             if (currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'pengurus')) {
                 window.switchAppTab('berita');
             }
-            alert("📢 Berita baru berhasil terbit di Halaman Berita Publik & Dashboard!");
+            alert("📢 Berita & foto liputan berhasil diterbitkan ke Halaman Berita Publik!");
         };
 
         window.deleteNewsItem = function(index) {
@@ -948,12 +1052,19 @@
             const newsGrid = document.getElementById('news-grid-container');
             if (newsGrid) {
                 newsGrid.innerHTML = sampleNews.map(item => `
-                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition">
-                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-md uppercase">${item.category}</span>
-                        <h3 class="font-bold text-base text-emerald-950 mt-3">${item.title}</h3>
-                        <p class="text-xs text-slate-600 mt-2 line-clamp-3">${item.excerpt}</p>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-400">
-                            <span><i class="fa-solid fa-user-pen mr-1"></i> ${item.author}</span>
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden flex flex-col justify-between">
+                        <div>
+                            <div class="h-44 w-full bg-slate-200 overflow-hidden relative">
+                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                <span class="absolute top-3 left-3 px-2.5 py-1 bg-emerald-950/90 text-gold-300 text-[10px] font-bold rounded-lg uppercase shadow">${item.category}</span>
+                            </div>
+                            <div class="p-6 pb-2">
+                                <h3 class="font-bold text-base text-emerald-950 leading-snug">${item.title}</h3>
+                                <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">${item.excerpt}</p>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 mt-2 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-400">
+                            <span><i class="fa-solid fa-user-pen mr-1 text-emerald-600"></i> ${item.author}</span>
                             <span>${item.date}</span>
                         </div>
                     </div>
@@ -967,11 +1078,11 @@
             const p = document.getElementById('login-password').value.trim();
 
             if (u === 'pembina' && p === 'pembina123') {
-                currentUser = { name: 'I Made Pembina, S.Pd.', role: 'superadmin', roleName: 'Guru Pembina', avatar: 'IMP', nisn: '19850412', class: 'Guru SPENTWO', spec: 'Pembina Utama' };
+                currentUser = { name: 'I Made Pembina, S.Pd.', role: 'superadmin', roleName: 'Guru Pembina', avatar: 'IMP', photo: null, nisn: '19850412', class: 'Guru SPENTWO', spec: 'Pembina Utama' };
             } else if (u === 'pengurus' && p === 'pengurus123') {
-                currentUser = { name: 'Kadek Ary Santi', role: 'pengurus', roleName: 'Pengurus Ekstra', avatar: 'KAS', nisn: '0098123456', class: '8.1', spec: 'MC & Operasional' };
+                currentUser = { name: 'Kadek Ary Santi', role: 'pengurus', roleName: 'Pengurus Ekstra', avatar: 'KAS', photo: null, nisn: '0098123456', class: '8.1', spec: 'MC & Operasional' };
             } else {
-                currentUser = { name: u, role: 'anggota', roleName: 'Anggota Siswa', avatar: u.substring(0,2).toUpperCase(), nisn: '0112233445', class: '7.1', spec: 'Public Speaking' };
+                currentUser = { name: u, role: 'anggota', roleName: 'Anggota Siswa', avatar: u.substring(0,2).toUpperCase(), photo: null, nisn: '0112233445', class: '7.1', spec: 'Public Speaking' };
             }
 
             closeLoginModal();
@@ -980,11 +1091,13 @@
 
         window.handleFormRegistrationStudent = function(e) {
             e.preventDefault();
+            const fullname = document.getElementById('reg-fullname').value;
             currentUser = {
-                name: document.getElementById('reg-fullname').value,
+                name: fullname,
                 role: 'anggota',
                 roleName: 'Anggota Siswa',
-                avatar: document.getElementById('reg-fullname').value.substring(0, 2).toUpperCase(),
+                avatar: fullname.substring(0, 2).toUpperCase(),
+                photo: uploadedStudentPasfotoDataUrl,
                 nisn: document.getElementById('reg-nisn').value,
                 class: document.getElementById('reg-class').value,
                 spec: document.getElementById('reg-spec').value
@@ -1000,11 +1113,13 @@
                 alert('Kode Verifikasi Guru salah! Silakan masukkan SPENTWO2026');
                 return;
             }
+            const teacherName = document.getElementById('reg-teacher-name').value;
             currentUser = {
-                name: document.getElementById('reg-teacher-name').value,
+                name: teacherName,
                 role: 'superadmin',
                 roleName: 'Guru Pembina',
-                avatar: document.getElementById('reg-teacher-name').value.substring(0, 2).toUpperCase(),
+                avatar: teacherName.substring(0, 2).toUpperCase(),
+                photo: uploadedTeacherPasfotoDataUrl,
                 nisn: document.getElementById('reg-teacher-nip').value,
                 class: 'Guru SPENTWO',
                 spec: document.getElementById('reg-teacher-subject').value
@@ -1029,7 +1144,13 @@
 
                 document.getElementById('app-sidebar-name').textContent = currentUser.name;
                 document.getElementById('app-sidebar-role').textContent = currentUser.roleName;
-                document.getElementById('app-sidebar-avatar').textContent = currentUser.avatar;
+                
+                const avatarEl = document.getElementById('app-sidebar-avatar');
+                if (currentUser.photo) {
+                    avatarEl.innerHTML = `<img src="${currentUser.photo}" class="w-full h-full object-cover">`;
+                } else {
+                    avatarEl.textContent = currentUser.avatar;
+                }
 
                 renderAppSidebarMenu();
                 window.switchAppTab(currentUser.role === 'superadmin' || currentUser.role === 'pengurus' ? 'absensi' : 'kta');
@@ -1044,6 +1165,7 @@
                 container.innerHTML = `
                     <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Rekap & Sesi Absensi</button>
                     <button onclick="switchAppTab('berita')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> Kelola & Tambah Berita</button>
+                    <button onclick="switchAppTab('kta')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-id-card text-gold-400"></i> KTA Digital Pembina</button>
                     <button onclick="switchAppTab('home')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-chalkboard-user text-gold-400"></i> Penilaian Tugas</button>
                     <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
                 `;
@@ -1051,6 +1173,7 @@
                 container.innerHTML = `
                     <button onclick="switchAppTab('absensi')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-clipboard-user text-gold-400"></i> Absensi Digital</button>
                     <button onclick="switchAppTab('berita')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-newspaper text-gold-400"></i> Kelola & Tambah Berita</button>
+                    <button onclick="switchAppTab('kta')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-id-card text-gold-400"></i> KTA Digital Saya</button>
                     <button onclick="switchAppTab('chat')" class="w-full text-left px-3 py-2.5 rounded-xl hover:bg-emerald-900 text-emerald-100 font-bold flex items-center gap-2.5"><i class="fa-solid fa-comments text-gold-400"></i> Chat Komunitas</button>
                 `;
             } else {
@@ -1069,18 +1192,37 @@
             const content = document.getElementById('app-tab-content');
 
             if (tab === 'kta') {
-                document.getElementById('app-view-title').textContent = "Kartu Tanda Anggota (KTA) Digital";
+                const isTeacher = currentUser.role === 'superadmin';
+                document.getElementById('app-view-title').textContent = isTeacher ? "Kartu Tanda Anggota (KTA) Digital Pembina" : "Kartu Tanda Anggota (KTA) Digital Siswa";
+                const photoHtml = currentUser.photo 
+                    ? `<img src="${currentUser.photo}" class="w-full h-full object-cover">`
+                    : `<div class="w-full h-full bg-emerald-800 flex items-center justify-center text-gold-400 font-extrabold text-xl">${currentUser.avatar}</div>`;
+
                 content.innerHTML = `
                     <div class="max-w-md mx-auto bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-lg">
                         <div class="kta-card text-white p-6 rounded-2xl shadow-xl relative overflow-hidden border border-emerald-500">
-                            <h3 class="font-display font-extrabold text-lg text-white">Dwi Andhira Gistara</h3>
-                            <p class="text-[10px] text-emerald-300 font-bold uppercase mb-4">Public Speaking • SMPN 2 Denpasar</p>
-                            <h4 class="font-bold text-sm text-white">${currentUser.name}</h4>
-                            <p class="text-xs text-emerald-200">NISN: ${currentUser.nisn}</p>
-                            <p class="text-xs text-emerald-200">Kelas: ${currentUser.class}</p>
-                            <p class="text-xs text-emerald-200">Spesifikasi: ${currentUser.spec}</p>
+                            <div class="flex justify-between items-start border-b border-emerald-600/50 pb-3 mb-4">
+                                <div>
+                                    <h3 class="font-display font-extrabold text-base text-white">Dwi Andhira Gistara</h3>
+                                    <p class="text-[9px] text-emerald-300 font-bold uppercase tracking-wider">Public Speaking • SMPN 2 Denpasar</p>
+                                </div>
+                                <span class="bg-gold-400 text-teal-950 font-extrabold text-[9px] px-2 py-0.5 rounded uppercase">${isTeacher ? 'PEMBINA' : 'ANGGOTA'}</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-20 h-24 rounded-xl border-2 border-gold-400 overflow-hidden shrink-0 shadow-md">
+                                    ${photoHtml}
+                                </div>
+                                <div class="space-y-1">
+                                    <h4 class="font-bold text-sm text-white leading-tight">${currentUser.name}</h4>
+                                    <p class="text-[11px] text-emerald-200">${isTeacher ? 'NIP/NPTT' : 'NISN'}: <b>${currentUser.nisn}</b></p>
+                                    <p class="text-[11px] text-emerald-200">${isTeacher ? 'Status' : 'Kelas'}: <b>${currentUser.class}</b></p>
+                                    <p class="text-[11px] text-gold-300">${isTeacher ? 'Jabatan' : 'Spesifikasi'}: <b>${currentUser.spec}</b></p>
+                                </div>
+                            </div>
                         </div>
-                        <button onclick="window.print()" class="w-full mt-4 py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition">Cetak / Unduh KTA Digital</button>
+                        <button onclick="window.print()" class="w-full mt-4 py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-print"></i> Cetak / Unduh KTA Digital
+                        </button>
                     </div>
                 `;
             } else if (tab === 'absensi') {
@@ -1100,7 +1242,7 @@
                                 </button>
                                 ${isSuperAdmin ? `
                                     <button onclick="openAddSessionModal()" class="px-4 py-2 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow transition">
-                                        ➕ Buat Sesi Absen Baru (Guru)
+                                        ➕ Buat Sesi Absen Baru
                                     </button>
                                     <button onclick="openTambahBeritaModal()" class="px-4 py-2 bg-teal-700 hover:bg-teal-600 text-white font-bold text-xs rounded-xl shadow transition">
                                         📰 + Tambah Berita
@@ -1140,7 +1282,7 @@
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
                             <div>
                                 <h3 class="font-bold text-base text-emerald-950">Manajemen Portal Berita Dwi Andhira Gistara</h3>
-                                <p class="text-xs text-slate-500 mt-0.5">Publikasikan prestasi dan liputan kegiatan ekstra ke halaman utama.</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Publikasikan prestasi dan liputan kegiatan ekstra lengkap dengan foto ke halaman utama.</p>
                             </div>
                             <button onclick="openTambahBeritaModal()" class="px-5 py-2.5 bg-gold-400 hover:bg-gold-500 text-teal-950 font-extrabold text-xs rounded-xl shadow transition flex items-center gap-2">
                                 <i class="fa-solid fa-plus"></i> Tulis & Terbitkan Berita Baru
@@ -1149,13 +1291,18 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             ${sampleNews.map((item, idx) => `
-                                <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col justify-between gap-3">
+                                <div class="rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden flex flex-col justify-between">
                                     <div>
-                                        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded uppercase">${item.category}</span>
-                                        <h4 class="font-bold text-sm text-emerald-950 mt-2">${item.title}</h4>
-                                        <p class="text-xs text-slate-600 mt-1">${item.excerpt}</p>
+                                        <div class="h-36 w-full bg-slate-200 relative">
+                                            <img src="${item.image}" class="w-full h-full object-cover">
+                                            <span class="absolute top-2 left-2 px-2 py-0.5 bg-emerald-950/90 text-gold-300 text-[10px] font-bold rounded uppercase">${item.category}</span>
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-bold text-sm text-emerald-950">${item.title}</h4>
+                                            <p class="text-xs text-slate-600 mt-1 line-clamp-2">${item.excerpt}</p>
+                                        </div>
                                     </div>
-                                    <div class="flex justify-between items-center pt-2 border-t border-slate-200 text-[11px] text-slate-400">
+                                    <div class="px-4 py-3 flex justify-between items-center border-t border-slate-200 text-[11px] text-slate-400">
                                         <span>Oleh: ${item.author} (${item.date})</span>
                                         <button onclick="deleteNewsItem(${idx})" class="text-red-600 hover:text-red-800 font-bold"><i class="fa-solid fa-trash mr-1"></i> Hapus</button>
                                     </div>
