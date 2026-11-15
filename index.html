@@ -74,7 +74,7 @@
 
     <!-- PUBLIC VIEW WRAPPER -->
     <div id="public-website-view">
-        <!-- TOP ANNOUNCEMENT BAR (DAPAT DIEDIT SUPER ADMIN) -->
+        <!-- TOP ANNOUNCEMENT BAR -->
         <div class="bg-teal-950 text-teal-100 text-xs py-2 px-4 font-medium border-b border-teal-800">
             <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
                 <div class="flex items-center gap-2">
@@ -91,7 +91,7 @@
         <nav class="sticky top-0 z-40 bg-teal-800/95 backdrop-blur-md text-white border-b border-teal-700 shadow-md">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-20">
-                    <a href="#" class="flex items-center gap-3 group">
+                    <a href="javascript:void(0)" onclick="closeFullArticlePage()" class="flex items-center gap-3 group">
                         <div class="w-12 h-12 rounded-2xl bg-teal-950 p-1.5 flex items-center justify-center shadow-lg shadow-teal-950/50 border border-teal-500/50 group-hover:scale-105 transition-transform">
                             <svg viewBox="0 0 400 400" class="w-full h-full text-teal-900" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="400" height="400" fill="#115e59" rx="30"/>
@@ -121,10 +121,10 @@
                     </a>
 
                     <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-teal-100">
-                        <a href="#hero" class="hover:text-gold-400 transition">Beranda</a>
-                        <a href="#ai-lab" class="hover:text-gold-400 transition">AI Practice Lab</a>
-                        <a href="#portal-berita" class="hover:text-gold-400 transition">Berita</a>
-                        <a href="#spesifikasi" class="hover:text-gold-400 transition">Spesifikasi</a>
+                        <a href="#hero" onclick="closeFullArticlePage()" class="hover:text-gold-400 transition">Beranda</a>
+                        <a href="#ai-lab" onclick="closeFullArticlePage()" class="hover:text-gold-400 transition">AI Practice Lab</a>
+                        <a href="#portal-berita" onclick="closeFullArticlePage()" class="hover:text-gold-400 transition">Berita</a>
+                        <a href="#spesifikasi" onclick="closeFullArticlePage()" class="hover:text-gold-400 transition">Spesifikasi</a>
                     </div>
 
                     <div class="flex items-center gap-3">
@@ -141,179 +141,287 @@
             </div>
         </nav>
 
-        <!-- HERO SECTION (DAPAT DIEDIT SUPER ADMIN) -->
-        <section id="hero" class="relative bg-gradient-to-b from-teal-800 via-teal-700 to-teal-900 text-white py-20 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    <div class="lg:col-span-7 space-y-6">
-                        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-500 text-gold-300 text-xs font-bold uppercase tracking-wider">
-                            <i class="fa-solid fa-award"></i> <span id="site-hero-badge">Ekstrakurikuler Unggulan SPENTWO Denpasar</span>
-                        </span>
-                        <h1 id="site-hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-tight">
-                            Wujudkan Generasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-yellow-200 to-gold-400">Komunikator Handal</span> Berkarakter.
-                        </h1>
-                        <p id="site-hero-description" class="text-slate-100 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
-                            Selamat datang di portal resmi ekstrakurikuler <b>Dwi Andhira Gistara</b> SMP Negeri 2 Denpasar. Wadah pengembangan bakat Master of Ceremony, Debat, Presentasi, dan Storytelling.
-                        </p>
-                        <div class="flex flex-wrap gap-4 pt-2">
-                            <button onclick="scrollToAILab()" class="px-6 py-3.5 bg-gradient-to-r from-gold-400 to-gold-500 text-teal-950 font-extrabold text-sm rounded-xl shadow-lg flex items-center gap-2 hover:scale-105 transition-transform">
-                                <i class="fa-solid fa-robot"></i> Coba AI Practice Lab
-                            </button>
-                            <button onclick="openRegisterModal()" class="px-6 py-3.5 bg-teal-600/90 border border-teal-400 text-white font-bold text-sm rounded-xl shadow-lg flex items-center gap-2">
-                                <i class="fa-solid fa-user-plus"></i> Daftar Akun Baru
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI PRACTICE LAB SECTION -->
-        <section id="ai-lab" class="py-16 bg-white border-t border-b border-teal-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-teal-800 text-xs font-extrabold uppercase tracking-widest bg-teal-100 px-3 py-1 rounded-full">AI Companion Widget</span>
-                    <h2 class="text-3xl font-bold font-display text-teal-950 mt-3">AI Practice Lab Mandiri</h2>
-                    <p class="text-slate-600 text-sm mt-2">Pilih spesifikasi di bawah untuk mencoba simulasi naskah dan latihan mandiri secara instant.</p>
-                </div>
-
-                <div class="bg-gradient-to-br from-teal-800 to-teal-950 text-white p-6 sm:p-10 rounded-3xl shadow-xl border border-teal-700">
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8" id="ai-spec-tabs">
-                        <button onclick="selectAISpec('mc')" id="tab-mc" class="p-3.5 rounded-2xl bg-gold-400 text-teal-950 font-bold text-xs flex items-center justify-center gap-2 transition">
-                            <i class="fa-solid fa-microphone font-bold"></i> Master of Ceremony
+        <!-- HALAMAN BACA BERITA PENUH ALA KOMPAS.COM / TEMPO.CO (MEMILIKI LINK URL SENDIRI ?berita=...) -->
+        <section id="full-article-page-view" class="hidden py-10 bg-white border-b border-slate-200 min-h-screen">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Breadcrumb & Tombol Kembali -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-6 border-b border-slate-200 text-xs">
+                    <div class="flex items-center gap-2 text-slate-500 font-medium">
+                        <button onclick="closeFullArticlePage()" class="text-emerald-800 hover:underline font-bold">
+                            <i class="fa-solid fa-arrow-left mr-1"></i> Beranda Utama
                         </button>
-                        <button onclick="selectAISpec('debat')" id="tab-debat" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
-                            <i class="fa-solid fa-scale-balanced"></i> Lomba Debat
-                        </button>
-                        <button onclick="selectAISpec('presentasi')" id="tab-presentasi" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
-                            <i class="fa-solid fa-display"></i> Presentasi Slide
-                        </button>
-                        <button onclick="selectAISpec('storytelling')" id="tab-storytelling" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
-                            <i class="fa-solid fa-book-open"></i> Storytelling
-                        </button>
+                        <span>/</span>
+                        <span class="text-emerald-700 font-bold uppercase" id="article-page-breadcrumb-cat">Berita</span>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                        <div class="lg:col-span-7 space-y-4">
-                            <div class="flex justify-between items-center">
-                                <h4 id="ai-title" class="font-bold text-gold-300 text-base">Skenario Latihan Master of Ceremony (MC)</h4>
-                                <button onclick="generateRandomPrompt()" class="text-xs bg-emerald-800 hover:bg-emerald-700 text-emerald-100 font-semibold px-3 py-1.5 rounded-lg border border-emerald-700 transition">
-                                    <i class="fa-solid fa-arrows-rotate mr-1"></i> Acak Topik Baru
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button onclick="copyArticleDirectLink()" class="px-3.5 py-1.5 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-sm transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-link"></i> <span id="copy-link-btn-label">Salin Link Berita</span>
+                        </button>
+                        <button onclick="shareArticleToWhatsApp()" class="px-3.5 py-1.5 bg-green-600 hover:bg-green-500 text-white font-bold rounded-xl shadow-sm transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> <span>Share WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kolom Utama Artikel (Kiri) & Berita Lainnya (Kanan) ala Portal Berita Nasional -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    <div class="lg:col-span-8 space-y-6">
+                        <div>
+                            <span id="article-page-category" class="inline-block px-3 py-1 bg-emerald-100 text-emerald-900 font-extrabold text-[11px] rounded-lg uppercase tracking-wider mb-3">Kategori</span>
+                            <h1 id="article-page-title" class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 leading-tight">Judul Artikel Berita</h1>
+                            
+                            <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 mt-4 pb-4 border-b border-slate-200">
+                                <span><i class="fa-solid fa-pen-nib text-emerald-700 mr-1"></i> Redaksi: <b id="article-page-author" class="text-slate-800">Penulis</b></span>
+                                <span><i class="fa-regular fa-clock text-emerald-700 mr-1"></i> Tayang: <span id="article-page-date">Tanggal</span></span>
+                                <span class="text-emerald-700 font-semibold"><i class="fa-solid fa-newspaper mr-1"></i> Dwi Andhira Gistara News</span>
+                            </div>
+
+                            <!-- Kotak Tampilan Link URL yang Bisa Di-copy Langsung -->
+                            <div class="mt-4 p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between gap-2 text-[11px]">
+                                <div class="truncate text-slate-600 font-mono">
+                                    <i class="fa-solid fa-globe text-emerald-700 mr-1"></i>
+                                    <span id="article-page-url-display">https://gurubaruindonesia.github.io/dwi-andhira-gistara/</span>
+                                </div>
+                                <button onclick="copyArticleDirectLink()" class="shrink-0 px-2.5 py-1 bg-white hover:bg-emerald-50 text-emerald-800 font-bold border border-slate-300 rounded-lg transition">
+                                    Copy URL
                                 </button>
                             </div>
-                            <div id="ai-prompt-box" class="p-4 bg-emerald-900/80 rounded-2xl border border-emerald-700 text-xs text-emerald-100 leading-relaxed font-mono">
-                                "Selamat pagi bapak ibu guru dan rekan-rekan siswa SMP Negeri 2 Denpasar. Selamat datang di acara Pembukaan Pensi Dwi Andhira Gistara 2026..."
-                            </div>
+                        </div>
 
-                            <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
-                                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-                                    <label class="text-xs font-bold text-gold-300 flex items-center gap-2">
-                                        <i class="fa-solid fa-stopwatch text-gold-400"></i> Pengatur Durasi Latihan Bicara:
-                                    </label>
-                                    <div class="flex items-center gap-2">
-                                        <button type="button" onclick="setTimerDuration(60)" id="timer-btn-60" class="px-2.5 py-1 bg-gold-400 text-teal-950 rounded-lg text-[11px] font-bold border border-gold-300 transition">1 Menit</button>
-                                        <button type="button" onclick="setTimerDuration(180)" id="timer-btn-180" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition">3 Menit</button>
-                                        <button type="button" onclick="setTimerDuration(300)" id="timer-btn-300" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition">5 Menit</button>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <div class="flex-1 bg-emerald-900/80 p-2.5 rounded-xl border border-emerald-700 flex justify-between items-center">
-                                        <span class="text-[11px] text-emerald-300 font-bold">Waktu Tersisa:</span>
-                                        <span id="ai-timer-display" class="font-mono font-extrabold text-base text-gold-400">01:00</span>
-                                    </div>
-                                    <button id="btn-start-timer" onclick="toggleTimer()" class="px-4 py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow border border-emerald-500 transition flex items-center gap-1.5">
-                                        <i class="fa-solid fa-play" id="timer-icon"></i> <span id="btn-start-label">Mulai Latihan</span>
-                                    </button>
-                                </div>
-                            </div>
+                        <figure class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shadow-sm">
+                            <img id="article-page-image" src="" alt="Foto Utama Berita" class="w-full max-h-[440px] object-cover">
+                            <figcaption id="article-page-caption" class="px-4 py-2.5 bg-slate-50 text-[11px] text-slate-500 italic border-t border-slate-200">
+                                Dokumentasi Kegiatan Ekstrakurikuler Public Speaking Dwi Andhira Gistara - SMP Negeri 2 Denpasar.
+                            </figcaption>
+                        </figure>
 
-                            <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
-                                <label class="block text-xs font-bold text-gold-300">
-                                    <i class="fa-solid fa-microphone-lines text-gold-400 mr-1"></i> Rekam Suara Langsung (Android / iPhone / Laptop):
-                                </label>
-                                <div class="flex flex-wrap items-center gap-3">
-                                    <button id="btn-record-voice" onclick="toggleVoiceRecording()" class="px-4 py-2 bg-red-700 hover:bg-red-600 text-white font-bold text-xs rounded-xl border border-red-500 shadow transition flex items-center gap-2">
-                                        <i class="fa-solid fa-circle-dot text-white animate-pulse"></i> <span id="record-btn-text">Mulai Rekam Suara</span>
-                                    </button>
-                                    <span id="record-timer" class="text-xs font-mono text-emerald-300 font-bold hidden">00:00</span>
-                                </div>
-                                <div id="audio-playback-container" class="hidden space-y-2 pt-2 border-t border-emerald-800">
-                                    <label class="block text-[11px] text-gold-300 font-bold"><i class="fa-solid fa-circle-play mr-1"></i> Pemutar Rekaman Suara Kamu:</label>
-                                    <audio id="audio-player" controls preload="auto" class="w-full h-10 rounded-xl bg-emerald-900 border border-emerald-700 accent-gold-400"></audio>
-                                </div>
-                            </div>
+                        <article id="article-page-body" class="text-base text-slate-800 leading-relaxed space-y-5 font-normal">
+                            <!-- Paragraf lengkap artikel -->
+                        </article>
 
-                            <div>
-                                <label class="block text-xs font-bold text-emerald-200 mb-1">Ketikkan naskah latihan atau tempel teks pidato:</label>
-                                <textarea id="ai-user-input" rows="3" class="w-full p-3 rounded-xl bg-emerald-950/90 border border-emerald-700 text-xs text-white placeholder-emerald-600 focus:outline-none focus:border-gold-400" placeholder="Ketik atau tempel kalimat latihanmu di sini..."></textarea>
+                        <!-- Bagian Bagikan di Bawah Artikel -->
+                        <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                            <span class="text-xs font-bold text-emerald-950"><i class="fa-solid fa-share-nodes text-emerald-700 mr-1.5"></i> Bagikan liputan berita ini ke teman & grup kelas:</span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="copyArticleDirectLink()" class="px-3.5 py-2 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition">
+                                    <i class="fa-solid fa-copy mr-1"></i> Salin Link Berita
+                                </button>
+                                <button onclick="shareArticleToWhatsApp()" class="px-3.5 py-2 bg-green-600 hover:bg-green-500 text-white font-bold text-xs rounded-xl transition">
+                                    <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
+                                </button>
                             </div>
-                            <button onclick="analyzeAIFeedback()" class="w-full py-3 bg-gradient-to-r from-gold-400 to-gold-500 text-emerald-950 font-extrabold text-xs rounded-xl shadow-md hover:from-gold-300 hover:to-gold-400 transition flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Evaluasi AI Instant Feedback</span>
+                        </div>
+
+                        <!-- Kolom Komentar Pembaca -->
+                        <div class="pt-6 border-t border-slate-200 space-y-4">
+                            <h3 class="font-bold text-base text-emerald-950"><i class="fa-regular fa-comments text-emerald-700 mr-1.5"></i> Kolom Komentar Pembaca</h3>
+                            <form onsubmit="handleAddNewsComment(event)" class="flex flex-col sm:flex-row gap-2">
+                                <input type="text" id="news-comment-name" required placeholder="Nama Anda / Kelas..." class="sm:w-1/3 p-3 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-emerald-600">
+                                <input type="text" id="news-comment-text" required placeholder="Tulis komentar atau apresiasi Anda..." class="flex-1 p-3 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-emerald-600">
+                                <button type="submit" class="px-5 py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition">Kirim</button>
+                            </form>
+                            <div id="read-news-comments-list" class="space-y-2.5 text-xs">
+                                <!-- Daftar komentar -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Berita Lainnya / Terpopuler -->
+                    <aside class="lg:col-span-4 space-y-6">
+                        <div class="bg-slate-50 p-5 rounded-3xl border border-slate-200 sticky top-24">
+                            <h4 class="font-display font-extrabold text-base text-emerald-950 pb-3 mb-4 border-b-2 border-emerald-700 flex items-center justify-between">
+                                <span>Berita Terkini Lainnya</span>
+                                <span class="text-[10px] font-sans uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">SPENTWO</span>
+                            </h4>
+                            <div id="sidebar-related-news-list" class="space-y-4">
+                                <!-- Daftar berita lainnya -->
+                            </div>
+                            <button onclick="closeFullArticlePage()" class="w-full mt-6 py-2.5 bg-white hover:bg-emerald-50 text-emerald-800 font-bold text-xs rounded-xl border border-emerald-300 transition">
+                                ← Kembali ke Halaman Depan
+                            </button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTEN UTAMA BERANDA (DISEMBUNYIKAN SAAT MEMBUKA LINK HALAMAN BERITA PENUH) -->
+        <div id="landing-main-sections">
+            <!-- HERO SECTION -->
+            <section id="hero" class="relative bg-gradient-to-b from-teal-800 via-teal-700 to-teal-900 text-white py-20 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6">
+                            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/80 border border-teal-500 text-gold-300 text-xs font-bold uppercase tracking-wider">
+                                <i class="fa-solid fa-award"></i> <span id="site-hero-badge">Ekstrakurikuler Unggulan SPENTWO Denpasar</span>
+                            </span>
+                            <h1 id="site-hero-title" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display leading-tight">
+                                Wujudkan Generasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-yellow-200 to-gold-400">Komunikator Handal</span> Berkarakter.
+                            </h1>
+                            <p id="site-hero-description" class="text-slate-100 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+                                Selamat datang di portal resmi ekstrakurikuler <b>Dwi Andhira Gistara</b> SMP Negeri 2 Denpasar. Wadah pengembangan bakat Master of Ceremony, Debat, Presentasi, dan Storytelling.
+                            </p>
+                            <div class="flex flex-wrap gap-4 pt-2">
+                                <button onclick="scrollToAILab()" class="px-6 py-3.5 bg-gradient-to-r from-gold-400 to-gold-500 text-teal-950 font-extrabold text-sm rounded-xl shadow-lg flex items-center gap-2 hover:scale-105 transition-transform">
+                                    <i class="fa-solid fa-robot"></i> Coba AI Practice Lab
+                                </button>
+                                <button onclick="openRegisterModal()" class="px-6 py-3.5 bg-teal-600/90 border border-teal-400 text-white font-bold text-sm rounded-xl shadow-lg flex items-center gap-2">
+                                    <i class="fa-solid fa-user-plus"></i> Daftar Akun Baru
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI PRACTICE LAB SECTION -->
+            <section id="ai-lab" class="py-16 bg-white border-t border-b border-teal-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-teal-800 text-xs font-extrabold uppercase tracking-widest bg-teal-100 px-3 py-1 rounded-full">AI Companion Widget</span>
+                        <h2 class="text-3xl font-bold font-display text-teal-950 mt-3">AI Practice Lab Mandiri</h2>
+                        <p class="text-slate-600 text-sm mt-2">Pilih spesifikasi di bawah untuk mencoba simulasi naskah dan latihan mandiri secara instant.</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-teal-800 to-teal-950 text-white p-6 sm:p-10 rounded-3xl shadow-xl border border-teal-700">
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8" id="ai-spec-tabs">
+                            <button onclick="selectAISpec('mc')" id="tab-mc" class="p-3.5 rounded-2xl bg-gold-400 text-teal-950 font-bold text-xs flex items-center justify-center gap-2 transition">
+                                <i class="fa-solid fa-microphone font-bold"></i> Master of Ceremony
+                            </button>
+                            <button onclick="selectAISpec('debat')" id="tab-debat" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
+                                <i class="fa-solid fa-scale-balanced"></i> Lomba Debat
+                            </button>
+                            <button onclick="selectAISpec('presentasi')" id="tab-presentasi" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
+                                <i class="fa-solid fa-display"></i> Presentasi Slide
+                            </button>
+                            <button onclick="selectAISpec('storytelling')" id="tab-storytelling" class="p-3.5 rounded-2xl bg-teal-900 text-teal-200 font-bold text-xs flex items-center justify-center gap-2 hover:bg-teal-800 transition">
+                                <i class="fa-solid fa-book-open"></i> Storytelling
                             </button>
                         </div>
 
-                        <div class="lg:col-span-5 bg-emerald-900/60 p-5 rounded-2xl border border-emerald-700/80 flex flex-col justify-between">
-                            <div>
-                                <h5 class="font-bold text-xs uppercase tracking-wider text-gold-300 mb-3"><i class="fa-solid fa-chart-pie mr-1"></i> Analisis AI Feedback</h5>
-                                <div id="ai-feedback-result" class="space-y-3 text-xs text-emerald-100">
-                                    <p class="text-emerald-400 italic">Silakan klik "Evaluasi AI Instant Feedback" untuk melihat skor pembacaan dan analisis struktur naskahmu.</p>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                            <div class="lg:col-span-7 space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <h4 id="ai-title" class="font-bold text-gold-300 text-base">Skenario Latihan Master of Ceremony (MC)</h4>
+                                    <button onclick="generateRandomPrompt()" class="text-xs bg-emerald-800 hover:bg-emerald-700 text-emerald-100 font-semibold px-3 py-1.5 rounded-lg border border-emerald-700 transition">
+                                        <i class="fa-solid fa-arrows-rotate mr-1"></i> Acak Topik Baru
+                                    </button>
+                                </div>
+                                <div id="ai-prompt-box" class="p-4 bg-emerald-900/80 rounded-2xl border border-emerald-700 text-xs text-emerald-100 leading-relaxed font-mono">
+                                    "Selamat pagi bapak ibu guru dan rekan-rekan siswa SMP Negeri 2 Denpasar. Selamat datang di acara Pembukaan Pensi Dwi Andhira Gistara 2026..."
+                                </div>
+
+                                <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
+                                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                                        <label class="text-xs font-bold text-gold-300 flex items-center gap-2">
+                                            <i class="fa-solid fa-stopwatch text-gold-400"></i> Pengatur Durasi Latihan Bicara:
+                                        </label>
+                                        <div class="flex items-center gap-2">
+                                            <button type="button" onclick="setTimerDuration(60)" id="timer-btn-60" class="px-2.5 py-1 bg-gold-400 text-teal-950 rounded-lg text-[11px] font-bold border border-gold-300 transition">1 Menit</button>
+                                            <button type="button" onclick="setTimerDuration(180)" id="timer-btn-180" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition">3 Menit</button>
+                                            <button type="button" onclick="setTimerDuration(300)" id="timer-btn-300" class="px-2.5 py-1 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold border border-emerald-600 transition">5 Menit</button>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex-1 bg-emerald-900/80 p-2.5 rounded-xl border border-emerald-700 flex justify-between items-center">
+                                            <span class="text-[11px] text-emerald-300 font-bold">Waktu Tersisa:</span>
+                                            <span id="ai-timer-display" class="font-mono font-extrabold text-base text-gold-400">01:00</span>
+                                        </div>
+                                        <button id="btn-start-timer" onclick="toggleTimer()" class="px-4 py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl shadow border border-emerald-500 transition flex items-center gap-1.5">
+                                            <i class="fa-solid fa-play" id="timer-icon"></i> <span id="btn-start-label">Mulai Latihan</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 bg-emerald-950/90 rounded-2xl border border-emerald-700/80 space-y-3">
+                                    <label class="block text-xs font-bold text-gold-300">
+                                        <i class="fa-solid fa-microphone-lines text-gold-400 mr-1"></i> Rekam Suara Langsung (Android / iPhone / Laptop):
+                                    </label>
+                                    <div class="flex flex-wrap items-center gap-3">
+                                        <button id="btn-record-voice" onclick="toggleVoiceRecording()" class="px-4 py-2 bg-red-700 hover:bg-red-600 text-white font-bold text-xs rounded-xl border border-red-500 shadow transition flex items-center gap-2">
+                                            <i class="fa-solid fa-circle-dot text-white animate-pulse"></i> <span id="record-btn-text">Mulai Rekam Suara</span>
+                                        </button>
+                                        <span id="record-timer" class="text-xs font-mono text-emerald-300 font-bold hidden">00:00</span>
+                                    </div>
+                                    <div id="audio-playback-container" class="hidden space-y-2 pt-2 border-t border-emerald-800">
+                                        <label class="block text-[11px] text-gold-300 font-bold"><i class="fa-solid fa-circle-play mr-1"></i> Pemutar Rekaman Suara Kamu:</label>
+                                        <audio id="audio-player" controls preload="auto" class="w-full h-10 rounded-xl bg-emerald-900 border border-emerald-700 accent-gold-400"></audio>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-bold text-emerald-200 mb-1">Ketikkan naskah latihan atau tempel teks pidato:</label>
+                                    <textarea id="ai-user-input" rows="3" class="w-full p-3 rounded-xl bg-emerald-950/90 border border-emerald-700 text-xs text-white placeholder-emerald-600 focus:outline-none focus:border-gold-400" placeholder="Ketik atau tempel kalimat latihanmu di sini..."></textarea>
+                                </div>
+                                <button onclick="analyzeAIFeedback()" class="w-full py-3 bg-gradient-to-r from-gold-400 to-gold-500 text-emerald-950 font-extrabold text-xs rounded-xl shadow-md hover:from-gold-300 hover:to-gold-400 transition flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i> <span>Evaluasi AI Instant Feedback</span>
+                                </button>
+                            </div>
+
+                            <div class="lg:col-span-5 bg-emerald-900/60 p-5 rounded-2xl border border-emerald-700/80 flex flex-col justify-between">
+                                <div>
+                                    <h5 class="font-bold text-xs uppercase tracking-wider text-gold-300 mb-3"><i class="fa-solid fa-chart-pie mr-1"></i> Analisis AI Feedback</h5>
+                                    <div id="ai-feedback-result" class="space-y-3 text-xs text-emerald-100">
+                                        <p class="text-emerald-400 italic">Silakan klik "Evaluasi AI Instant Feedback" untuk melihat skor pembacaan dan analisis struktur naskahmu.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- PORTAL BERITA DIGITAL SECTION (KLIK & BACA ARTIKEL PENUH) -->
-        <section id="portal-berita" class="py-16 bg-mint-50/50">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-                    <div>
-                        <span class="text-emerald-800 text-xs font-extrabold uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">Portal Berita Digital</span>
-                        <h2 class="text-3xl font-bold font-display text-emerald-950 mt-3">Dwi Andhira Gistara News</h2>
-                        <p class="text-slate-600 text-sm mt-1">Klik salah satu berita di bawah untuk membaca liputan kegiatan & prestasi secara lengkap.</p>
+            <!-- PORTAL BERITA DIGITAL SECTION (DENGAN LINK URL UNIK PER ARTIKEL) -->
+            <section id="portal-berita" class="py-16 bg-mint-50/50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+                        <div>
+                            <span class="text-emerald-800 text-xs font-extrabold uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">Portal Berita Digital</span>
+                            <h2 class="text-3xl font-bold font-display text-emerald-950 mt-3">Dwi Andhira Gistara News</h2>
+                            <p class="text-slate-600 text-sm mt-1">Klik berita untuk membaca liputan penuh atau salin link berita untuk dibagikan ke WhatsApp & media sosial.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="news-grid-container">
+                        <!-- Dynamic Media News Cards -->
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="news-grid-container">
-                    <!-- Dynamic Media News Cards -->
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SPESIFIKASI SHOWCASE SECTION -->
-        <section id="spesifikasi" class="py-16 bg-white border-t border-emerald-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-emerald-800 text-xs font-extrabold uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">4 Cabang Pembinaan</span>
-                    <h2 class="text-3xl font-bold font-display text-emerald-950 mt-3">Spesifikasi Pembinaan Keahlian</h2>
-                    <p class="text-slate-600 text-sm mt-2">Setiap anggota dapat memilih spesifikasi utama untuk mengasah bakat secara mendalam.</p>
-                </div>
+            <!-- SPESIFIKASI SHOWCASE SECTION -->
+            <section id="spesifikasi" class="py-16 bg-white border-t border-emerald-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-emerald-800 text-xs font-extrabold uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">4 Cabang Pembinaan</span>
+                        <h2 class="text-3xl font-bold font-display text-emerald-950 mt-3">Spesifikasi Pembinaan Keahlian</h2>
+                        <p class="text-slate-600 text-sm mt-2">Setiap anggota dapat memilih spesifikasi utama untuk mengasah bakat secara mendalam.</p>
+                    </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-microphone"></i></div>
-                        <h3 class="font-bold text-base text-emerald-950">Master of Ceremony</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Penguasaan tata kelola protokol acara formal sekolah, seminar, dan event pensi non-formal.</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <h3 class="font-bold text-base text-emerald-950">Lomba Debat</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Melatih kemampuan berpikir kritis, penyusunan argumen ARES, dan teknik rebuttal mosi.</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-display"></i></div>
-                        <h3 class="font-bold text-base text-emerald-950">Presentasi Slide</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Keahlian visual storytelling, pemaparan data sains/IPS, dan teknik pitching percaya diri.</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
-                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-book-open"></i></div>
-                        <h3 class="font-bold text-base text-emerald-950">Storytelling</h3>
-                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">Seni olah vokal ekspresif, penjiwaan karakter dongeng budaya Bali, serta pementasan drama naskah.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-microphone"></i></div>
+                            <h3 class="font-bold text-base text-emerald-950">Master of Ceremony</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">Penguasaan tata kelola protokol acara formal sekolah, seminar, dan event pensi non-formal.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-scale-balanced"></i></div>
+                            <h3 class="font-bold text-base text-emerald-950">Lomba Debat</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">Melatih kemampuan berpikir kritis, penyusunan argumen ARES, dan teknik rebuttal mosi.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-display"></i></div>
+                            <h3 class="font-bold text-base text-emerald-950">Presentasi Slide</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">Keahlian visual storytelling, pemaparan data sains/IPS, dan teknik pitching percaya diri.</p>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:border-emerald-500 transition">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold mb-4"><i class="fa-solid fa-book-open"></i></div>
+                            <h3 class="font-bold text-base text-emerald-950">Storytelling</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">Seni olah vokal ekspresif, penjiwaan karakter dongeng budaya Bali, serta pementasan drama naskah.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 
     <!-- LOGGED-IN APP DASHBOARD -->
@@ -390,7 +498,7 @@
                 </div>
                 <div class="flex items-center gap-3">
                     <span id="app-header-date" class="text-xs font-bold text-emerald-800 bg-white px-3.5 py-2 rounded-xl border border-slate-200 shadow-sm">
-                        <i class="fa-solid fa-calendar-day mr-1.5 text-emerald-600"></i> 12 Nov 2026 (WITA)
+                        <i class="fa-solid fa-calendar-day mr-1.5 text-emerald-600"></i> 15 Nov 2026 (WITA)
                     </span>
                 </div>
             </header>
@@ -401,53 +509,7 @@
         </main>
     </div>
 
-    <!-- MODAL BACA ARTIKEL BERITA LENGKAP (ALA KOMPAS.COM) -->
-    <div id="modal-baca-berita" class="fixed inset-0 bg-emerald-950/85 backdrop-blur-sm z-50 flex items-center justify-center hidden p-3 sm:p-6">
-        <div class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative max-h-[92vh] flex flex-col">
-            <div class="px-6 py-4 bg-emerald-950 text-white flex justify-between items-center shrink-0">
-                <div class="flex items-center gap-2">
-                    <span class="bg-gold-400 text-teal-950 font-extrabold px-2.5 py-0.5 rounded text-[10px] uppercase" id="read-news-category">Kategori</span>
-                    <span class="text-xs text-emerald-200 font-semibold">Dwi Andhira Gistara News • SPENTWO</span>
-                </div>
-                <button onclick="closeBacaBeritaModal()" class="text-emerald-200 hover:text-white p-1.5 text-base">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
-                <div>
-                    <h2 id="read-news-title" class="font-display font-extrabold text-2xl sm:text-3xl text-emerald-950 leading-tight">Judul Berita</h2>
-                    <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 mt-3 pb-4 border-b border-slate-200">
-                        <span><i class="fa-solid fa-user-pen text-emerald-700 mr-1"></i> Oleh: <b id="read-news-author" class="text-slate-700">Penulis</b></span>
-                        <span><i class="fa-regular fa-calendar text-emerald-700 mr-1"></i> Terbit: <span id="read-news-date">Tanggal</span></span>
-                        <button onclick="shareCurrentNews()" class="ml-auto px-3 py-1 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold rounded-lg border border-emerald-200 transition">
-                            <i class="fa-solid fa-share-nodes mr-1"></i> Bagikan Berita
-                        </button>
-                    </div>
-                </div>
-
-                <div class="rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 max-h-80">
-                    <img id="read-news-image" src="" alt="Foto Liputan" class="w-full h-full object-cover">
-                </div>
-
-                <article id="read-news-body" class="text-sm text-slate-700 leading-relaxed space-y-4 font-normal">
-                </article>
-
-                <div class="pt-6 border-t border-slate-200 space-y-4">
-                    <h4 class="font-bold text-sm text-emerald-950"><i class="fa-regular fa-comments text-emerald-700 mr-1.5"></i> Komentar Pembaca</h4>
-                    <form onsubmit="handleAddNewsComment(event)" class="flex gap-2">
-                        <input type="text" id="news-comment-name" required placeholder="Nama Anda..." class="w-1/3 p-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-emerald-600">
-                        <input type="text" id="news-comment-text" required placeholder="Tulis tanggapan positif tentang berita ini..." class="flex-1 p-2.5 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-emerald-600">
-                        <button type="submit" class="px-4 py-2.5 bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition">Kirim</button>
-                    </form>
-                    <div id="read-news-comments-list" class="space-y-2 text-xs">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL EDIT BIODATA, STATUS ACC & PASSWORD MURID (PEMBINA / SUPER ADMIN) -->
+    <!-- MODAL EDIT BIODATA, STATUS ACC & PASSWORD MURID -->
     <div id="modal-edit-student" class="fixed inset-0 bg-emerald-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeEditStudentModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -622,7 +684,7 @@
                     </div>
                     <div>
                         <h3 class="font-display font-bold text-base text-emerald-950">Presensi GPS & Foto Selfie</h3>
-                        <p class="text-slate-500 text-xs">Sesi: <b id="modal-gps-session-title">Latihan Rutin</b> (<span id="modal-gps-date-label">2026-11-12</span>)</p>
+                        <p class="text-slate-500 text-xs">Sesi: <b id="modal-gps-session-title">Latihan Rutin</b> (<span id="modal-gps-date-label">2026-11-15</span>)</p>
                     </div>
                 </div>
 
@@ -678,7 +740,7 @@
                     </div>
                     <div>
                         <h3 class="font-display font-bold text-lg text-emerald-950">Tulis & Terbitkan Berita</h3>
-                        <p class="text-slate-500 text-xs">Portal Berita Digital Dwi Andhira Gistara</p>
+                        <p class="text-slate-500 text-xs">Otomatis menghasilkan Link URL Berita yang bisa dibagikan</p>
                     </div>
                 </div>
 
@@ -718,14 +780,14 @@
                     </div>
 
                     <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
-                        📢 Terbitkan Berita Ke Web Publik
+                        📢 Terbitkan Berita & Buat Link Share
                     </button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- MODAL REGISTRASI (SISWA BUTUH ACC PEMBINA • GURU TANPA BOCORAN KODE VERIFIKASI) -->
+    <!-- MODAL REGISTRASI -->
     <div id="modal-register" class="fixed inset-0 bg-teal-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl border border-teal-100 overflow-hidden relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 text-sm z-10">
@@ -807,7 +869,7 @@
                     </button>
                 </form>
 
-                <!-- FORM PEMBINA / GURU (TANPA KETERANGAN KODE VERIFIKASI) -->
+                <!-- FORM PEMBINA / GURU -->
                 <form id="form-reg-teacher" onsubmit="handleFormRegistrationTeacher(event)" class="hidden space-y-4 text-xs font-semibold">
                     <div class="flex items-center gap-4 bg-slate-50 p-3 rounded-2xl border border-slate-200">
                         <div class="w-16 h-20 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center overflow-hidden shrink-0">
@@ -909,8 +971,24 @@
 
         let activeReadingNewsIndex = 0;
 
-        const todayISO = "2026-11-12";
+        const todayISO = "2026-11-15";
         let selectedFilterDate = todayISO;
+
+        // HELPER PEMBUAT SLUG URL BERITA (CONTOH: juara-1-lomba-debat-bahasa-indonesia-denpasar)
+        function createNewsSlug(text) {
+            return String(text || '')
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .trim()
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-');
+        }
+
+        function getNewsShareUrl(newsItem) {
+            const slug = newsItem.slug || createNewsSlug(newsItem.title);
+            const baseUrl = window.location.origin + window.location.pathname;
+            return `${baseUrl}?berita=${encodeURIComponent(slug)}`;
+        }
 
         // KONFIGURASI WEBSITE & CMS (DIKONTROL OLEH SUPER ADMIN)
         const defaultSiteConfig = {
@@ -974,7 +1052,7 @@
             return Math.round(R * c);
         }
 
-        // DATABASE AKUN MURID & PENGURUS (DENGAN STATUS APPROVAL: approved / pending)
+        // DATABASE AKUN MURID & PENGURUS
         const defaultStudentAccounts = [
             { name: "Ni Putu Ayu Saraswati", nisn: "0091122334", class: "8.1", spec: "Master of Ceremony", role: "anggota", status: "approved", username: "ayusaraswati", password: "siswa123", photo: null },
             { name: "I Gede Putu Anggota", nisn: "0094455667", class: "8.5", spec: "Lomba Debat", role: "anggota", status: "approved", username: "gedeanggota", password: "siswa123", photo: null },
@@ -1002,8 +1080,8 @@
 
         // DATABASE REKAP KEHADIRAN MURID PER TANGGAL
         const defaultAttendanceRecords = [
-            { date: "2026-11-12", name: "Ni Putu Ayu Saraswati", class: "8.1", spec: "Master of Ceremony", time: "14:05 WITA", status: "Hadir (Radius 45m • GPS & Foto)" },
-            { date: "2026-11-12", name: "I Gede Putu Anggota", class: "8.5", spec: "Lomba Debat", time: "14:12 WITA", status: "Hadir (Radius 80m • GPS & Foto)" },
+            { date: "2026-11-15", name: "Ni Putu Ayu Saraswati", class: "8.1", spec: "Master of Ceremony", time: "14:05 WITA", status: "Hadir (Radius 45m • GPS & Foto)" },
+            { date: "2026-11-15", name: "I Gede Putu Anggota", class: "8.5", spec: "Lomba Debat", time: "14:12 WITA", status: "Hadir (Radius 80m • GPS & Foto)" },
             { date: "2026-11-05", name: "Ni Putu Ayu Saraswati", class: "8.1", spec: "Master of Ceremony", time: "14:02 WITA", status: "Hadir (Radius 30m • GPS & Foto)" },
             { date: "2026-11-05", name: "Putu Gede Raka Pratama", class: "7.3", spec: "Storytelling", time: "14:15 WITA", status: "Hadir (Radius 65m • GPS & Foto)" },
             { date: "2026-11-05", name: "Kadek Ary Santi", class: "8.1", spec: "Master of Ceremony", time: "14:00 WITA", status: "Hadir (Radius 20m • GPS & Foto)" }
@@ -1039,6 +1117,7 @@
 
         const defaultNews = [
             {
+                slug: "juara-1-lomba-debat-bahasa-indonesia-denpasar",
                 title: "Juara 1 Lomba Debat Bahasa Indonesia Denpasar",
                 excerpt: "Tim Dwi Andhira Gistara SPENTWO kembali mengukir prestasi gemilang di ajang debat antar SMP.",
                 fullContent: "DENPASAR — Tim debat ekstrakurikuler Public Speaking Dwi Andhira Gistara SMP Negeri 2 Denpasar kembali mengharumkan nama sekolah setelah berhasil meraih Juara 1 pada ajang Lomba Debat Bahasa Indonesia tingkat Kota Denpasar tahun 2026.\n\nDalam babak final yang berlangsung sengit, delegasi SPENTWO yang terdiri dari tiga pembicara utama berhasil mematahkan argumen lawan terkait mosi transformasi digital pendidikan dengan penyampaian data yang tajam, terstruktur (metode ARES), serta intonasi yang meyakinkan.\n\nPembina Dwi Andhira Gistara menyampaikan rasa bangga atas kedisiplinan latihan rutin yang dijalani para siswa selama dua bulan terakhir. Prestasi ini diharapkan menjadi pemantik semangat bagi anggota kelas 7 dan 8 untuk terus mengasah keberanian berbicara di depan publik.",
@@ -1051,6 +1130,7 @@
                 ]
             },
             {
+                slug: "pelatihan-protokoler-mc-formal-untuk-pengurus",
                 title: "Pelatihan Protokoler MC Formal untuk Pengurus",
                 excerpt: "Kegiatan intensif simulasi pembawa acara formal guna mempersiapkan petugas upacara dan pensi.",
                 fullContent: "DENPASAR — Guna meningkatkan kualitas tata laksana keprotokolan di berbagai acara resmi sekolah, pengurus Dwi Andhira Gistara menggelar pelatihan intensif Master of Ceremony (MC) formal di Aula SMP Negeri 2 Denpasar.\n\nMateri pelatihan mencakup teknik artikulasi vokal, pengaturan jeda napas, sikap tubuh (gestur), hingga penyusunan urutan sapaan kehormatan (salutation) yang sesuai dengan kaidah bahasa Indonesia yang baik dan benar.\n\nSeluruh peserta juga melakukan simulasi praktik langsung secara berpasangan (MC duet) untuk melatih kekompakan dan kemampuan improvisasi ketika terjadi perubahan susunan acara secara mendadak.",
@@ -1061,6 +1141,7 @@
                 comments: []
             },
             {
+                slug: "kiat-percaya-diri-bicara-di-depan-umum",
                 title: "Kiat Percaya Diri Bicara di Depan Umum",
                 excerpt: "Artikel edukasi seputar tips mengendalikan demam panggung dan kontak mata dengan audiens.",
                 fullContent: "DENPASAR — Rasa gugup atau demam panggung (stage fright) adalah hal yang sangat wajar dialami oleh setiap pembicara, bahkan oleh komunikator profesional sekalipun. Kunci utamanya bukanlah menghilangkan rasa gugup tersebut sepenuhnya, melainkan mengelolanya menjadi energi positif.\n\nBerikut tiga langkah praktis yang selalu diterapkan dalam latihan rutin Dwi Andhira Gistara:\n1. Teknik Pernapasan Diafragma: Tarik napas dalam selama 4 detik sebelum naik ke panggung untuk menstabilkan detak jantung.\n2. Kuasai 30 Detik Pertama: Hafalkan kalimat pembuka dengan sangat matang agar rasa percaya diri langsung terbentuk sejak awal.\n3. Terapkan Kontak Mata 3 Titik: Arahkan pandangan secara bergantian ke sisi kiri, tengah, dan kanan audiens agar seluruh hadirin merasa dilibatkan.",
@@ -1073,32 +1154,109 @@
         ];
 
         let sampleNews = JSON.parse(localStorage.getItem('dag_news_list')) || defaultNews;
+        sampleNews = sampleNews.map(n => ({ ...n, slug: n.slug || createNewsSlug(n.title) }));
+
         function saveNewsList() {
             localStorage.setItem('dag_news_list', JSON.stringify(sampleNews));
         }
 
-        // BUKA & BACA ARTIKEL BERITA PENUH
-        window.openBacaBeritaModal = function(index) {
-            activeReadingNewsIndex = index;
+        // BUKA HALAMAN BERITA PENUH DENGAN URL UNIK (?berita=slug) ALA KOMPAS.COM / TEMPO.CO
+        window.openFullArticlePage = function(index, updateHistory = true) {
             const news = sampleNews[index];
             if (!news) return;
+            activeReadingNewsIndex = index;
 
-            document.getElementById('read-news-category').textContent = news.category;
-            document.getElementById('read-news-title').textContent = news.title;
-            document.getElementById('read-news-author').textContent = news.author;
-            document.getElementById('read-news-date').textContent = news.date;
-            document.getElementById('read-news-image').src = news.image;
+            const shareUrl = getNewsShareUrl(news);
+            if (updateHistory && window.history && window.history.pushState) {
+                window.history.pushState({ beritaSlug: news.slug }, news.title, `?berita=${encodeURIComponent(news.slug)}`);
+            }
+
+            document.title = `${news.title} - Dwi Andhira Gistara News`;
+
+            document.getElementById('article-page-breadcrumb-cat').textContent = news.category;
+            document.getElementById('article-page-category').textContent = news.category;
+            document.getElementById('article-page-title').textContent = news.title;
+            document.getElementById('article-page-author').textContent = news.author;
+            document.getElementById('article-page-date').textContent = news.date;
+            document.getElementById('article-page-image').src = news.image;
+            document.getElementById('article-page-url-display').textContent = shareUrl;
 
             const contentText = news.fullContent || news.excerpt;
             const paragraphs = contentText.split('\n').filter(p => p.trim() !== '');
-            document.getElementById('read-news-body').innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
+            document.getElementById('article-page-body').innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
 
             renderNewsComments();
-            document.getElementById('modal-baca-berita').classList.remove('hidden');
+            renderSidebarRelatedNews(index);
+
+            // Pastikan tampil di public view dan sembunyikan section beranda lain
+            document.getElementById('app-dashboard-view').classList.add('hidden');
+            document.getElementById('public-website-view').classList.remove('hidden');
+            document.getElementById('landing-main-sections').classList.add('hidden');
+            document.getElementById('full-article-page-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
-        window.closeBacaBeritaModal = function() {
-            document.getElementById('modal-baca-berita').classList.add('hidden');
+        window.closeFullArticlePage = function(updateHistory = true) {
+            document.getElementById('full-article-page-view').classList.add('hidden');
+            document.getElementById('landing-main-sections').classList.remove('hidden');
+            document.title = `${siteConfig.brandTitle} - Public Speaking SMPN 2 Denpasar`;
+            if (updateHistory && window.history && window.history.pushState) {
+                window.history.pushState({}, document.title, window.location.pathname);
+            }
+        };
+
+        function renderSidebarRelatedNews(currentIndex) {
+            const listEl = document.getElementById('sidebar-related-news-list');
+            if (!listEl) return;
+            const others = sampleNews.map((item, idx) => ({ ...item, idx })).filter(item => item.idx !== currentIndex);
+            if (others.length === 0) {
+                listEl.innerHTML = `<p class="text-xs text-slate-400 italic">Belum ada berita lainnya.</p>`;
+                return;
+            }
+            listEl.innerHTML = others.map(item => `
+                <div onclick="openFullArticlePage(${item.idx})" class="cursor-pointer group flex gap-3 items-start pb-3 border-b border-slate-200 last:border-b-0 last:pb-0">
+                    <img src="${item.image}" alt="${item.title}" class="w-20 h-16 rounded-xl object-cover shrink-0 bg-slate-200">
+                    <div>
+                        <span class="text-[10px] font-bold text-emerald-700 uppercase">${item.category}</span>
+                        <h5 class="text-xs font-bold text-slate-900 group-hover:text-emerald-700 leading-snug line-clamp-2 transition">${item.title}</h5>
+                        <span class="text-[10px] text-slate-400 block mt-0.5">${item.date}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        window.copyArticleDirectLink = function() {
+            const news = sampleNews[activeReadingNewsIndex];
+            if (!news) return;
+            const shareUrl = getNewsShareUrl(news);
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareUrl);
+                const btnLabel = document.getElementById('copy-link-btn-label');
+                if (btnLabel) {
+                    btnLabel.textContent = "✅ Link Tersalin!";
+                    setTimeout(() => { btnLabel.textContent = "Salin Link Berita"; }, 2500);
+                }
+                alert(`🔗 Link berita berhasil disalin:\n${shareUrl}\n\nAnda bisa langsung menempelkan (Paste) link ini ke WhatsApp atau media sosial.`);
+            }
+        };
+
+        window.copySpecificNewsLink = function(event, index) {
+            event.stopPropagation();
+            const news = sampleNews[index];
+            if (!news) return;
+            const shareUrl = getNewsShareUrl(news);
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareUrl);
+                alert(`🔗 Link berita "${news.title}" berhasil disalin:\n${shareUrl}`);
+            }
+        };
+
+        window.shareArticleToWhatsApp = function() {
+            const news = sampleNews[activeReadingNewsIndex];
+            if (!news) return;
+            const shareUrl = getNewsShareUrl(news);
+            const waText = encodeURIComponent(`📰 *${news.title}*\n\nBaca selengkapnya di Portal Berita Dwi Andhira Gistara SMPN 2 Denpasar:\n${shareUrl}`);
+            window.open(`https://wa.me/?text=${waText}`, '_blank');
         };
 
         function renderNewsComments() {
@@ -1111,7 +1269,7 @@
                 return;
             }
             listEl.innerHTML = comments.map(c => `
-                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
                     <span class="font-bold text-emerald-900">${c.name}:</span>
                     <span class="text-slate-700 ml-1">${c.text}</span>
                 </div>
@@ -1132,14 +1290,6 @@
             saveNewsList();
             textInput.value = "";
             renderNewsComments();
-        };
-
-        window.shareCurrentNews = function() {
-            const news = sampleNews[activeReadingNewsIndex];
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(`${news.title} - Dwi Andhira Gistara News SMPN 2 Denpasar`);
-                alert("🔗 Judul & info berita berhasil disalin untuk dibagikan!");
-            }
         };
 
         window.previewNewsImage = function(event) {
@@ -1271,6 +1421,7 @@
         };
 
         window.scrollToAILab = function() {
+            closeFullArticlePage();
             const el = document.getElementById('ai-lab');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         };
@@ -1604,30 +1755,35 @@
         // HANDLER TAMBAH BERITA & RENDER BERITA
         window.handleCreateNewsSubmit = function(e) {
             e.preventDefault();
-            const title = document.getElementById('news-input-title').value;
+            const title = document.getElementById('news-input-title').value.trim();
             const category = document.getElementById('news-input-category').value;
-            const author = document.getElementById('news-input-author').value;
+            const author = document.getElementById('news-input-author').value.trim();
             const fullContent = document.getElementById('news-input-excerpt').value;
             const excerpt = fullContent.length > 120 ? fullContent.substring(0, 120) + "..." : fullContent;
             const finalImg = uploadedNewsImageDataUrl || "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80";
+            const slug = createNewsSlug(title) + "-" + Date.now().toString().slice(-4);
 
-            sampleNews.unshift({
+            const newArticle = {
+                slug,
                 title,
                 excerpt,
                 fullContent,
                 category,
                 author,
-                date: "12 Nov 2026",
+                date: "15 Nov 2026",
                 image: finalImg,
                 comments: []
-            });
+            };
+
+            sampleNews.unshift(newArticle);
             saveNewsList();
             renderNewsGrid();
             closeTambahBeritaModal();
             if (currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'teacher' || currentUser.role === 'pengurus')) {
                 window.switchAppTab('berita');
             }
-            alert("📢 Berita lengkap berhasil diterbitkan & sudah bisa dibaca pengunjung di Halaman Publik!");
+            const shareUrl = getNewsShareUrl(newArticle);
+            alert(`📢 Berita berhasil diterbitkan!\n\nLink Berita Siap Dibagikan:\n${shareUrl}`);
         };
 
         window.deleteNewsItem = function(index) {
@@ -1643,11 +1799,14 @@
             const newsGrid = document.getElementById('news-grid-container');
             if (newsGrid) {
                 newsGrid.innerHTML = sampleNews.map((item, idx) => `
-                    <div onclick="openBacaBeritaModal(${idx})" class="cursor-pointer group bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all overflow-hidden flex flex-col justify-between">
+                    <div onclick="openFullArticlePage(${idx})" class="cursor-pointer group bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all overflow-hidden flex flex-col justify-between">
                         <div>
                             <div class="h-48 w-full bg-slate-200 overflow-hidden relative">
                                 <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                                 <span class="absolute top-3 left-3 px-2.5 py-1 bg-emerald-950/90 text-gold-300 text-[10px] font-bold rounded-lg uppercase shadow">${item.category}</span>
+                                <button onclick="copySpecificNewsLink(event, ${idx})" title="Salin Link Berita" class="absolute top-3 right-3 px-2.5 py-1 bg-white/95 hover:bg-gold-400 text-emerald-950 text-[10px] font-bold rounded-lg shadow transition flex items-center gap-1">
+                                    <i class="fa-solid fa-link"></i> Share Link
+                                </button>
                             </div>
                             <div class="p-6 pb-2">
                                 <h3 class="font-bold text-base text-emerald-950 group-hover:text-emerald-700 leading-snug transition">${item.title}</h3>
@@ -1656,7 +1815,7 @@
                         </div>
                         <div class="px-6 py-4 mt-2 border-t border-slate-100 flex justify-between items-center text-[11px] text-slate-400">
                             <span><i class="fa-solid fa-user-pen mr-1 text-emerald-600"></i> ${item.author}</span>
-                            <span class="text-emerald-700 font-bold group-hover:translate-x-1 transition-transform">Baca Selengkapnya →</span>
+                            <span class="text-emerald-700 font-bold group-hover:translate-x-1 transition-transform">Baca Artikel →</span>
                         </div>
                     </div>
                 `).join('');
@@ -1847,7 +2006,7 @@
                 class: studentClass,
                 spec: spec,
                 role: 'anggota',
-                status: 'pending', // WAJIB ACC PEMBINA DULU
+                status: 'pending',
                 username: username,
                 password: password,
                 photo: uploadedStudentPasfotoDataUrl
@@ -2072,7 +2231,6 @@
 
                 content.innerHTML = `
                     <div class="space-y-6">
-                        <!-- KOTAK PENDAFTAR BARU MENUNGGU ACC PEMBINA -->
                         <div class="bg-amber-50 p-4 sm:p-6 rounded-3xl border border-amber-200 shadow-sm space-y-4">
                             <div class="flex justify-between items-center">
                                 <div>
@@ -2110,7 +2268,6 @@
                             `}
                         </div>
 
-                        <!-- TABEL SELURUH DATA & BIODATA MURID -->
                         <div class="bg-white p-4 sm:p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
                             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
                                 <div>
@@ -2268,7 +2425,7 @@
                         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
                             <div>
                                 <h3 class="font-bold text-base text-emerald-950">Manajemen Portal Berita Dwi Andhira Gistara</h3>
-                                <p class="text-xs text-slate-500 mt-0.5">Publikasikan prestasi dan liputan kegiatan ekstra lengkap dengan foto dan artikel penuh.</p>
+                                <p class="text-xs text-slate-500 mt-0.5">Setiap berita otomatis memiliki Link URL khusus yang dapat disalin & dibagikan seperti Kompas.com / Tempo.co.</p>
                             </div>
                             <button onclick="openTambahBeritaModal()" class="px-5 py-2.5 bg-gold-400 hover:bg-gold-500 text-teal-950 font-extrabold text-xs rounded-xl shadow transition flex items-center gap-2">
                                 <i class="fa-solid fa-plus"></i> Tulis & Terbitkan Berita Baru
@@ -2286,13 +2443,17 @@
                                         <div class="p-4">
                                             <h4 class="font-bold text-sm text-emerald-950">${item.title}</h4>
                                             <p class="text-xs text-slate-600 mt-1 line-clamp-2">${item.excerpt}</p>
+                                            <div class="mt-2 p-2 bg-white rounded-lg border border-slate-200 text-[10px] font-mono text-slate-500 truncate">
+                                                ${getNewsShareUrl(item)}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="px-4 py-3 flex justify-between items-center border-t border-slate-200 text-[11px] text-slate-400">
-                                        <span>Oleh: ${item.author} (${item.date})</span>
+                                        <span>Oleh: ${item.author}</span>
                                         <div class="flex items-center gap-3">
-                                            <button onclick="openBacaBeritaModal(${idx})" class="text-emerald-700 hover:text-emerald-900 font-bold">Baca</button>
-                                            <button onclick="deleteNewsItem(${idx})" class="text-red-600 hover:text-red-800 font-bold"><i class="fa-solid fa-trash mr-1"></i> Hapus</button>
+                                            <button onclick="copySpecificNewsLink(event, ${idx})" class="text-emerald-800 hover:text-emerald-950 font-bold"><i class="fa-solid fa-link mr-1"></i>Salin Link</button>
+                                            <button onclick="openFullArticlePage(${idx})" class="text-teal-700 hover:text-teal-900 font-bold">Buka</button>
+                                            <button onclick="deleteNewsItem(${idx})" class="text-red-600 hover:text-red-800 font-bold"><i class="fa-solid fa-trash mr-1"></i>Hapus</button>
                                         </div>
                                     </div>
                                 </div>
@@ -2327,9 +2488,33 @@
             }
         };
 
+        // CEK PARAMETER URL (?berita=...) SAAT HALAMAN PERTAMA KALI DIBUKA
+        function checkInitialNewsDeepLink() {
+            const params = new URLSearchParams(window.location.search);
+            const targetSlug = params.get('berita');
+            if (targetSlug) {
+                const foundIndex = sampleNews.findIndex(n => (n.slug || createNewsSlug(n.title)) === targetSlug);
+                if (foundIndex !== -1) {
+                    window.openFullArticlePage(foundIndex, false);
+                }
+            }
+        }
+
+        window.addEventListener('popstate', () => {
+            const params = new URLSearchParams(window.location.search);
+            const targetSlug = params.get('berita');
+            if (targetSlug) {
+                const foundIndex = sampleNews.findIndex(n => (n.slug || createNewsSlug(n.title)) === targetSlug);
+                if (foundIndex !== -1) window.openFullArticlePage(foundIndex, false);
+            } else {
+                window.closeFullArticlePage(false);
+            }
+        });
+
         window.addEventListener('DOMContentLoaded', () => {
             applySiteConfigToDOM();
             renderNewsGrid();
+            checkInitialNewsDeepLink();
         });
     </script>
 </body>
