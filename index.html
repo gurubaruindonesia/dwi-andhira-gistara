@@ -2488,7 +2488,11 @@
         };
 
         window.logout = function() { currentUser = null; updateUIForRole(); };
-        window.togglePublicWebsiteView = function() { document.getElementById('public-website-view').classList.toggle('hidden'); };
+        window.togglePublicWebsiteView = function() {
+    document.getElementById('app-dashboard-view').classList.add('hidden');
+    document.getElementById('public-website-view').classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
         function updateUIForRole() {
             const publicView = document.getElementById('public-website-view');
