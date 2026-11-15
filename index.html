@@ -2488,22 +2488,24 @@
         };
 
         window.logout = function() { currentUser = null; updateUIForRole(); };
-        window.togglePublicWebsiteView = function() {
-    document.getElementById('app-dashboard-view').classList.add('hidden');
-    document.getElementById('public-website-view').classList.remove('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+       window.togglePublicWebsiteView = function() {
+            const publicView = document.getElementById('public-website-view');
+            const appView = document.getElementById('app-dashboard-view');
+            if (appView) { appView.classList.add('hidden'); appView.style.display = 'none'; }
+            if (publicView) { publicView.classList.remove('hidden'); publicView.style.display = 'block'; }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
 
         function updateUIForRole() {
             const publicView = document.getElementById('public-website-view');
             const appView = document.getElementById('app-dashboard-view');
 
             if (!currentUser) {
-                publicView.classList.remove('hidden');
-                appView.classList.add('hidden');
+                if (publicView) { publicView.classList.remove('hidden'); publicView.style.display = 'block'; }
+                if (appView) { appView.classList.add('hidden'); appView.style.display = 'none'; }
             } else {
-                publicView.classList.add('hidden');
-                appView.classList.remove('hidden');
+                if (publicView) { publicView.classList.add('hidden'); publicView.style.display = 'none'; }
+                if (appView) { appView.classList.remove('hidden'); appView.style.display = 'flex'; }
 
                 document.getElementById('app-sidebar-name').textContent = currentUser.name;
                 document.getElementById('app-sidebar-role').textContent = currentUser.roleName;
