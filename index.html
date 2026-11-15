@@ -74,25 +74,26 @@
 
     <!-- PUBLIC VIEW WRAPPER -->
     <div id="public-website-view">
-        <!-- TOP ANNOUNCEMENT BAR -->
-        <div class="bg-teal-950 text-teal-100 text-xs py-2 px-4 font-medium border-b border-teal-800">
-            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-                <div class="flex items-center gap-2">
-                    <span id="site-announcement-badge" class="bg-gold-400 text-teal-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase">Pengumuman</span>
-                    <span id="site-announcement-text">Pendaftaran Anggota Baru Ekstra Public Speaking <b>Dwi Andhira Gistara</b> T.A 2026/2027 Resmi dibuka!</span>
+     <!-- TOP ANNOUNCEMENT BAR (RAPI DI HP & LAPTOP) -->
+        <div class="bg-teal-950 text-teal-100 text-[11px] sm:text-xs py-1.5 sm:py-2 px-3 sm:px-4 font-medium border-b border-teal-800">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 sm:gap-2 text-center sm:text-left">
+                <div class="flex items-center justify-center sm:justify-start gap-1.5 max-w-full">
+                    <span id="site-announcement-badge" class="shrink-0 bg-gold-400 text-teal-950 font-extrabold px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] uppercase">Pengumuman</span>
+                    <span id="site-announcement-text" class="truncate sm:whitespace-normal">Pendaftaran Anggota Baru Ekstra Public Speaking <b>Dwi Andhira Gistara</b> T.A 2026/2027 Resmi dibuka!</span>
                 </div>
-                <div class="flex items-center gap-4 text-[11px]">
+                <div class="hidden sm:flex items-center gap-4 text-[11px] shrink-0">
                     <span><i class="fa-solid fa-school text-teal-300 mr-1"></i> <span id="site-school-label">SMP Negeri 2 Denpasar (SPENTWO)</span></span>
                 </div>
             </div>
         </div>
 
-        <!-- MAIN NAVBAR -->
+        <!-- MAIN NAVBAR (PROPORSIONAL & TIDAK BERTUMPUK DI HP) -->
         <nav class="sticky top-0 z-40 bg-teal-800/95 backdrop-blur-md text-white border-b border-teal-700 shadow-md">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-20">
-                    <a href="javascript:void(0)" onclick="closeFullArticlePage()" class="flex items-center gap-3 group">
-                        <div class="w-12 h-12 rounded-2xl bg-teal-950 p-1.5 flex items-center justify-center shadow-lg shadow-teal-950/50 border border-teal-500/50 group-hover:scale-105 transition-transform">
+            <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-2.5 sm:py-0 sm:h-20 gap-2">
+                    <!-- Logo & Judul Ekstra -->
+                    <a href="javascript:void(0)" onclick="closeFullArticlePage()" class="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1">
+                        <div class="w-9 h-9 sm:w-12 sm:h-12 shrink-0 rounded-xl sm:rounded-2xl bg-teal-950 p-1 sm:p-1.5 flex items-center justify-center shadow-lg shadow-teal-950/50 border border-teal-500/50 group-hover:scale-105 transition-transform">
                             <svg viewBox="0 0 400 400" class="w-full h-full text-teal-900" xmlns="http://www.w3.org/2000/svg">
                                 <rect width="400" height="400" fill="#115e59" rx="30"/>
                                 <polygon points="200,340 90,140 310,140" fill="#2dd4bf"/>
@@ -114,12 +115,13 @@
                                 <text x="313" y="318" fill="#115e59" font-family="'Inter', sans-serif" font-weight="900" font-size="16">S</text>
                             </svg>
                         </div>
-                        <div>
-                            <span id="site-brand-title" class="font-display font-extrabold text-xl tracking-tight text-white block">Dwi Andhira Gistara</span>
-                            <span id="site-brand-subtitle" class="text-[10px] text-teal-100 tracking-wider font-semibold uppercase block -mt-1">Public Speaking • SPENTWO DENPASAR</span>
+                        <div class="min-w-0">
+                            <span id="site-brand-title" class="font-display font-extrabold text-sm sm:text-xl tracking-tight text-white block leading-tight truncate">Dwi Andhira Gistara</span>
+                            <span id="site-brand-subtitle" class="text-[9px] sm:text-[10px] text-teal-200 tracking-wider font-semibold uppercase block truncate">SPENTWO DENPASAR</span>
                         </div>
                     </a>
 
+                    <!-- Menu Navigasi Desktop -->
                     <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-teal-100">
                         <a href="#hero" onclick="closeFullArticlePage()" class="hover:text-gold-400 transition">Beranda</a>
                         <a href="#ai-lab" onclick="closeFullArticlePage()" class="hover:text-gold-400 transition">AI Practice Lab</a>
@@ -127,12 +129,13 @@
                         <a href="#spesifikasi" onclick="closeFullArticlePage()" class="hover:text-gold-400 transition">Spesifikasi</a>
                     </div>
 
-                    <div class="flex items-center gap-3">
-                        <button onclick="openRegisterModal()" class="flex items-center gap-1.5 px-3.5 py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-xs rounded-xl shadow-md transition">
+                    <!-- Tombol Daftar & Masuk (Sejajar & Ringkas di HP) -->
+                    <div class="flex items-center gap-1.5 sm:gap-3 shrink-0">
+                        <button onclick="openRegisterModal()" class="flex items-center gap-1 px-2.5 py-1.5 sm:px-3.5 sm:py-2 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold text-[11px] sm:text-xs rounded-lg sm:rounded-xl shadow-md transition whitespace-nowrap">
                             <i class="fa-solid fa-user-plus"></i>
-                            <span>Daftar Akun</span>
+                            <span>Daftar<span class="hidden sm:inline"> Akun</span></span>
                         </button>
-                        <button onclick="openLoginModal()" class="px-4 py-2 bg-teal-600 hover:bg-teal-500 border border-teal-400 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center gap-2">
+                        <button onclick="openLoginModal()" class="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-teal-600 hover:bg-teal-500 border border-teal-400 text-white font-bold text-[11px] sm:text-xs rounded-lg sm:rounded-xl shadow-md transition flex items-center gap-1.5 whitespace-nowrap">
                             <i class="fa-solid fa-right-to-bracket"></i>
                             <span>Masuk</span>
                         </button>
