@@ -972,7 +972,62 @@
         let uploadedStudentPasfotoDataUrl = null;
         let uploadedTeacherPasfotoDataUrl = null;
 
-        let activeReadingNewsIndex = 0;
+       let activeReadingNewsIndex = 0;
+        // =========================================================================
+        // INTEGRASI GOOGLE DRIVE (UPLOAD FOTO & SINKRONISASI BERITA)
+        // =========================================================================
+        const GOOGLE_DRIVE_API_URL = "https://script.google.com/macros/s/AKfycbxiP78VnKhs-3G0ahwd16AULpajP7nipoL6Qw9Q-o6TW61aX6CDvIDDjgZEykCrKe8/exec";
+
+        async function uploadBase64ToGoogleDrive(dataUrl, fileName) {
+            if (!GOOGLE_DRIVE_API_URL || GOOGLE_DRIVE_API_URL.includes("TEMPEL_URL")) {
+                return dataUrl;
+            }
+            const parts = dataUrl.split(',');
+            const mimeType = parts[0].match(/:(.*?);/)[1];
+            const base64Data = parts[1];
+
+            const response = await fetch(GOOGLE_DRIVE_API_URL, {
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'uploadImage',
+                    fileName: fileName,
+                    mimeType: mimeType,
+                    base64Data: base64Data
+                })
+            });
+            const result = await response.json();
+            if (result.status === 'success') {
+                return result.url;
+            }
+            throw new Error(result.message || "Gagal mengunggah gambar ke Google Drive");
+        }
+
+        async function syncNewsToGoogleDrive() {
+            if (!GOOGLE_DRIVE_API_URL || GOOGLE_DRIVE_API_URL.includes("TEMPEL_URL")) return;
+            await fetch(GOOGLE_DRIVE_API_URL, {
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'saveNews',
+                    newsList: sampleNews
+                })
+            });
+        }
+
+        async function loadNewsFromGoogleDrive() {
+            if (!GOOGLE_DRIVE_API_URL || GOOGLE_DRIVE_API_URL.includes("TEMPEL_URL")) return;
+            try {
+                const res = await fetch(GOOGLE_DRIVE_API_URL);
+                const cloudNews = await res.json();
+                if (Array.isArray(cloudNews) && cloudNews.length > 0) {
+                    sampleNews = cloudNews;
+                    localStorage.setItem('dag_news_list', JSON.stringify(sampleNews));
+                    renderNewsGrid();
+                    checkInitialNewsDeepLink();
+                }
+            } catch (e) {
+                console.warn("Memuat berita cadangan lokal:", e);
+            }
+        }
 
         const todayISO = "2026-11-15";
         let selectedFilterDate = todayISO;
@@ -2199,37 +2254,55 @@
         };
 
         // HANDLER TAMBAH BERITA & RENDER BERITA
-        window.handleCreateNewsSubmit = function(e) {
+        window.handleCreateNewsSubmit = async function(e) {
             e.preventDefault();
-            const title = document.getElementById('news-input-title').value.trim();
-            const category = document.getElementById('news-input-category').value;
-            const author = document.getElementById('news-input-author').value.trim();
-            const fullContent = document.getElementById('news-input-excerpt').value;
-            const excerpt = fullContent.length > 120 ? fullContent.substring(0, 120) + "..." : fullContent;
-            const finalImg = uploadedNewsImageDataUrl || "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80";
-            const slug = createNewsSlug(title) + "-" + Date.now().toString().slice(-4);
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "⏳ Mengunggah Foto ke Google Drive...";
 
-            const newArticle = {
-                slug,
-                title,
-                excerpt,
-                fullContent,
-                category,
-                author,
-                date: "15 Nov 2026",
-                image: finalImg,
-                comments: []
-            };
+            try {
+                const title = document.getElementById('news-input-title').value.trim();
+                const category = document.getElementById('news-input-category').value;
+                const author = document.getElementById('news-input-author').value.trim();
+                const fullContent = document.getElementById('news-input-excerpt').value;
+                const excerpt = fullContent.length > 120 ? fullContent.substring(0, 120) + "..." : fullContent;
+                const slug = createNewsSlug(title) + "-" + Date.now().toString().slice(-4);
 
-            sampleNews.unshift(newArticle);
-            saveNewsList();
-            renderNewsGrid();
-            closeTambahBeritaModal();
-            if (currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'teacher' || currentUser.role === 'pengurus')) {
-                window.switchAppTab('berita');
+                let finalImg = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80";
+                if (uploadedNewsImageDataUrl) {
+                    finalImg = await uploadBase64ToGoogleDrive(uploadedNewsImageDataUrl, `berita_${slug}.jpg`);
+                }
+
+                const newArticle = {
+                    slug,
+                    title,
+                    excerpt,
+                    fullContent,
+                    category,
+                    author,
+                    date: new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }),
+                    image: finalImg,
+                    comments: []
+                };
+
+                sampleNews.unshift(newArticle);
+                saveNewsList();
+                await syncNewsToGoogleDrive();
+
+                renderNewsGrid();
+                closeTambahBeritaModal();
+                if (currentUser && (currentUser.role === 'superadmin' || currentUser.role === 'teacher' || currentUser.role === 'pengurus')) {
+                    window.switchAppTab('berita');
+                }
+                const shareUrl = getNewsShareUrl(newArticle);
+                alert(`📢 Berita & Foto berhasil tersimpan di Google Drive!\n\nLink Berita Siap Dibagikan:\n${shareUrl}`);
+            } catch (err) {
+                alert("Terjadi kendala saat mengunggah ke Google Drive: " + err.message);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
             }
-            const shareUrl = getNewsShareUrl(newArticle);
-            alert(`📢 Berita berhasil diterbitkan!\n\nLink Berita Siap Dibagikan:\n${shareUrl}`);
         };
 
         window.deleteNewsItem = function(index) {
@@ -2967,6 +3040,7 @@
             applySiteConfigToDOM();
             renderNewsGrid();
             checkInitialNewsDeepLink();
+            loadNewsFromGoogleDrive();
         });
     </script>
 </body>
