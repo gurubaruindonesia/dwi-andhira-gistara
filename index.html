@@ -901,8 +901,18 @@
                     </div>
                     <div>
                         <label class="block text-slate-700 font-bold mb-1">Kode Verifikasi Guru:</label>
-                        <input type="password" id="reg-teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan kode rahasia pembina...">
+                        <input type="password" id="reg teacher-code" required class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-teal-600" placeholder="Masukkan kode rahasia pembina...">
                     </div>
+                                <div class="grid grid-cols-2 gap-3">
+    <div>
+        <label class="block text-slate-700 font-bold mb-1">Username Login Pembina:</label>
+        <input type="text" id="reg-teacher-username" required placeholder="Contoh: budi_pembina" class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600">
+    </div>
+    <div>
+        <label class="block text-slate-700 font-bold mb-1">Password Login Pembina:</label>
+        <input type="password" id="reg-teacher-password" required placeholder="Minimal 6 karakter" class="w-full p-3 rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-600">
+    </div>
+</div>
                     <button type="submit" class="w-full py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
                         Daftar & Terbitkan KTA Digital Pembina
                     </button>
@@ -2558,7 +2568,19 @@ window.openEditNewsModal = function(index) {
                 window.switchAppTab('students');
             }
         };
-
+window.deleteUserAccount = function(idx) {
+    const target = studentAccounts[idx];
+    if (!target) return;
+    if (target.role === 'teacher' && currentUser.role !== 'superadmin') {
+        alert('Hanya Super Admin yang dapat menghapus akun Guru Pembina.');
+        return;
+    }
+    if (!confirm(`Yakin ingin menghapus permanen akun "${target.name}" (${target.username})?`)) return;
+    studentAccounts.splice(idx, 1);
+    saveStudentAccounts();
+    switchAppTab('students');
+    alert(`Akun "${target.name}" berhasil dihapus dari sistem dan Google Sheets.`);
+};
         window.openEditStudentModal = function(index) {
             const student = studentAccounts[index];
             if (!student) return;
@@ -2688,7 +2710,7 @@ window.openEditNewsModal = function(index) {
                     currentUser = {
                         name: found.name,
                         role: found.role,
-                        roleName: found.role === 'pengurus' ? 'Pengurus Ekstra' : 'Anggota Siswa',
+                        roleName: found.role === 'teacher' ? 'Guru Pembina' : (found.role === 'pengurus' ? 'Pengurus Ekstra' : 'Anggota Siswa'),
                         avatar: found.name.substring(0, 2).toUpperCase(),
                         photo: found.photo || null,
                         nisn: found.nisn,
@@ -2743,28 +2765,62 @@ let savedPhotoUrl = null;
             alert(`✅ Pendaftaran atas nama ${fullname} berhasil dikirim!\n\nStatus akun saat ini: MENUNGGU PERSETUJUAN (ACC) PEMBINA. Setelah disetujui oleh Pembina, Anda dapat langsung masuk menggunakan username "${username}".`);
         };
 
-        window.handleFormRegistrationTeacher = function(e) {
+        
+window.handleFormRegistrationTeacher = async function(e) {
             e.preventDefault();
             const code = document.getElementById('reg-teacher-code').value.trim();
             if (code !== siteConfig.teacherSecretCode) {
                 alert('Kode Verifikasi Guru tidak valid! Silakan hubungi Pembina Utama / Super Admin.');
                 return;
             }
-            const teacherName = document.getElementById('reg-teacher-name').value;
+            const teacherName = document.getElementById('reg-teacher-name').value.trim();
+            const teacherNip = document.getElementById('reg-teacher-nip').value.trim();
+            const teacherSubject = document.getElementById('reg-teacher-subject').value.trim();
+            const teacherUsername = document.getElementById('reg-teacher-username').value.trim().toLowerCase();
+            const teacherPassword = document.getElementById('reg-teacher-password').value.trim();
+
+            if (studentAccounts.some(acc => acc.username.toLowerCase() === teacherUsername) || teacherUsername === 'pembina' || teacherUsername === 'superadmin') {
+                alert('Username sudah digunakan. Silakan pilih username lain.');
+                return;
+            }
+
+            let savedTeacherPhoto = null;
+            if (uploadedTeacherPasfotoDataUrl) {
+                try {
+                    savedTeacherPhoto = await uploadBase64ToGoogleDrive(uploadedTeacherPasfotoDataUrl, `kta_pembina_${teacherUsername}_${Date.now()}.jpg`);
+                } catch (err) { console.warn('Upload pasfoto pembina gagal:', err); }
+            }
+
+            const newTeacherAccount = {
+                name: teacherName,
+                nisn: teacherNip,
+                class: 'Guru SPENTWO',
+                spec: teacherSubject,
+                role: 'teacher',
+                status: 'acc',
+                username: teacherUsername,
+                password: teacherPassword,
+                photo: savedTeacherPhoto
+            };
+
+            studentAccounts.unshift(newTeacherAccount);
+            saveStudentAccounts();
+
             currentUser = {
                 name: teacherName,
                 role: 'teacher',
                 roleName: 'Guru Pembina',
                 avatar: teacherName.substring(0, 2).toUpperCase(),
-                photo: uploadedTeacherPasfotoDataUrl,
-                nisn: document.getElementById('reg-teacher-nip').value,
+                photo: savedTeacherPhoto,
+                nisn: teacherNip,
                 class: 'Guru SPENTWO',
-                spec: document.getElementById('reg-teacher-subject').value
+                spec: teacherSubject
             };
-            closeRegisterModal();
-            updateUIForRole();
-        };
 
+            if (typeof closeRegisterModal === 'function') closeRegisterModal();
+            updateUIForRole();
+            alert(`✅ Selamat datang ${teacherName}! Akun Guru Pembina (${teacherUsername}) berhasil didaftarkan & KTA Digital telah terbit.`);
+        };
         window.logout = function() { currentUser = null; updateUIForRole(); };
        window.togglePublicWebsiteView = function() {
             const publicView = document.getElementById('public-website-view');
@@ -3043,6 +3099,10 @@ let savedPhotoUrl = null;
                                                     <button onclick="openEditStudentModal(${idx})" class="px-3 py-1.5 bg-gold-400 hover:bg-gold-500 text-teal-950 font-bold rounded-lg shadow-sm transition">
                                                         <i class="fa-solid fa-pen-to-square mr-1"></i> Edit Biodata & Pass
                                                     </button>
+            ${(st.role !== 'teacher' || currentUser.role === 'superadmin') ? `
+<button onclick="window.deleteUserAccount(${idx})" class="ml-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-lg shadow-sm transition">
+    <i class="fa-solid fa-trash-can mr-1"></i> Hapus
+</button>` : ''}
                                                 </td>
                                             </tr>
                                         `).join('')}
