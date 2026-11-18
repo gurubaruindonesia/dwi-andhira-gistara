@@ -2768,17 +2768,18 @@ let savedPhotoUrl = null;
         
 window.handleFormRegistrationTeacher = async function(e) {
             e.preventDefault();
-            const code = document.getElementById('reg-teacher-code').value.trim();
+           const formEl = e.target;
+            const codeInput = document.getElementById('reg-teacher-code') || formEl.querySelectorAll('input[type="password"]')[0];
+            const code = (codeInput ? codeInput.value : '').trim();
             if (code !== siteConfig.teacherSecretCode) {
                 alert('Kode Verifikasi Guru tidak valid! Silakan hubungi Pembina Utama / Super Admin.');
                 return;
             }
-            const teacherName = document.getElementById('reg-teacher-name').value.trim();
-            const teacherNip = document.getElementById('reg-teacher-nip').value.trim();
-            const teacherSubject = document.getElementById('reg-teacher-subject').value.trim();
+            const teacherName = (document.getElementById('reg-teacher-name')?.value || formEl.querySelectorAll('input[type="text"]')[0]?.value || '').trim();
+            const teacherNip = (document.getElementById('reg-teacher-nip')?.value || formEl.querySelectorAll('input[type="text"]')[1]?.value || '').trim();
+            const teacherSubject = (document.getElementById('reg-teacher-subject')?.value || formEl.querySelector('select')?.value || formEl.querySelectorAll('input[type="text"]')[2]?.value || '').trim();
             const teacherUsername = document.getElementById('reg-teacher-username').value.trim().toLowerCase();
             const teacherPassword = document.getElementById('reg-teacher-password').value.trim();
-
             if (studentAccounts.some(acc => acc.username.toLowerCase() === teacherUsername) || teacherUsername === 'pembina' || teacherUsername === 'superadmin') {
                 alert('Username sudah digunakan. Silakan pilih username lain.');
                 return;
