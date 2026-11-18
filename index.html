@@ -976,8 +976,7 @@
         // =========================================================================
         // INTEGRASI GOOGLE DRIVE (UPLOAD FOTO & SINKRONISASI BERITA)
         // =========================================================================
-        const GOOGLE_DRIVE_API_URL = "https://script.google.com/macros/s/AKfycbywMvjOBrzGP90gzmL9m44LnHudhyrq4miD3PMI5elHxc7uvbJpfsznBUKaqPe6ydXL/exec";
-
+const GOOGLE_DRIVE_API_URL = "https://script.google.com/macros/s/AKfycbwPLjflpIW1KfctBM-VJauRUPwNS8a_SdHx8nMNQp4F1KOZf9rVMwF8Wcj54V4NgZH3/exec";
         function compressImageDataUrl(dataUrl, maxWidth = 1000, quality = 0.75) {
             return new Promise((resolve) => {
                 const img = new Image();
@@ -1060,6 +1059,55 @@
                 console.warn("Memuat berita cadangan lokal:", e);
             }
         }
+        async function postToGoogleBackend(payloadObj) {
+            if (!GOOGLE_DRIVE_API_URL || GOOGLE_DRIVE_API_URL.includes("TEMPEL_URL")) return;
+            try {
+                await fetch(GOOGLE_DRIVE_API_URL, {
+                    method: 'POST',
+                    redirect: 'follow',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payloadObj)
+                });
+            } catch (e) {
+                console.warn("Gagal sinkronisasi ke Google Sheets:", e);
+            }
+        }
+
+        async function loadAllSheetDataFromGoogle() {
+            if (!GOOGLE_DRIVE_API_URL || GOOGLE_DRIVE_API_URL.includes("TEMPEL_URL")) return;
+            try {
+                const res = await fetch(GOOGLE_DRIVE_API_URL + "?action=allData&t=" + Date.now(), {
+                    method: 'GET',
+                    redirect: 'follow'
+                });
+                const data = await res.json();
+                if (data.status === 'success') {
+                    if (Array.isArray(data.users) && data.users.length > 0) {
+                        studentAccounts = data.users;
+                        localStorage.setItem('dag_student_accounts', JSON.stringify(studentAccounts));
+                    }
+                    if (Array.isArray(data.attendance) && data.attendance.length > 0) {
+                        attendanceRecords = data.attendance.reverse();
+                        localStorage.setItem('dag_attendance_records', JSON.stringify(attendanceRecords));
+                    }
+                    if (data.session) {
+                        activeAttendanceSession = data.session;
+                        localStorage.setItem('dag_attendance_session', JSON.stringify(activeAttendanceSession));
+                    }
+                    if (data.siteConfig) {
+                        siteConfig = data.siteConfig;
+                        localStorage.setItem('dag_site_config', JSON.stringify(siteConfig));
+                        applySiteConfigToDOM();
+                    }
+                    if (Array.isArray(data.chats) && data.chats.length > 0) {
+                        chatMessages = data.chats;
+                        localStorage.setItem('dag_chat_messages', JSON.stringify(chatMessages));
+                    }
+                }
+            } catch (e) {
+                console.warn("Memuat data lokal:", e);
+            }
+        }
         const todayISO = "2026-11-15";
         let selectedFilterDate = todayISO;
 
@@ -1093,9 +1141,10 @@
         };
 
         let siteConfig = JSON.parse(localStorage.getItem('dag_site_config')) || defaultSiteConfig;
-        function saveSiteConfig() {
+            function saveSiteConfig() {
             localStorage.setItem('dag_site_config', JSON.stringify(siteConfig));
             applySiteConfigToDOM();
+            postToGoogleBackend({ action: 'saveConfig', session: activeAttendanceSession, siteConfig: siteConfig });
         }
 
         function applySiteConfigToDOM() {
@@ -1125,6 +1174,7 @@
         let activeAttendanceSession = JSON.parse(localStorage.getItem('dag_attendance_session')) || defaultAttendanceSession;
         function saveAttendanceSession() {
             localStorage.setItem('dag_attendance_session', JSON.stringify(activeAttendanceSession));
+            postToGoogleBackend({ action: 'saveConfig', session: activeAttendanceSession, siteConfig: siteConfig });
         }
 
         function calculateDistanceInMeters(lat1, lon1, lat2, lon2) {
@@ -1153,6 +1203,7 @@
         let studentAccounts = JSON.parse(localStorage.getItem('dag_student_accounts')) || defaultStudentAccounts;
         function saveStudentAccounts() {
             localStorage.setItem('dag_student_accounts', JSON.stringify(studentAccounts));
+            postToGoogleBackend({ action: 'syncUsers', users: studentAccounts });
         }
 
         // DATABASE DISKUSI INTERNAL ANTAR USER
@@ -2198,6 +2249,7 @@
                     status: `Hadir (${radiusLabel} • GPS & Foto)`
                 });
                 saveAttendanceRecords();
+                postToGoogleBackend({ action: 'addAttendance', record: attendanceRecords[0] });
 
                 selectedFilterDate = activeAttendanceSession.date;
                 closeAbsensiGPSModal();
@@ -2590,6 +2642,7 @@ window.openEditNewsModal = function(index) {
                 time: timeStr
             });
             saveChatMessages();
+            postToGoogleBackend({ action: 'addChat', message: chatMessages[chatMessages.length - 1] });
             input.value = "";
             renderChatFeed();
         };
@@ -2652,7 +2705,7 @@ window.openEditNewsModal = function(index) {
             updateUIForRole();
         };
 
-        window.handleFormRegistrationStudent = function(e) {
+        window.handleFormRegistrationStudent = async function(e) {
             e.preventDefault();
             const fullname = document.getElementById('reg-fullname').value.trim();
             const nisn = document.getElementById('reg-nisn').value.trim();
@@ -2665,7 +2718,12 @@ window.openEditNewsModal = function(index) {
                 alert("Username sudah digunakan. Silakan pilih username lain.");
                 return;
             }
-
+let savedPhotoUrl = null;
+            if (uploadedStudentPasfotoDataUrl) {
+                try {
+                    savedPhotoUrl = await uploadBase64ToGoogleDrive(uploadedStudentPasfotoDataUrl, `kta_${username}_${Date.now()}.jpg`);
+                } catch (err) { console.warn("Upload pasfoto gagal:", err); }
+            }
             const newStudent = {
                 name: fullname,
                 nisn: nisn,
@@ -2675,7 +2733,7 @@ window.openEditNewsModal = function(index) {
                 status: 'pending',
                 username: username,
                 password: password,
-                photo: uploadedStudentPasfotoDataUrl
+                photo: savedPhotoUrl
             };
             studentAccounts.unshift(newStudent);
             saveStudentAccounts();
@@ -3189,6 +3247,7 @@ window.openEditNewsModal = function(index) {
             renderNewsGrid();
             checkInitialNewsDeepLink();
             loadNewsFromGoogleDrive();
+            loadAllSheetDataFromGoogle();
         });
     </script>
 </body>
